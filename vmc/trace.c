@@ -1,6 +1,3 @@
-/*
- * @(#)trace.c	1.1  3/11/91
- */
 #include "assert.h"
 #include "trace.h"
 #include <stdarg.h>

@@ -1,7 +1,4 @@
 #!/bin/csh -f
-#
-# @(#)MAKETOKENNAMES	1.2  3/18/87
-#
 ed - << theend
 0r vmcpar.y
 v/^%token/d

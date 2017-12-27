@@ -1,7 +1,3 @@
-/* 
- * @(#)sisc.c	1.2  1/11/90
- */
-
 /*
  * Searchable Collections:
  *

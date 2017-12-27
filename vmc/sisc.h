@@ -1,6 +1,3 @@
-/* 
- * @(#)sisc.h	1.1  2/1/89
- */
 #ifndef SISc_h
 #define SISc_h
 /*

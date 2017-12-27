@@ -1,7 +1,3 @@
-/*
- * @(#)assert.h	1.1  5/10/89
- */
-
 #ifndef assert_h
 #define assert_h
 #ifndef FILE

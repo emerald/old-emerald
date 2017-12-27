@@ -1,6 +1,3 @@
-/*
- * @(#)ilist.h	1.3  5/24/89
- */
 #ifndef ilist_h
 #define ilist_h
 /*

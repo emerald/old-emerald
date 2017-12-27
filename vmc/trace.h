@@ -1,6 +1,3 @@
-/*
- * @(#)trace.h	1.1  3/11/91
- */
 #ifndef trace_h
 #define trace_h
 

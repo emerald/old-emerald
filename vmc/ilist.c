@@ -1,7 +1,4 @@
 /*
- * @(#)ilist.c	1.2  5/14/89
- */
-/*
  * Sequences:  Expanding arrays of keys
  *  Adopted by Kim Gillies from Dr. Norm Hutchinson's iset.c
  *  In sequence structure, count is the current number of items in the 

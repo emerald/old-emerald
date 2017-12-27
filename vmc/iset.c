@@ -1,6 +1,3 @@
-/*
- * @(#)iset.c	1.2  3/12/91
- */
 #ifndef NULL
 #include <stdio.h>
 #endif

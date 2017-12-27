@@ -1,6 +1,3 @@
-/*
- * @(#)iisc.h	1.2  2/1/89
- */
 #ifndef IISc_h
 #define IISc_h
 /*

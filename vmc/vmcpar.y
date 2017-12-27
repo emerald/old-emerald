@@ -1,7 +1,4 @@
 %{
-/*
- * @(#)vmcpar.y	1.3  1/18/90
- */
 #include <stdlib.h>
 #include <stdio.h>
 #include "defs.h"

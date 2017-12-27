@@ -1,6 +1,3 @@
-/*
- * @(#)iset.h	1.2  3/12/91
- */
 #ifndef ISet_h
 #define ISet_h
 /*

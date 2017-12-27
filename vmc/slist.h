@@ -1,6 +1,3 @@
-/*
- * @(#)slist.h	1.3  5/24/89
- */
 #ifndef SList_h
 #define SList_h
 /*
