@@ -2,10 +2,10 @@
 #include "trace.h"
 #include <stdarg.h>
 
-int 
-		traceinit,
-		traceparse,
-		tracehelp;
+int
+    traceinit,
+    traceparse,
+    tracehelp;
 
 typedef struct {
   char *name;
@@ -60,8 +60,8 @@ register char *f;
     }
     for (tp = &table[0]; tp->name; tp++) {
       if (!strcmp(f, tp->name)) {
-	*tp->flag = value;
-	break;
+        *tp->flag = value;
+        break;
       }
     }
     if (tp->name == NULL) {
@@ -76,7 +76,7 @@ register char *f;
 void initializeTrace()
 {
   register flagTablePtr tp;
-  
+
   IFTRACE(help, 1) {
     fprintf(stdout, "Trace\t\tValue\n");
     for (tp = &table[0]; tp->name; tp++) {

@@ -25,7 +25,7 @@ typedef char *SListDomainType;
  */
 
 typedef struct SListTE {
-    SListDomainType key;		/* the key for this entry */
+    SListDomainType key;  /* the key for this entry */
 } SListTE, *SListTEPtr;
 
 typedef struct SListRecord {

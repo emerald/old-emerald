@@ -181,7 +181,7 @@ doInterpret()
     }
   } SListNext();
   fprintf(cfile, "%s", interpretmid1);
-  
+
   fprintf(cfile, "  UNSYNCH();\n");
 
   fprintf(cfile, "%s", interpretmid2);
@@ -534,8 +534,8 @@ doHFile()
   fprintf(hfile, "  u32 firstThing;\n");
   fprintf(hfile, "  u32 pc;\n");
   SListForEachByThree(state, name, desc, type) {
-    fprintf(hfile, "  %s %s;\t\t/* %s */\n", type, 
-	    *name == '_' ? name+1 : name, desc);
+    fprintf(hfile, "  %s %s;\t\t/* %s */\n", type,
+      *name == '_' ? name+1 : name, desc);
   } SListNext();
   fprintf(hfile, "} State;\n");
   fprintf(hfile, "#define F_SYNCH() (\\\n");
@@ -544,23 +544,23 @@ doHFile()
       fprintf(hfile, "  state->%s = %s,\\\n", name, name);
     }
   } SListNext();
-  fprintf(hfile, "  state->pc = pc)\n");  
+  fprintf(hfile, "  state->pc = pc)\n");
   fprintf(hfile, "#define F_UNSYNCH() (\\\n");
   SListForEachByThree(state, name, desc, type) {
     if (*name != '_') {
       fprintf(hfile, "  %s = state->%s,\\\n", name, name);
     }
   } SListNext();
-  fprintf(hfile, "  pc = state->pc )\n");  
+  fprintf(hfile, "  pc = state->pc )\n");
 
   fprintf(hfile, "#ifdef COUNTBYTECODES\n");
   fprintf(hfile, "#define SYNCH() (\\\n");
   fprintf(hfile, "  F_SYNCH(),\\\n");
   fprintf(hfile, "  totalbytecodes += addtototalbytecodes, \\\n");
-  fprintf(hfile, "  addtototalbytecodes = 0 )\n");  
+  fprintf(hfile, "  addtototalbytecodes = 0 )\n");
   fprintf(hfile, "#define UNSYNCH() (\\\n");
   fprintf(hfile, "  F_UNSYNCH(),\\\n");
-  fprintf(hfile, "  addtototalbytecodes = 0 )\n");  
+  fprintf(hfile, "  addtototalbytecodes = 0 )\n");
   fprintf(hfile, "#else /* COUNTBYTECODES */\n");
   fprintf(hfile, "#define SYNCH() (\\\n");
   SListForEachByThree(state, name, desc, type) {
@@ -568,14 +568,14 @@ doHFile()
       fprintf(hfile, "  state->%s = %s,\\\n", name, name);
     }
   } SListNext();
-  fprintf(hfile, "  state->pc = pc)\n");  
+  fprintf(hfile, "  state->pc = pc)\n");
   fprintf(hfile, "#define UNSYNCH() (\\\n");
   SListForEachByThree(state, name, desc, type) {
     if (*name != '_') {
       fprintf(hfile, "  %s = state->%s,\\\n", name, name);
     }
   } SListNext();
-  fprintf(hfile, "  pc = state->pc )\n");  
+  fprintf(hfile, "  pc = state->pc )\n");
   fprintf(hfile, "#endif\n");
 }
 
@@ -678,14 +678,14 @@ char **v;
   while (c && v[0][0] == '-') {
     switch (v[0][1]) {
       case 'T':
-	parseTraceFlag(v[0]);
-	break;
+        parseTraceFlag(v[0]);
+        break;
       case 'B':
-	doInstructionBodies = 1;
-	break;
+        doInstructionBodies = 1;
+        break;
       default:
-	Usage("Invalid flag \"%s\"", v[0]);
-	break;
+        Usage("Invalid flag \"%s\"", v[0]);
+        break;
     }
     c--;
     v++;

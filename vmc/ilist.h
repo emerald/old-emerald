@@ -25,7 +25,7 @@
  */
 
 typedef struct IListTE {
-    IListDomainType key;		/* the key for this entry */
+    IListDomainType key;  /* the key for this entry */
 } IListTE, *IListTEPtr;
 
 typedef struct IListRecord {
@@ -65,7 +65,7 @@ void IListPrint(/* IList sc */);
     int IListxx_index; \
     for (IListxx_index = 0; IListxx_index < (IList)->count; IListxx_index++) { \
       *(IListDomainType*)(&(IListkey)) = IList->table[IListxx_index].key; \
-      { 
+      {
 
 /* Iterate over the elements of the collection IList.  
  * At each iteration, IListkey is set to the next key in the set.  
@@ -79,7 +79,7 @@ void IListPrint(/* IList sc */);
     int IListxx_index; \
     for (IListxx_index = (IList->count-1); IListxx_index >= 0; IListxx_index--) { \
       *(IListDomainType*)(&(IListkey)) = IList->table[IListxx_index].key; \
-      { 
+      {
 
 /* Iterate over the elements of the collection IList, two at a time.
  * At each iteration, IListkey1 and IListkey2 are set to the next keys

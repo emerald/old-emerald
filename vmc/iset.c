@@ -86,12 +86,12 @@ register ISet sc;
     while (1) {
       ne = &nh[index];
       if (ne->key == (int)NULL) {
-	ne->key = oe->key;
-	break;
+        ne->key = oe->key;
+        break;
       } else {
         assert(ne->key !=key);
-	index++;
-	if (index >= sc->size) index = 0;
+        index++;
+        if (index >= sc->size) index = 0;
       }
     }
   }
@@ -115,7 +115,7 @@ register ISetDomainType  key;
 #endif /* DEBUGSC */
   while (1) {
     e = &sc->table[index];
-    if (e->key == (int)NULL) {		/* we did not find it */
+    if (e->key == (int)NULL) {  /* we did not find it */
       return 0;
     } else if (ISetCOMPARE(e->key, key)) {
       return 1;
@@ -136,7 +136,7 @@ register ISet sc;
 #endif /* DEBUGSC */
   while (1) {
     e = &sc->table[index];
-    if (e->key != (int)NULL) {		/* we found it */
+    if (e->key != (int)NULL) {  /* we found it */
       return e->key;
     }
     if (++index >= sc->size) return (int)NULL;
@@ -155,7 +155,7 @@ register ISetDomainType key;
   index = Hash(key, sc);
   while (1) {
     e = &sc->table[index];
-    if (e->key == (int)NULL) {		/* put it here */
+    if (e->key == (int)NULL) {  /* put it here */
       e->key = key;
       sc->count++;
 #ifdef DEBUGSC
@@ -182,7 +182,7 @@ register ISetDomainType key;
 
   while (1) {
     e = &sc->table[index];
-    if (e->key == (int)NULL) {		/* we did not find it */
+    if (e->key == (int)NULL) {  /* we did not find it */
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
 #endif /* DEBUGSC */
@@ -199,10 +199,10 @@ register ISetDomainType key;
         key = e->key;
         if (key == (int)NULL) {
 #ifdef DEBUGSC
-	  CheckOutHashTable(sc);
+          CheckOutHashTable(sc);
 #endif /* DEBUGSC */
-	  return;
-	}
+          return;
+        }
         /* rehashing is done by removing then reinserting */
         e->key = (int)NULL;
         sc->count--;
@@ -249,30 +249,30 @@ register ISet sc;
       index = Hash(realElement->key, sc);
       firstIndex = index;
       while (1) {
-	e = &sc->table[index];
-	if (e->key == NULL) {		/* we did not find it */
-	  break;
-	} else if (ISetCOMPARE(e->key, realElement->key)) {
-	  break;
-	} else {
-	  index++;
-	  if (index >= sc->size) index = 0;
-	  if (index == firstIndex) {
-	    index = -1;
-	    break;
-	  }
-	}
+        e = &sc->table[index];
+        if (e->key == NULL) { /* we did not find it */
+          break;
+        } else if (ISetCOMPARE(e->key, realElement->key)) {
+          break;
+        } else {
+          index++;
+          if (index >= sc->size) index = 0;
+          if (index == firstIndex) {
+            index = -1;
+            break;
+          }
+        }
       }
-      
+
       if (index == -1 || !ISetCOMPARE(e->key, realElement->key)) {
 FIX THIS
-	fprintf(stderr,
-	  "Sc problem: Key 0x%x, rightIndex %d, realIndex %d\n",
-	  realElement->key, firstIndex, index);
-	ISetPrint(sc);
+        fprintf(stderr,
+          "Sc problem: Key 0x%x, rightIndex %d, realIndex %d\n",
+          realElement->key, firstIndex, index);
+        ISetPrint(sc);
       }
     }
-  }  
+  }
   if (count != sc->count) {
     fprintf(stderr,
       "Sc problem: Should have %d entries, but found %d.\n", sc->count,

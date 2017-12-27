@@ -57,7 +57,7 @@ register SList sq;
   register int oldTableSize = sq->size, i;
 
   for (i = 0; sizes[i] <= oldTableSize; i++) ;
-  sq->size = sizes[i];			/* the new size  */
+  sq->size = sizes[i];  /* the new size  */
   sq->table = (SListTEPtr)realloc(sq->table, (sq->size *sizeof(SListTE)));
   for (i = oldTableSize; i < sq->size; i++) {
     sq->table[i].key = NULL;
@@ -107,7 +107,7 @@ register SListDomainType key;
   for (index = 0; index < count; index++) {
     if (SListCOMPARE(sq->table[index].key, key)) {
       for (j = index+1; j < count; j++) {
-	sq->table[j-1].key = sq->table[j].key;
+        sq->table[j-1].key = sq->table[j].key;
       }
       sq->count--;
       return;

@@ -11,7 +11,7 @@ char *filename, *oldsx, *newsx;
   flen = strlen(filename);
   olen = strlen(oldsx);
   nlen = strlen(newsx);
-  
+
   i = flen - olen;
   if (i > 0 && filename[i-1] != '/' && !strncmp(&filename[i], oldsx, olen)) {
     flen -= olen;

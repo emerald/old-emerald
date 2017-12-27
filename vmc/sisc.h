@@ -31,8 +31,8 @@ typedef int   RangeType;
  */
 
 typedef struct SIScTE {
-    DomainType	 key;		/* the key for this entry */
-    RangeType	 value;		/* what we want */
+    DomainType key; /* the key for this entry */
+    RangeType value;  /* what we want */
 } SIScTE, *SIScTEPtr;
 
 typedef struct SIScRecord {
@@ -74,12 +74,12 @@ void SIScPrint(/* SISc sc */);
     int SIScxx_index; \
     for (SIScxx_index = 0; SIScxx_index < (SISc)->size; SIScxx_index++) { \
       if ((SISc)->table[SIScxx_index].key != NULL) { \
-	(SISckey) = SISc->table[SIScxx_index].key; \
-	*(RangeType *)(&(SIScvalue)) = SISc->table[SIScxx_index].value; \
-	{ 
+        (SISckey) = SISc->table[SIScxx_index].key; \
+        *(RangeType *)(&(SIScvalue)) = SISc->table[SIScxx_index].value; \
+        {
 
 #define SIScNext() \
-	} \
+        } \
       } \
     } \
   }

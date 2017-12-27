@@ -85,13 +85,13 @@ register IISc sc;
     while (1) {
       ne = &nh[index];
       if (ne->key == 0) {
-	ne->key = oe->key;
-	ne->value = oe->value;
-	break;
+        ne->key = oe->key;
+        ne->value = oe->value;
+        break;
       } else {
         assert(ne->key !=key);
-	index++;
-	if (index >= sc->size) index = 0;
+        index++;
+        if (index >= sc->size) index = 0;
       }
     }
   }
@@ -115,7 +115,7 @@ register IIScDomainType  key;
 #endif /* DEBUGSC */
   while (1) {
     e = &sc->table[index];
-    if (e->key == 0) {		/* we did not find it */
+    if (e->key == 0) {  /* we did not find it */
       return -1;
     } else if (IIScCOMPARE(e->key, key)) {
       return e->value;
@@ -138,7 +138,7 @@ IIScRangeType value;
   index = Hash(key, sc);
   while (1) {
     e = &sc->table[index];
-    if (e->key == 0) {		/* put it here */
+    if (e->key == 0) {  /* put it here */
       e->key = key;
       e->value = value;
       sc->count++;
@@ -168,7 +168,7 @@ register IIScDomainType key;
 
   while (1) {
     e = &sc->table[index];
-    if (e->key == 0) {		/* we did not find it */
+    if (e->key == 0) {  /* we did not find it */
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
 #endif /* DEBUGSC */
@@ -186,14 +186,14 @@ register IIScDomainType key;
         key = e->key;
         if (key == 0) {
 #ifdef DEBUGSC
-	  CheckOutHashTable(sc);
+          CheckOutHashTable(sc);
 #endif /* DEBUGSC */
-	  return;
-	}
+          return;
+        }
         /* rehashing is done by removing then reinserting */
         value = e->value;
         e->key = 0;
-	e->value = 0;
+        e->value = 0;
         sc->count--;
         IIScInsert(sc, key, value);
       }
@@ -240,30 +240,30 @@ register IISc sc;
       index = Hash(realElement->key, sc);
       firstIndex = index;
       while (1) {
-	e = &sc->table[index];
-	if (e->key == 0) {		/* we did not find it */
-	  break;
-	} else if (IIScCOMPARE(e->key, realElement->key)) {
-	  break;
-	} else {
-	  index++;
-	  if (index >= sc->size) index = 0;
-	  if (index == firstIndex) {
-	    index = -1;
-	    break;
-	  }
-	}
+        e = &sc->table[index];
+        if (e->key == 0) {  /* we did not find it */
+          break;
+        } else if (IIScCOMPARE(e->key, realElement->key)) {
+          break;
+        } else {
+          index++;
+          if (index >= sc->size) index = 0;
+          if (index == firstIndex) {
+            index = -1;
+            break;
+          }
+        }
       }
-      
+
       if (index == -1 || !IIScCOMPARE(e->key, realElement->key)) {
 FIX THIS
-	fprintf(stderr,
-	  "Sc problem: Key 0x%x, rightIndex %d, realIndex %d value 0x%x\n",
-	  realElement->key, firstIndex, index, realElement->value);
-	IIScPrint(sc);
+        fprintf(stderr,
+          "Sc problem: Key 0x%x, rightIndex %d, realIndex %d value 0x%x\n",
+          realElement->key, firstIndex, index, realElement->value);
+        IIScPrint(sc);
       }
     }
-  }  
+  }
   if (count != sc->count) {
     fprintf(stderr,
       "Sc problem: Should have %d entries, but found %d.\n", sc->count,

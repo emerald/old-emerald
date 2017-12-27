@@ -6,9 +6,9 @@
 #include "assert.h"
 
 struct identifier_entry {
-    char *name;		/* character string key for this entry */
-    int  token;		/* token (id or some keyword) */    
-    int  lineno;	/* source line number */
+    char *name;   /* character string key for this entry */
+    int  token;   /* token (id or some keyword) */
+    int  lineno;  /* source line number */
 };
 
 typedef struct thing {
