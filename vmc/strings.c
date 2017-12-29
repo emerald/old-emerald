@@ -1,4 +1,5 @@
 #include <stdio.h>    // sprintf
+#include <stdlib.h>   // malloc
 #include <string.h>   // strlen
 
 char *replaceSuffix(filename, oldsx, newsx)
@@ -6,7 +7,6 @@ char *filename, *oldsx, *newsx;
 {
   int flen, olen, nlen, i;
   char *answer;
-  extern char *malloc();
 
   if (oldsx == 0) oldsx = "";
   if (newsx == 0) newsx = "";
@@ -27,7 +27,7 @@ char *filename, *oldsx, *newsx;
 char *findFileName(name)
 char *name;
 {
-  char *answer, *malloc();
+  char *answer;
   int i;
 
   for (i = strlen(name)-1; i >= 0; i--) {
