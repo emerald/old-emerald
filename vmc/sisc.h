@@ -6,6 +6,8 @@
  *	create, destroy, insert, lookup, size, and print
  */
 
+#include <string.h>   // strcmp
+
 /*
  * Before using this, one must define the following:
  *	DomainType	- a typedef for the domain
