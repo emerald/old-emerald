@@ -5,8 +5,8 @@
 char *replaceSuffix(filename, oldsx, newsx)
 char *filename, *oldsx, *newsx;
 {
-  int flen, olen, nlen, i;
-  char *answer;
+  int flen = 0, olen = 0, nlen = 0, i = 0;
+  char *answer = 0;
 
   if (oldsx == 0) oldsx = "";
   if (newsx == 0) newsx = "";
@@ -27,8 +27,8 @@ char *filename, *oldsx, *newsx;
 char *findFileName(name)
 char *name;
 {
-  char *answer;
-  int i;
+  char *answer = 0;
+  int i = 0;
 
   for (i = strlen(name)-1; i >= 0; i--) {
     if (name[i] == '/') break;
