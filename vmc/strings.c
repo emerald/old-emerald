@@ -1,3 +1,6 @@
+#include <stdio.h>    // sprintf
+#include <string.h>   // strlen
+
 char *replaceSuffix(filename, oldsx, newsx)
 char *filename, *oldsx, *newsx;
 {
