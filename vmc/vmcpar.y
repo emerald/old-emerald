@@ -16,7 +16,7 @@ int theline;
 %token <string> CODE /* "{ ... }" */
 %token <string> STRING /* "string" */
 %start machine
-%union yylval {
+%union {
     struct identifier_entry	*id;
     char			*string;
 } 
