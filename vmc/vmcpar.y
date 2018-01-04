@@ -7,6 +7,10 @@
 extern FILE *actions, *otherstuff;
 extern int linenumber;
 int theline;
+
+int
+yylex();
+
 %} 
 %token  OEOF 0 /* "end of file" */
 %token	KSTATE
