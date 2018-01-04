@@ -8,6 +8,12 @@ extern int
 
 extern void trace(int, char *, ...);
 
+int
+parseTraceFlag(register char *f);
+
+void
+initializeTrace();
+
 #ifdef lint
 #   define IFTRACE(t, level) \
         if (level)
