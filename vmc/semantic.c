@@ -36,6 +36,7 @@ void installDefinition(char *code)
   definitions = code;
 }
 
+void
 installState(name, desc, type)
 char *name, *desc, *type;
 {
@@ -45,6 +46,7 @@ char *name, *desc, *type;
   SListInsert(state, type);
 }
 
+void
 installInterrupt(name, code)
 char *name, *code;
 {
@@ -53,8 +55,10 @@ char *name, *code;
   SListInsert(interrupts, code);
 }
 
+void
 installInstruction(name, param, code, lineno)
 char *name, *param, *code;
+int lineno;
 {
   TRACE1(parse, 1, "Instruction: %s", name);
   SIScInsert(linenumbers, name, lineno);
@@ -167,6 +171,7 @@ static char *interprettail = "\
   }\n\
 }\n";
 
+void
 doInterpret()
 {
   char *name, *param, *desc, *type, *code;
@@ -502,6 +507,7 @@ void outputProfile(void)\n\
 #endif\n\
 }\n";
 
+void
 doAssemble()
 {
   char *name, *param, *code;
@@ -520,6 +526,7 @@ doAssemble()
   fprintf(cfile, "%s", assembletail3);
 }
 
+void
 doHFile()
 {
   char *name, *desc, *type;
@@ -579,6 +586,7 @@ doHFile()
   fprintf(hfile, "#endif\n");
 }
 
+void
 doXFile()
 {
   char *name, *param, *code;
@@ -588,6 +596,7 @@ doXFile()
   } SListNext();
 }
 
+void
 printQuote(s)
 register char *s;
 {
@@ -618,6 +627,7 @@ register char *s;
 
 int doInstructionBodies;
 
+void
 doCFile()
 {
   char *name, *param, *code;
@@ -639,6 +649,7 @@ doCFile()
   doAssemble();
 }
 
+void
 semFinal()
 {
   doXFile();
@@ -650,12 +661,14 @@ semFinal()
 
 extern int linenumber;
 
+void
 yyerror(s)
 char *s;
 {
   printf("line %d: %s\n", linenumber, s);
 }
 
+void
 Usage(s, t)
 char *s;
 char *t;
@@ -668,6 +681,7 @@ char *t;
   exit(1);
 }
 
+int
 main(c, v)
 int c;
 char **v;
