@@ -51,6 +51,7 @@ int comment;
   yylval.string = strsavestrip(buffer);
 }
 
+int
 lexInit()
 {
 
