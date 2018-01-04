@@ -4,6 +4,8 @@
 #include <stdio.h>
 #endif
 
+#include <stdlib.h> // abort
+
 # ifdef lint
 #  define assert(ex) {int assert__x_; assert__x_ = (ex); assert__x_ = assert__x_;}
 #  define _assert(ex) {int assert__x_; assert__x_ = (ex); assert__x_ = assert__x_;}
