@@ -14,6 +14,8 @@
 #include <assert.h>
 #endif
 
+#include <stdlib.h> // free
+
 static int sizes[] = {
   5, 7, 17, 31,
   67, 131, 257, 521,
