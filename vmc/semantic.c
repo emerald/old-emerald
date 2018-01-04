@@ -5,6 +5,8 @@
 #include "trace.h"
 #include "slist.h"
 
+#include <unistd.h> // access
+
 extern char *findFileName(), *replaceSuffix();
 char *hfilename, *cfilename, *xfilename, *filename, *pathname;
 FILE *hfile, *cfile, *xfile;
