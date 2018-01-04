@@ -1,3 +1,5 @@
+#include "semantic.h"
+
 #include "defs.h"
 #include "vmcpar.h"
 #include "trace.h"

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "defs.h"
+#include "semantic.h"
 
 extern FILE *actions, *otherstuff;
 extern int linenumber;
