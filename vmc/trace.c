@@ -37,6 +37,7 @@ register char *s, c;
   return(theC == c ? s : NULL);
 }
 
+int
 parseTraceFlag(f)
 register char *f;
 {
