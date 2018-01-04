@@ -1,4 +1,4 @@
-#include "empty-defs.desc_i.h"
+#include "empty_defs.desc_i.h"
 #include <stdlib.h>
 #ifndef FILE
 #include <stdio.h>

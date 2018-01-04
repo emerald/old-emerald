@@ -1,4 +1,4 @@
-#include "empty-defs.desc.h"
+#include "empty_defs.desc.h"
 #define UFETCH1(where,ptr,inc) { \
   where = *((unsigned char*)(ptr)); \
   if (inc) (ptr) = (int)(ptr) + 1; \
