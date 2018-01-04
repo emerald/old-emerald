@@ -721,7 +721,6 @@ char **v;
   if (!hfile) Usage("Can't open output file \"%s\"", hfilename);
   if (!cfile) Usage("Can't open output file \"%s\"", cfilename);
   initializeTrace();
-  lexInit();
   semInit();
   yyparse();
   semFinal();

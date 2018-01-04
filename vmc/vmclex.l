@@ -51,12 +51,6 @@ int comment;
   yylval.string = strsavestrip(buffer);
 }
 
-int
-lexInit()
-{
-
-}
-
 char *strsave(s)
 char *s;
 {
