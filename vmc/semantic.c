@@ -665,7 +665,7 @@ extern int linenumber;
 
 void
 yyerror(s)
-char *s;
+const char *s;
 {
   printf("line %d: %s\n", linenumber, s);
 }

@@ -23,4 +23,8 @@ installState(
   char *desc,
   char *type);
 
+void
+yyerror(
+  const char *s);
+
 #endif // semantic_h
