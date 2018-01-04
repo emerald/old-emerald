@@ -103,6 +103,7 @@ register ISet sc;
 }
 
 /* Is key in the set sc */
+int
 ISetMember(sc, key)
 register ISet sc;
 register ISetDomainType  key;
