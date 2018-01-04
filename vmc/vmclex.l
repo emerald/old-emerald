@@ -6,6 +6,10 @@ char *strsave(), *strsavestrip();
 int linenumber = 1;
 #undef YYLMAX
 #define YYLMAX (20 * 8192)
+
+void
+getString(char *start, int comment);
+
 %}
 L [A-Za-z_]
 Z [A-Za-z0-9_]
@@ -22,6 +26,7 @@ Q ([^\\"]|\\.)
 ^Interrupts:		{ return KINTERRUPTS; }
 ^Instructions:		{ return KINSTRUCTIONS; }
 %%
+void
 getString(start, comment)
 char *start;
 int comment;
