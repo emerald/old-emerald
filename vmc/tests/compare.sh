@@ -7,9 +7,9 @@ snd="${2%.desc*}"
 
 function compare {
   if [ $# -gt 2 ]; then
-    diff -ruN -I "^#include \"$3\"$" "$1" "$2"
+    diff -u -I "^#include \"$3\"$" "$1" "$2"
   else
-    diff -ruN "$1" "$2"
+    diff -u "$1" "$2"
   fi
 }
 
