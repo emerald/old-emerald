@@ -1,12 +1,12 @@
 # `vmc` Tests
 
-The role of `vmc` in the Emerald compiler is presently unclear, hence
-its intended behaviour is also presently unclear.
+The role of `vmc` in the Emerald compiler is at present unclear, hence
+its intended behaviour is also _unclear_.
 
-The purpose of this test-suite is therefore merely to make a snapshot
-of the _current_ behaviour of `vmc`, before subsequent changes are
-made to the code base (e.g., to bring `vmc` up-to-date with
-contemporary C development standards).
+The purpose of this test-suite is therefore to make a snapshot of the
+_current_ behaviour of `vmc`, right or wrong, before any subsequent
+changes are made to the code base (e.g., to bring `vmc` up-to-date
+with contemporary C development standards).
 
 ## Design
 
