@@ -1,4 +1,4 @@
-# `vmc` tests
+# `vmc` Tests
 
 The role of `vmc` in the Emerald compiler is presently unclear, hence
 its intended behaviour is also presently unclear.
