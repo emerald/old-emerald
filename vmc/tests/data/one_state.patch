@@ -1,0 +1,10 @@
+--- one_state.desc.c	2018-01-01 00:00:00.000000000 +0100
++++ one_state.desc.c	2018-01-01 00:00:00.000000000 +0100
+@@ -13,6 +13,7 @@
+ int interpret(State *state)
+ {
+   u32 pc;
++  int a;		/* This is a */
+   long long addtototalbytecodes = 0;
+   unsigned char opcode;
+ #if defined(INTERPRETERLOCALS)
