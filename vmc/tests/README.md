@@ -10,10 +10,11 @@ with contemporary C development standards).
 
 ## Design
 
-`vmc` is a compiler that generates C code. For an input `.desc` file,
-it generates 3 C files, ending in `desc.c`, `desc.h`, and `desc_i.h`,
-respectively. For instance, for the empty file
-[empty.desc](data/empty.desc), `vmc` generates
+`vmc` is a compiler that generates C code.
+
+For an input `.desc` file, it generates 3 C files, ending in `desc.c`,
+`desc.h`, and `desc_i.h`, respectively. For instance, for the empty
+file [empty.desc](data/empty.desc), `vmc` generates
 [empty.desc.c](data/empty.desc.c), [empty.desc.h](data/empty.desc.h),
 and [empty.desc_i.h](data/empty.desc_i.h).
 
