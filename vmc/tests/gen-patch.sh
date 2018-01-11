@@ -44,9 +44,10 @@ compare() (
   snd="$(basename "$2")"
   dir="$(dirname "$2")"
 
-  declare -a args
   if [ $# -gt 2 ]; then
     args=(-I "^#include \"$3\"$")
+  else
+    declare -a args
   fi
 
   cd "$dir"
