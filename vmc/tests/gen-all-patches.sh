@@ -17,6 +17,7 @@ cp ../../vmc .
 # For each other .desc file, run vmc, and generate a patch file.
 
 run() {
+  echo "vmc'ing $1.."
   ./vmc "$1"
   ../gen-patch.sh "$1"
 }
