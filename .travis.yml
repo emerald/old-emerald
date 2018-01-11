@@ -1,5 +1,6 @@
 language: c
-script: make -C vmc
+install: make -C vmc
+script: ./vmc/tests/run.sh
 addons:
   apt:
     packages:
