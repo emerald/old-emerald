@@ -1,6 +1,4 @@
 language: c
-install: make -C vmc
-script: ./vmc/tests/run.sh
 addons:
   apt:
     packages:
@@ -10,3 +8,5 @@ addons:
     - libfl-dev:i386
     - gcc-multilib
     - realpath
+install: make -C vmc
+script: ./vmc/tests/run.sh
