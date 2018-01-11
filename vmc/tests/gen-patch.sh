@@ -44,15 +44,15 @@ compare() (
   snd="$(basename "$2")"
   dir="$(dirname "$2")"
 
+  args=(-u)
   if [ $# -gt 2 ]; then
-    args=(-I "^#include \"$3\"$")
-  else
-    args=( )
+    args[1]=-I
+    args[2]="^#include \"$3\"$"
   fi
 
   cd "$dir"
   set +e
-  diff -u "${args[@]}" "$fst" "$snd"
+  diff "${args[@]}" "$fst" "$snd"
   exitcode=$?
   set -e
   if [ $exitcode -ne 0 ] && [ $exitcode -ne 1 ]; then
