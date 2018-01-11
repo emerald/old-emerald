@@ -4,8 +4,7 @@ set -euo pipefail
 
 # Let the user run the script from any workding directory — change the
 # working directory to the script directory.
-scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "${scriptdir}"
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 # Set up vmc and run vmc for empty.desc in data/
 cp ../vmc data/
