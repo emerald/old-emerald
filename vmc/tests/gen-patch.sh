@@ -43,11 +43,19 @@ compare() (
   fst="$1"
   snd="$(basename "$2")"
   dir="$(dirname "$2")"
-  cd "$dir"
+
+  args=()
   if [ $# -gt 2 ]; then
-    diff -u -I "^#include \"$3\"$" "$fst" "$snd"
-  else
-    diff -u "$fst" "$snd"
+    args=(-I "^#include \"$3\"$")
+  fi
+
+  cd "$dir"
+  set +e
+  diff -u "${args[@]}" "$fst" "$snd"
+  exitcode=$?
+  set -e
+  if [ $exitcode -ne 0 ] && [ $exitcode -ne 1 ]; then
+    exit $exitcode
   fi
 )
 

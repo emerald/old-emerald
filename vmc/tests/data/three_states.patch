@@ -10,3 +10,45 @@
    long long addtototalbytecodes = 0;
    unsigned char opcode;
  #if defined(INTERPRETERLOCALS)
+--- three_states.desc_i.h	2018-01-01 00:00:00.000000000 +0100
++++ three_states.desc_i.h	2018-01-01 00:00:00.000000000 +0100
+@@ -51,15 +51,24 @@
+ typedef float f32;
+ 
+ 
+-(null)
++
+ #define NINSTRUCTIONS 0
+ typedef struct State {
+   u32 firstThing;
+   u32 pc;
++  int a;		/* This is a */
++  char b;		/* This is b */
++  long c;		/* This is c */
+ } State;
+ #define F_SYNCH() (\
++  state->a = a,\
++  state->b = b,\
++  state->c = c,\
+   state->pc = pc)
+ #define F_UNSYNCH() (\
++  a = state->a,\
++  b = state->b,\
++  c = state->c,\
+   pc = state->pc )
+ #ifdef COUNTBYTECODES
+ #define SYNCH() (\
+@@ -71,7 +80,13 @@
+   addtototalbytecodes = 0 )
+ #else /* COUNTBYTECODES */
+ #define SYNCH() (\
++  state->a = a,\
++  state->b = b,\
++  state->c = c,\
+   state->pc = pc)
+ #define UNSYNCH() (\
++  a = state->a,\
++  b = state->b,\
++  c = state->c,\
+   pc = state->pc )
+ #endif
