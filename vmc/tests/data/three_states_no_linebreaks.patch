@@ -1,0 +1,12 @@
+--- three_states_no_linebreaks.desc.c	2018-01-01 00:00:00.000000000 +0100
++++ three_states_no_linebreaks.desc.c	2018-01-01 00:00:00.000000000 +0100
+@@ -13,6 +13,9 @@
+ int interpret(State *state)
+ {
+   u32 pc;
++  int a;		/* This is a */
++  char b;		/* This is b */
++  long c;		/* This is c */
+   long long addtototalbytecodes = 0;
+   unsigned char opcode;
+ #if defined(INTERPRETERLOCALS)
