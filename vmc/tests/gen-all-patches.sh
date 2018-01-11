@@ -14,9 +14,7 @@ cp ../../vmc .
 ./vmc empty.desc
 
 
-##
 # For each other .desc file, run vmc, and generate a patch file.
-##
 
 run() {
   ./vmc "$1"
