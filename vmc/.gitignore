@@ -2,6 +2,7 @@ y.tab.[ch]
 vmcpar.[ch]
 lex.yy.c
 vmclex.c
+vmc
 
 # Created by https://www.gitignore.io/api/c
 
