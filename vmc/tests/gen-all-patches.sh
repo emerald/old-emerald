@@ -9,11 +9,15 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 # Do everything from inside the data/ directory.
 cd data
 
-# Set up vmc here and run vmc for empty.desc in data/
+# Set up vmc here, and run vmc for empty.desc.
 cp ../../vmc .
 ./vmc empty.desc
 
-# Run vmc and generate patches for all other .desc files in data/
+
+##
+# For each other .desc file, run vmc, and generate a patch file.
+##
+
 run() {
   ./vmc "$1"
   ../gen-patch.sh "$1"
