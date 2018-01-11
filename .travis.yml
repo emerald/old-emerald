@@ -9,3 +9,4 @@ addons:
     - linux-libc-dev:i386
     - libfl-dev:i386
     - gcc-multilib
+    - realpath
