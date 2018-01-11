@@ -47,7 +47,7 @@ compare() (
   if [ $# -gt 2 ]; then
     args=(-I "^#include \"$3\"$")
   else
-    declare -a args
+    args=( )
   fi
 
   cd "$dir"
