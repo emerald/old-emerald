@@ -6,9 +6,11 @@ set -euo pipefail
 # working directory to wherever the script is located.
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
-# Set up vmc and run vmc for empty.desc in data/
-cp ../vmc data/
-cd data/
+# Do everything from inside the data/ directory.
+cd data
+
+# Set up vmc here and run vmc for empty.desc in data/
+cp ../../vmc .
 ./vmc empty.desc
 
 # Run vmc and generate patches for all other .desc files in data/
