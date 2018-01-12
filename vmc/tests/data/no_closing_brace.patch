@@ -5,7 +5,7 @@
  
  
 -(null)
-+int x = 0;
++{int x = 0;
  #define NINSTRUCTIONS 0
  typedef struct State {
    u32 firstThing;
