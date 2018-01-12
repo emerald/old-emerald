@@ -9,6 +9,12 @@ This source code comes from the directory [`ubc-latest-src/vmc` in the
 `emerald/src-versions` repository, commit ID
 `4faee4f29dac9fea92ac10bbeb0b9281f83fdf3a`](https://github.com/emerald/src-versions/tree/4faee4f29dac9fea92ac10bbeb0b9281f83fdf3a/ubc-latest-src).
 
+## Exit code
+
+Unfortunately, `vmc` does not exit with a non-zero exit code on a
+syntax error. It does however print to standard output in case of
+error.
+
 ## Syntax
 
 A VM description consists of an optional set of definitions (C code),

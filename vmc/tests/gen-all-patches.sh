@@ -48,7 +48,11 @@ cp ../../vmc .
 
 run() {
   echo "vmc'ing $1.."
-  ./vmc "$1"
+  output="$(./vmc "$1")"
+  if [ -n "$output" ]; then
+    printf "$output\n" 1>&2
+    exit 1
+  fi
   ../gen-patch.sh "$1"
 }
 
