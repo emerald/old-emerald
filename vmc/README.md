@@ -55,6 +55,7 @@ just `{}`](tests/data/empty_defs.desc).)
 | [empty_ints.desc](tests/data/empty_ints.desc) | [empty_ints.patch](tests/data/empty_ints.patch) |
 | [empty_instrs.desc](tests/data/empty_instrs.desc) | [empty_instrs.patch](tests/data/empty_instrs.patch) |
 | [all_empty.desc](tests/data/all_empty.desc) | [all_empty.patch](tests/data/all_empty.patch) |
+| [defs_with_braces.desc](tests/data/defs_with_braces.desc) | [defs_with_braces.patch](tests/data/defs_with_braces.patch) |
 
 ## Building
 
