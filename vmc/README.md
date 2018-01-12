@@ -39,6 +39,15 @@ top-level `(null)` is replaced by an empty line in
 from [an empty file](tests/data/empty.desc), to [a file containing
 just `{}`](tests/data/empty_defs.desc).)
 
+Other supporting sample files:
+
+| Description | Patch |
+|-------------|-------|
+| [empty_states.desc](tests/data/empty_states.desc) | [empty_states.patch](tests/data/empty_states.patch) |
+| [empty_ints.desc](tests/data/empty_ints.desc) | [empty_ints.patch](tests/data/empty_ints.patch) |
+| [empty_instrs.desc](tests/data/empty_instrs.desc) | [empty_instrs.patch](tests/data/empty_instrs.patch) |
+| [all_empty.desc](tests/data/all_empty.desc) | [all_empty.patch](tests/data/all_empty.patch) |
+
 ## Building
 
 There exists a Docker-image where this builds.
