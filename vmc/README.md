@@ -43,6 +43,7 @@ just `{}`](tests/data/empty_defs.desc).)
 
 | Description | Patch |
 |-------------|-------|
+| [empty_defs.desc](tests/data/empty_defs.desc) | [empty_defs.patch](tests/data/empty_defs.patch) |
 | [empty_states.desc](tests/data/empty_states.desc) | [empty_states.patch](tests/data/empty_states.patch) |
 | [empty_ints.desc](tests/data/empty_ints.desc) | [empty_ints.patch](tests/data/empty_ints.patch) |
 | [empty_instrs.desc](tests/data/empty_instrs.desc) | [empty_instrs.patch](tests/data/empty_instrs.patch) |
