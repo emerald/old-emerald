@@ -39,7 +39,7 @@ top-level `(null)` is replaced by an empty line in
 from [an empty file](tests/data/empty.desc), to [a file containing
 just `{}`](tests/data/empty_defs.desc).)
 
-Other supporting sample files:
+[Test-files](tests) that support the claims above:
 
 | Description | Patch |
 |-------------|-------|
