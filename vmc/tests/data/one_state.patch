@@ -10,13 +10,7 @@
  #if defined(INTERPRETERLOCALS)
 --- one_state.desc_i.h	2018-01-01 00:00:00.000000000 +0100
 +++ one_state.desc_i.h	2018-01-01 00:00:00.000000000 +0100
-@@ -51,15 +51,18 @@
- typedef float f32;
- 
- 
--(null)
-+
- #define NINSTRUCTIONS 0
+@@ -56,10 +56,13 @@
  typedef struct State {
    u32 firstThing;
    u32 pc;
