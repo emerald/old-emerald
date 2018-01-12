@@ -1,7 +1,9 @@
 # `vmc`
 
 `vmc` appears to be a compiler for an Emerald virtual machine
-description. It is written in C, and it generates C code as output.
+description.
+
+It is written in C, and it generates C code as output.
 
 This source code comes from the directory [`ubc-latest-src/vmc` in the
 `emerald/src-versions` repository, commit ID
