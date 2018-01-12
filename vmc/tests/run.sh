@@ -43,4 +43,5 @@ if [ -n "$(git status --porcelain ./data)" ]; then
   printf \
     "Nope, they don't, here's what changed:\n%s\n" \
     "$(git status ./data)" 1>&2
+  exit 1
 fi
