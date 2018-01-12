@@ -1,0 +1,42 @@
+--- three_instructions_no_linebreaks.desc.c	2018-01-01 00:00:00.000000000 +0100
++++ three_instructions_no_linebreaks.desc.c	2018-01-01 00:00:00.000000000 +0100
+@@ -36,6 +36,12 @@
+ #endif
+ 
+     switch(opcode) {
++      case a: {/* This is a's code */}
++        break;
++      case b: {/* This is b's code */}
++        break;
++      case c: {/* This is c's code */}
++        break;
+       default:
+ 	fprintf(stderr, "Undefined bytecode %d\n", opcode);
+         break;
+@@ -46,6 +52,9 @@
+ struct ite {
+   char *name; char *param; int val;
+ } IT[] = {
++  { "a", "This is a", 0 } ,
++  { "b", "This is b", 1 } ,
++  { "c", "This is c", 2 } ,
+ };
+ 
+ void disassemble(unsigned int ptr, int len, FILE *f)
+--- three_instructions_no_linebreaks.desc.h	2018-01-01 00:00:00.000000000 +0100
++++ three_instructions_no_linebreaks.desc.h	2018-01-01 00:00:00.000000000 +0100
+@@ -0,0 +1,3 @@
++#define a 0
++#define b 1
++#define c 2
+--- three_instructions_no_linebreaks.desc_i.h	2018-01-01 00:00:00.000000000 +0100
++++ three_instructions_no_linebreaks.desc_i.h	2018-01-01 00:00:00.000000000 +0100
+@@ -52,7 +52,7 @@
+ 
+ 
+ (null)
+-#define NINSTRUCTIONS 0
++#define NINSTRUCTIONS 3
+ typedef struct State {
+   u32 firstThing;
+   u32 pc;
