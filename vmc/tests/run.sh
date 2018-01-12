@@ -36,5 +36,11 @@ set -euo pipefail
 # working directory to wherever the script is located.
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
+echo "Generating patches.."
 ./gen-all-patches.sh
-test -z "$(git status --porcelain ./vmc/tests/data)"
+echo "Checking if patches correspond to those in Git.."
+if [ -n "$(git status --porcelain ./data)" ]; then
+  printf \
+    "Nope, they don't, here's what changed:\n%s\n" \
+    "$(git status ./data)" 1>&2
+fi
