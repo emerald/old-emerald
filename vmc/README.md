@@ -5,7 +5,7 @@ description. It is written in C, and it generates C code as output.
 
 This source code comes from the directory [ubc-latest-src/vmc` in the
 `emerald/src-versions` repository, commit ID
-4faee4f29dac9fea92ac10bbeb0b9281f83fdf3a](https://github.com/emerald/src-versions/tree/4faee4f29dac9fea92ac10bbeb0b9281f83fdf3a/ubc-latest-src).
+`4faee4f29dac9fea92ac10bbeb0b9281f83fdf3a`](https://github.com/emerald/src-versions/tree/4faee4f29dac9fea92ac10bbeb0b9281f83fdf3a/ubc-latest-src).
 
 ## Syntax
 
