@@ -46,6 +46,15 @@ top-level `(null)` is replaced by an empty line in
 from [an empty file](tests/data/empty.desc), to [a file containing
 just `{}`](tests/data/empty_defs.desc).)
 
+`code` is raw C code enclosed in braces.
+
+```
+code ::= `{` C-code `}`
+```
+
+The C code is allowed to contain braces, but every opening brace must
+be matched by a closing brace.
+
 [Test-files](tests) that support the claims above:
 
 | Description | Patch |
