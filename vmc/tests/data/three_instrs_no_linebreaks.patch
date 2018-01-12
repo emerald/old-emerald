@@ -1,5 +1,5 @@
---- three_instructions_no_linebreaks.desc.c	2018-01-01 00:00:00.000000000 +0100
-+++ three_instructions_no_linebreaks.desc.c	2018-01-01 00:00:00.000000000 +0100
+--- three_instrs_no_linebreaks.desc.c	2018-01-01 00:00:00.000000000 +0100
++++ three_instrs_no_linebreaks.desc.c	2018-01-01 00:00:00.000000000 +0100
 @@ -36,6 +36,12 @@
  #endif
  
@@ -23,14 +23,14 @@
  };
  
  void disassemble(unsigned int ptr, int len, FILE *f)
---- three_instructions_no_linebreaks.desc.h	2018-01-01 00:00:00.000000000 +0100
-+++ three_instructions_no_linebreaks.desc.h	2018-01-01 00:00:00.000000000 +0100
+--- three_instrs_no_linebreaks.desc.h	2018-01-01 00:00:00.000000000 +0100
++++ three_instrs_no_linebreaks.desc.h	2018-01-01 00:00:00.000000000 +0100
 @@ -0,0 +1,3 @@
 +#define a 0
 +#define b 1
 +#define c 2
---- three_instructions_no_linebreaks.desc_i.h	2018-01-01 00:00:00.000000000 +0100
-+++ three_instructions_no_linebreaks.desc_i.h	2018-01-01 00:00:00.000000000 +0100
+--- three_instrs_no_linebreaks.desc_i.h	2018-01-01 00:00:00.000000000 +0100
++++ three_instrs_no_linebreaks.desc_i.h	2018-01-01 00:00:00.000000000 +0100
 @@ -52,7 +52,7 @@
  
  

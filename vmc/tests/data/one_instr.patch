@@ -1,5 +1,5 @@
---- one_instruction.desc.c	2018-01-01 00:00:00.000000000 +0100
-+++ one_instruction.desc.c	2018-01-01 00:00:00.000000000 +0100
+--- one_instr.desc.c	2018-01-01 00:00:00.000000000 +0100
++++ one_instr.desc.c	2018-01-01 00:00:00.000000000 +0100
 @@ -36,6 +36,8 @@
  #endif
  
@@ -17,12 +17,12 @@
  };
  
  void disassemble(unsigned int ptr, int len, FILE *f)
---- one_instruction.desc.h	2018-01-01 00:00:00.000000000 +0100
-+++ one_instruction.desc.h	2018-01-01 00:00:00.000000000 +0100
+--- one_instr.desc.h	2018-01-01 00:00:00.000000000 +0100
++++ one_instr.desc.h	2018-01-01 00:00:00.000000000 +0100
 @@ -0,0 +1 @@
 +#define a 0
---- one_instruction.desc_i.h	2018-01-01 00:00:00.000000000 +0100
-+++ one_instruction.desc_i.h	2018-01-01 00:00:00.000000000 +0100
+--- one_instr.desc_i.h	2018-01-01 00:00:00.000000000 +0100
++++ one_instr.desc_i.h	2018-01-01 00:00:00.000000000 +0100
 @@ -52,7 +52,7 @@
  
  
