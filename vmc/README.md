@@ -20,15 +20,16 @@ machine ::= odefs ostates oints oinstrs
 odefs ::=
         | code
 ostates ::=
-          | `State:` state*
+          | `^State:` state*
 oints ::=
-        | `Interrupts:` int*
+        | `^Interrupts:` int*
 oinstrs ::=
-          | `Instructions:` instr*
+          | `^Instructions:` instr*
 ```
 
-The terminals `State:`, `Interrupts:`, and `Instructions:` must each
-appear at a begining of a line, if present.
+The special character `^` indicates that the terminals `State:`,
+`Interrupts:`, and `Instructions:` must each appear at a begining of a
+line, if present.
 
 Although `vmc` accepts an empty file as a machine description, it does
 not generate valid C code for a description without an explicitly
