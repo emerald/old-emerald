@@ -4,7 +4,7 @@
 # uses standard system C compiler
 #
 
-CFLAGS = -I. -m32
+CFLAGS = -I. -m32 -Werror
 INSTALLIN = $(EMERALDROOT)/bin/$(EMERALDARCH)
 OBJ = vmclex.o vmcpar.o semantic.o trace.o \
 		iisc.o iset.o slist.o sisc.o ilist.o strings.o
