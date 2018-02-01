@@ -1,5 +1,5 @@
-#ifndef assert_h
-#define assert_h
+#ifndef EMERALD_VMC_ASSERT_H
+#define EMERALD_VMC_ASSERT_H
 #ifndef FILE
 #include <stdio.h>
 #endif
@@ -21,4 +21,4 @@
 #   define assert(ex) ;
 #  endif
 # endif
-#endif
+#endif // EMERALD_VMC_ASSERT_H

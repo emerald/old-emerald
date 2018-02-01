@@ -1,3 +1,6 @@
+#ifndef EMERALD_VMC_DEFS_H
+#define EMERALD_VMC_DEFS_H
+
 #include "iisc.h"
 #include "sisc.h"
 #include "iset.h"
@@ -28,3 +31,5 @@ extern thing *currentthing;
 extern rule  *currentrule;
 typedef struct identifier_entry symbol;
 extern symbol *first;
+
+#endif // EMERALD_VMC_DEFS_H

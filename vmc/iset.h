@@ -1,5 +1,6 @@
-#ifndef ISet_h
-#define ISet_h
+#ifndef EMERALD_VMC_ISET_H
+#define EMERALD_VMC_ISET_H
+
 /*
  * ISets are set of some domain.  Operations:
  *	create, destroy, insert, member, size, and print
@@ -92,4 +93,4 @@ extern char *gc_malloc(), *gc_calloc(), *gc_realloc(), *gc_free();
 #include <stdlib.h>
 #endif
 
-#endif
+#endif // EMERALD_VMC_ISET_H

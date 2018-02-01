@@ -1,5 +1,5 @@
-#ifndef trace_h
-#define trace_h
+#ifndef EMERALD_VMC_TRACE_H
+#define EMERALD_VMC_TRACE_H
 
 extern int
     traceinit,
@@ -63,4 +63,5 @@ initializeTrace();
     if (trace/**/t >= level) trace(level, format, arg1, arg2, arg3, arg4, arg5)
 #endif
 #endif
-#endif
+
+#endif // EMERALD_VMC_TRACE_H

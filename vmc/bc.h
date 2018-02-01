@@ -1,3 +1,6 @@
+#ifndef EMERALD_VMC_BC_H
+#define EMERALD_VMC_BC_H
+
 #define LDI 0
 #define LDIR 1
 #define LDL 2
@@ -14,3 +17,5 @@
 #define CALL 13
 #define PUTS 14
 #define QUIT 15
+
+#endif // EMERALD_VMC_BC_H

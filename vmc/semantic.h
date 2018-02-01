@@ -1,5 +1,5 @@
-#ifndef semantic_h
-#define semantic_h
+#ifndef EMERALD_VMC_SEMANTIC_H
+#define EMERALD_VMC_SEMANTIC_H
 
 void
 installDefinition(
@@ -27,4 +27,4 @@ void
 yyerror(
   const char *s);
 
-#endif // semantic_h
+#endif // EMERALD_VMC_SEMANTIC_H

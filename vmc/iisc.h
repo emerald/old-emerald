@@ -1,5 +1,6 @@
-#ifndef IISc_h
-#define IISc_h
+#ifndef EMERALD_VMC_IISC_H
+#define EMERALD_VMC_IISC_H
+
 /*
  * IIScs (searchable collections) are things that map 
  * elements of some domain onto some range.  Operations:
@@ -86,4 +87,4 @@ void IIScPrint(/* IISc sc */);
 /* Return the number of elements in IISc */
 #define IIScSize(IISc) ((IISc)->count)
 
-#endif
+#endif // EMERALD_VMC_IISC_H

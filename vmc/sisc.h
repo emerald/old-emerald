@@ -1,5 +1,6 @@
-#ifndef SISc_h
-#define SISc_h
+#ifndef EMERALD_VMC_SISC_H
+#define EMERALD_VMC_SISC_H
+
 /*
  * SIScs (searchable collections) are things that map 
  * elements of some domain onto some range.  Operations:
@@ -99,4 +100,4 @@ extern char *gc_malloc(), *gc_calloc(), *gc_realloc(), *gc_free();
 #include <stdlib.h>
 #endif
 
-#endif
+#endif // EMERALD_VMC_SISC_H

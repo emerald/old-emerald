@@ -1,5 +1,6 @@
-#ifndef ilist_h
-#define ilist_h
+#ifndef EMERALD_VMC_ILIST_H
+#define EMERALD_VMC_ILIST_H
+
 /*
  * Seqs are an array sequence of some domain.
  * Operations:
@@ -132,4 +133,4 @@ extern char *gc_malloc(), *gc_calloc(), *gc_realloc(), *gc_free();
 #include <stdlib.h>
 #endif
 
-#endif
+#endif // EMERALD_VMC_ILIST_H
