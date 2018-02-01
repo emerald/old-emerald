@@ -27,4 +27,4 @@ void
 yyerror(
   const char *s);
 
-#endif // EMERALD_VMC_SEMANTIC_H
+#endif /* EMERALD_VMC_SEMANTIC_H */

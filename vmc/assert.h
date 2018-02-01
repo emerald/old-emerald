@@ -4,7 +4,7 @@
 #include <stdio.h>
 #endif
 
-#include <stdlib.h> // abort
+#include <stdlib.h> /* abort */
 
 # ifdef lint
 #  define assert(ex) {int assert__x_; assert__x_ = (ex); assert__x_ = assert__x_;}
@@ -21,4 +21,4 @@
 #   define assert(ex) ;
 #  endif
 # endif
-#endif // EMERALD_VMC_ASSERT_H
+#endif /* EMERALD_VMC_ASSERT_H */

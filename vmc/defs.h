@@ -32,4 +32,4 @@ extern rule  *currentrule;
 typedef struct identifier_entry symbol;
 extern symbol *first;
 
-#endif // EMERALD_VMC_DEFS_H
+#endif /* EMERALD_VMC_DEFS_H */

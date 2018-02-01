@@ -87,4 +87,4 @@ void IIScPrint(/* IISc sc */);
 /* Return the number of elements in IISc */
 #define IIScSize(IISc) ((IISc)->count)
 
-#endif // EMERALD_VMC_IISC_H
+#endif /* EMERALD_VMC_IISC_H */
