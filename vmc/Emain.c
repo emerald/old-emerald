@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-printcode(base, len)
-char *base;
-int len;
+void
+printcode(
+  char *base,
+  int len)
 {
   char *b, *pos = base + len;
   for (b = base; b < pos; b++) {
@@ -10,9 +11,10 @@ int len;
   }
 }
 
-syntaxerror(s, v)
-char *s;
-int v;
+void
+syntaxerror(
+  char *s,
+  int v)
 {
   fprintf(stderr, "syntax error: ");
   fprintf(stderr, s, v);
@@ -20,6 +22,7 @@ int v;
   exit(1);
 }
 
+int
 main()
 {
   char *code;

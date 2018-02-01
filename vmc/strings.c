@@ -2,8 +2,11 @@
 #include <stdlib.h>   // malloc
 #include <string.h>   // strlen
 
-char *replaceSuffix(filename, oldsx, newsx)
-char *filename, *oldsx, *newsx;
+char *
+replaceSuffix(
+  char *filename,
+  char *oldsx,
+  char *newsx)
 {
   int flen = 0, olen = 0, nlen = 0, i = 0;
   char *answer = 0;
@@ -24,8 +27,9 @@ char *filename, *oldsx, *newsx;
   return answer;
 }
 
-char *findFileName(name)
-char *name;
+char *
+findFileName(
+  char *name)
 {
   char *answer = 0;
   int i = 0;

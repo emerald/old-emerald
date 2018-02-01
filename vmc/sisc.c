@@ -29,16 +29,19 @@ static int sizes[] = {
  */
 #undef DEBUGSC
 
-static unsigned stringintHash();
+static unsigned
+stringintHash();
 
 #define Hash(key, sc) (HASH(key) % sc->size)
 
 #ifdef DEBUGSC
-static void CheckOutHashTable();
+static void
+CheckOutHashTable();
 #endif
 
 /* Return a new, empty SISc */
-SISc SIScCreate()
+SISc
+SIScCreate()
 {
   register int i;
   register SISc sc;
@@ -57,8 +60,9 @@ SISc SIScCreate()
   return sc;
 }
 
-void SIScDestroy(sc)
-register SISc sc;
+void
+SIScDestroy(
+  register SISc sc)
 {
   free((char *)sc->table);
   free((char *)sc);
@@ -66,8 +70,9 @@ register SISc sc;
 
 /* Expand the hash table.  Each element in the table is re-hashed and entered 
  * in the new table. */
-static void ExpandHashTable(sc)
-register SISc sc;
+static void
+ExpandHashTable(
+  register SISc sc)
 {
   register SIScTE *nh, *oe, *ne;
   register int oldHashTableSize = sc->size, i;
@@ -105,9 +110,10 @@ register SISc sc;
 }
 
 /* Return the value associated with key in collection sc, or -1 */
-RangeType SIScLookup(sc, key)
-register SISc sc;
-register DomainType  key;
+RangeType
+SIScLookup(
+  register SISc sc,
+  register DomainType key)
 {
   register int index = Hash((unsigned char *)key, sc);
   register SIScTEPtr e;
@@ -128,10 +134,11 @@ register DomainType  key;
 
 /* Insert the key, value pair in sc.  If the key already exists, change its 
  * value. */
-void SIScInsert(sc, key, value)
-register SISc sc;
-register DomainType key;
-RangeType value;
+void
+SIScInsert(
+  register SISc sc,
+  register DomainType key,
+  RangeType value)
 {
   register int index;
   register SIScTEPtr e;
@@ -160,9 +167,10 @@ RangeType value;
 }
 
 /* Remove the entry, if it is there */
-void SIScDelete(sc, key)
-register SISc sc;
-register DomainType key;
+void
+SIScDelete(
+  register SISc sc,
+  register DomainType key)
 {
   register int index = Hash((unsigned char *)key, sc);
   register RangeType value;
@@ -205,8 +213,9 @@ register DomainType key;
 }
 
 /* DEBUGGING: Print the sc */
-void SIScPrint(sc)
-register SISc sc;
+void
+SIScPrint(
+  register SISc sc)
 {
   DomainType key;
   RangeType value;
@@ -228,8 +237,9 @@ register SISc sc;
  *	every key is findable, 
  *	count reflects the number of elements
  */
-static void CheckOutHashTable(sc)
-register SISc sc;
+static void
+CheckOutHashTable(
+  register SISc sc)
 {
   register int i;
   register SIScTEPtr realElement, e;
@@ -277,8 +287,9 @@ register SISc sc;
 #endif
 /* String hashing function, from Red Dragon Book */
 
-static unsigned stringintHash(key)
-register unsigned char *key;
+static unsigned
+stringintHash(
+  register unsigned char *key)
 {
   register unsigned h = 0, g;
   for (; *key; key++) {

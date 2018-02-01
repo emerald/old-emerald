@@ -20,8 +20,9 @@ flagTable table [] = {
   NULL, 0
 };
 
-void toLower(s)
-register char *s;
+void
+toLower(
+  register char *s)
 {
   register char c;
   while (c = *s) {
@@ -30,8 +31,10 @@ register char *s;
   }
 }
 
-char *find(s, c)
-register char *s, c;
+char *
+find(
+  register char *s,
+  register char c)
 {
   register char theC;
   while ((theC = *s) && theC != c) s++;
@@ -39,8 +42,8 @@ register char *s, c;
 }
 
 int
-parseTraceFlag(f)
-register char *f;
+parseTraceFlag(
+  register char *f)
 {
   char *comma, *equals;
   register flagTablePtr tp;
@@ -75,7 +78,8 @@ register char *f;
   return(1);
 }
 
-void initializeTrace()
+void
+initializeTrace()
 {
   register flagTablePtr tp;
 
@@ -87,7 +91,11 @@ void initializeTrace()
   }
 }
 
-void trace(int level, char *format, ...)
+void
+trace(
+  int level,
+  char *format,
+  ...)
 {
   va_list ap;
   va_start(ap, format);

@@ -24,7 +24,8 @@ static int sizes[] = {
   4194371, 8388697, 16777291 };
 
 /* Return a new, empty ISet */
-IList IListCreate()
+IList
+IListCreate()
 {
   register int i;
   register IList sq;
@@ -41,8 +42,9 @@ IList IListCreate()
   return sq;
 }
 
-void IListDestroy(sq)
-register IList sq;
+void
+IListDestroy(
+  register IList sq)
 {
   free((char *)sq->table);
   free((char *)sq);
@@ -51,8 +53,9 @@ register IList sq;
 /* Expand the array.  Each element in the table is copied 
  * in the new table.  The new space is initialized to NULL
  */
-static void ExpandTable(sq)
-register IList sq;
+static void
+ExpandTable(
+  register IList sq)
 {
   register int oldTableSize = sq->size, i;
 
@@ -65,9 +68,10 @@ register IList sq;
 }
 
 /* Is key in the sequence sq, if so--return it (probably stupid) */
-IListDomainType IListMember(sq, key)
-register IList sq;
-register IListDomainType  key;
+IListDomainType
+IListMember(
+  register IList sq,
+  register IListDomainType key)
 {
   register IListTEPtr e;
   register int index, count;
@@ -84,9 +88,10 @@ register IListDomainType  key;
 }
 
 /* Add the key to the end of sq */
-void IListInsert(sq, key)
-register IList sq;
-register IListDomainType key;
+void
+IListInsert(
+  register IList sq,
+  register IListDomainType key)
 {
   register int count;
 
@@ -97,9 +102,10 @@ register IListDomainType key;
 }
 
 /* Remove the entry, if it is there */
-void IListDelete(sq, key)
-register IList sq;
-register IListDomainType key;
+void
+IListDelete(
+  register IList sq,
+  register IListDomainType key)
 {
   register int index, count, j;
 
@@ -116,8 +122,9 @@ register IListDomainType key;
 }
 
 /* DEBUGGING: Print the sq */
-void IListPrint(sq)
-register IList sq;
+void
+IListPrint(
+  register IList sq)
 {
   IListDomainType key;
   int index;

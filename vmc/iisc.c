@@ -38,7 +38,8 @@ static void CheckOutHashTable();
 #endif
 
 /* Return a new, empty IISc */
-IISc IIScCreate()
+IISc
+IIScCreate()
 {
   register int i;
   register IISc sc;
@@ -57,8 +58,9 @@ IISc IIScCreate()
   return sc;
 }
 
-void IIScDestroy(sc)
-register IISc sc;
+void
+IIScDestroy(
+  register IISc sc)
 {
   free((char *)sc->table);
   free((char *)sc);
@@ -66,8 +68,9 @@ register IISc sc;
 
 /* Expand the hash table.  Each element in the table is re-hashed and entered 
  * in the new table. */
-static void ExpandHashTable(sc)
-register IISc sc;
+static void
+ExpandHashTable(
+  register IISc sc)
 {
   register IIScTE *nh, *oe, *ne;
   register int oldHashTableSize = sc->size, i;
@@ -105,9 +108,10 @@ register IISc sc;
 }
 
 /* Return the value associated with key in collection sc, or -1 */
-IIScRangeType IIScLookup(sc, key)
-register IISc sc;
-register IIScDomainType  key;
+IIScRangeType
+IIScLookup(
+  register IISc sc,
+  register IIScDomainType key)
 {
   register int index = Hash(key, sc);
   register IIScTEPtr e;
@@ -128,10 +132,11 @@ register IIScDomainType  key;
 
 /* Insert the key, value pair in sc.  If the key already exists, change its 
  * value. */
-void IIScInsert(sc, key, value)
-register IISc sc;
-register IIScDomainType key;
-IIScRangeType value;
+void
+IIScInsert(
+  register IISc sc,
+  register IIScDomainType key,
+  IIScRangeType value)
 {
   register int index;
   register IIScTEPtr e;
@@ -160,9 +165,10 @@ IIScRangeType value;
 }
 
 /* Remove the entry, if it is there */
-void IIScDelete(sc, key)
-register IISc sc;
-register IIScDomainType key;
+void
+IIScDelete(
+  register IISc sc,
+  register IIScDomainType key)
 {
   register int index = Hash(key, sc);
   register IIScRangeType value;
@@ -205,8 +211,9 @@ register IIScDomainType key;
 }
 
 /* DEBUGGING: Print the sc */
-void IIScPrint(sc)
-register IISc sc;
+void
+IIScPrint(
+  register IISc sc)
 {
   IIScDomainType key;
   IIScRangeType value;
@@ -227,8 +234,9 @@ register IISc sc;
  *	every key is findable, 
  *	count reflects the number of elements
  */
-static void CheckOutHashTable(sc)
-register IISc sc;
+static void
+CheckOutHashTable(
+  register IISc sc)
 {
   register int i;
   register IIScTEPtr realElement, e;

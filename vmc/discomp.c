@@ -44,9 +44,10 @@ extern struct ite {
 #ifdef DOINSTRUCTIONBODIES
 extern char *instructionBodies[];
 
-printQuote(cfile, s)
-FILE *cfile;
-register char *s;
+void
+printQuote(
+  FILE *cfile,
+  register char *s)
 {
   register int c;
   while (c = *s++) {
@@ -81,10 +82,11 @@ typedef unsigned long u32;\n\
 typedef long s32;\n\
 ";
 
-void discompile(ptr, len, f)
-register unsigned char *ptr;
-int len;
-FILE *f;
+void
+discompile(
+  register unsigned char *ptr,
+  int len,
+  FILE *f)
 {
   register struct ite *it;
   register unsigned char *base = ptr, *limit = ptr + len;

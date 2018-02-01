@@ -15,7 +15,9 @@ SISc linenumbers;
 char *definitions;
 SList state, interrupts, instructions;
 
-static char *fn_filename(char *x)
+static char *
+fn_filename(
+  char *x)
 {
   char *ans;
   for (ans = x; *x; x++) {
@@ -26,7 +28,8 @@ static char *fn_filename(char *x)
   return ans;
 }
 
-void semInit(void)
+void
+semInit()
 {
   linenumbers = SIScCreate();
   state = SListCreate();
@@ -34,15 +37,19 @@ void semInit(void)
   instructions = SListCreate();
 }
 
-void installDefinition(char *code)
+void
+installDefinition(
+  char *code)
 {
   TRACE0(parse, 1, "Definition");
   definitions = code;
 }
 
 void
-installState(name, desc, type)
-char *name, *desc, *type;
+installState(
+  char *name,
+  char *desc,
+  char *type)
 {
   TRACE3(parse, 1, "State: %s %s %s", name, desc, type);
   SListInsert(state, name);
@@ -51,8 +58,9 @@ char *name, *desc, *type;
 }
 
 void
-installInterrupt(name, code)
-char *name, *code;
+installInterrupt(
+  char *name,
+  char *code)
 {
   TRACE1(parse, 1, "Interrupt: %s", name);
   SListInsert(interrupts, name);
@@ -60,9 +68,11 @@ char *name, *code;
 }
 
 void
-installInstruction(name, param, code, lineno)
-char *name, *param, *code;
-int lineno;
+installInstruction(
+  char *name,
+  char *param,
+  char *code,
+  int lineno)
 {
   TRACE1(parse, 1, "Instruction: %s", name);
   SIScInsert(linenumbers, name, lineno);
@@ -601,8 +611,8 @@ doXFile()
 }
 
 void
-printQuote(s)
-register char *s;
+printQuote(
+  register char *s)
 {
   register int c;
   putc('"', cfile);
@@ -673,9 +683,9 @@ const char *s;
 }
 
 void
-Usage(s, t)
-char *s;
-char *t;
+Usage(
+  char *s,
+  char *t)
 {
   if (s) {
     fprintf(stderr, s, t);
@@ -686,9 +696,9 @@ char *t;
 }
 
 int
-main(c, v)
-int c;
-char **v;
+main(
+  int c,
+  char **v)
 {
   FILE *inf;
   c--;

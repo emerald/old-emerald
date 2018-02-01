@@ -24,7 +24,8 @@ static int sizes[] = {
   4194371, 8388697, 16777291 };
 
 /* Return a new, empty SList */
-SList SListCreate()
+SList
+SListCreate()
 {
   register int i;
   register SList sq;
@@ -41,8 +42,9 @@ SList SListCreate()
   return sq;
 }
 
-void SListDestroy(sq)
-register SList sq;
+void
+SListDestroy(
+  register SList sq)
 {
   free((char *)sq->table);
   free((char *)sq);
@@ -51,8 +53,9 @@ register SList sq;
 /* Expand the array.  Each element in the table is copied 
  * in the new table.  The new space is initialized to NULL
  */
-static void ExpandTable(sq)
-register SList sq;
+static void
+ExpandTable(
+  register SList sq)
 {
   register int oldTableSize = sq->size, i;
 
@@ -65,9 +68,10 @@ register SList sq;
 }
 
 /* Is key in the SListuence sq, if so--return it (probably stupid) */
-SListDomainType SListMember(sq, key)
-register SList sq;
-register SListDomainType  key;
+SListDomainType
+SListMember(
+  register SList sq,
+  register SListDomainType key)
 {
   register SListTEPtr e;
   register int index, count;
@@ -84,9 +88,10 @@ register SListDomainType  key;
 }
 
 /* Add the key to the end of sq */
-void SListInsert(sq, key)
-register SList sq;
-register SListDomainType key;
+void
+SListInsert(
+  register SList sq,
+  register SListDomainType key)
 {
   register int count;
 
@@ -97,9 +102,10 @@ register SListDomainType key;
 }
 
 /* Remove the entry, if it is there */
-void SListDelete(sq, key)
-register SList sq;
-register SListDomainType key;
+void
+SListDelete(
+  register SList sq,
+  register SListDomainType key)
 {
   register int index, count, j;
 
@@ -116,8 +122,9 @@ register SListDomainType key;
 }
 
 /* DEBUGGING: Print the sq */
-void SListPrint(sq)
-register SList sq;
+void
+SListPrint(
+  register SList sq)
 {
   SListDomainType key;
   int index;

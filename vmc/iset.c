@@ -37,7 +37,8 @@ static void CheckOutHashTable();
 #endif
 
 /* Return a new, empty ISet */
-ISet ISetCreate()
+ISet
+ISetCreate()
 {
   register int i;
   register ISet sc;
@@ -56,8 +57,9 @@ ISet ISetCreate()
   return sc;
 }
 
-void ISetDestroy(sc)
-register ISet sc;
+void
+ISetDestroy(
+  register ISet sc)
 {
   free((char *)sc->table);
   free((char *)sc);
@@ -65,8 +67,9 @@ register ISet sc;
 
 /* Expand the hash table.  Each element in the table is re-hashed and entered 
  * in the new table. */
-static void ExpandHashTable(sc)
-register ISet sc;
+static void
+ExpandHashTable(
+  register ISet sc)
 {
   register ISetTE *nh, *oe, *ne;
   register int oldHashTableSize = sc->size, i;
@@ -104,9 +107,9 @@ register ISet sc;
 
 /* Is key in the set sc */
 int
-ISetMember(sc, key)
-register ISet sc;
-register ISetDomainType  key;
+ISetMember(
+  register ISet sc,
+  register ISetDomainType key)
 {
   register int index = Hash(key, sc);
   register ISetTEPtr e;
@@ -126,8 +129,9 @@ register ISetDomainType  key;
 }
 
 /* Select a random (the first) key from the set sc */
-ISetDomainType ISetSelect(sc)
-register ISet sc;
+ISetDomainType
+ISetSelect(
+  register ISet sc)
 {
   register int index = 0;
   register ISetTEPtr e;
@@ -145,9 +149,10 @@ register ISet sc;
 }
 
 /* Insert the key in sc.  If the key already exists, do nothing. */
-void ISetInsert(sc, key)
-register ISet sc;
-register ISetDomainType key;
+void
+ISetInsert(
+  register ISet sc,
+  register ISetDomainType key)
 {
   register int index;
   register ISetTEPtr e;
@@ -174,9 +179,10 @@ register ISetDomainType key;
 }
 
 /* Remove the entry, if it is there */
-void ISetDelete(sc, key)
-register ISet sc;
-register ISetDomainType key;
+void
+ISetDelete(
+  register ISet sc,
+  register ISetDomainType key)
 {
   register int index = Hash(key, sc);
   register ISetTEPtr e;
@@ -235,8 +241,9 @@ register ISet sc;
  *	every key is findable, 
  *	count reflects the number of elements
  */
-static void CheckOutHashTable(sc)
-register ISet sc;
+static void
+CheckOutHashTable(
+  register ISet sc)
 {
   register int i;
   register ISetTEPtr realElement, e;
