@@ -1,3 +1,4 @@
+%option never-interactive
 %{
 #include "defs.h"
 #include "vmcpar.h"
