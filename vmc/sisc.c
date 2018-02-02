@@ -294,7 +294,7 @@ stringintHash(
   register unsigned h = 0, g;
   for (; *key; key++) {
     h =  (h << 4) + (*key);
-    if (g = h & 0xf0000000) {
+    if ((g = h & 0xf0000000)) {
       h = h ^ (g >> 24);
       h = h ^ g;
     }
