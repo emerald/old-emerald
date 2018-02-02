@@ -12,8 +12,8 @@ This source code comes from the directory [`ubc-latest-src/vmc` in the
 ## Exit code
 
 Unfortunately, `vmc` does not exit with a non-zero exit code on a
-syntax error. However, nothing gets printed standard output in case of
-success, so if anything _is_ printed it may be regarded as an error
+syntax error. However, nothing gets written to standard output in case
+of success, so if anything _is_ printed it may be regarded as an error
 condition.
 
 ## Syntax
