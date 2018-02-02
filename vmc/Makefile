@@ -17,15 +17,12 @@ vmc:	$(OBJ)
 	$(CC) $(CFLAGS) -o vmc $(OBJ) -ll
 
 vmclex.c: vmclex.l
-	lex vmclex.l
-	mv lex.yy.c vmclex.c
+	lex -o vmclex.c vmclex.l
 
 vmclex.o:	vmcpar.h
 
 vmcpar.h vmcpar.c:	vmcpar.y
-	yacc -d vmcpar.y
-	mv y.tab.h vmcpar.h
-	mv y.tab.c vmcpar.c
+	yacc -o vmcpar.c -d vmcpar.y
 
 vmc.o:	tokenNames.c vmcpar.h
 
