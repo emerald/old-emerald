@@ -1,9 +1,3 @@
-#
-# vmc Makefile
-#
-# uses standard system C compiler
-#
-
 CFLAGS = -I. -m32 -Wall -Wextra -pedantic -Werror -std=c11
 INSTALLIN = $(EMERALDROOT)/bin/$(EMERALDARCH)
 OBJ = vmclex.o vmcpar.o semantic.o trace.o \
