@@ -228,7 +228,7 @@ SIScPrint(
     key = sc->table[index].key;
     value = sc->table[index].value;
 /* FIX THIS */
-    printf("%3d\t%-16.16s0x%08.8x\n", index, key, value);
+    printf("%3d\t%-16.16s0x%8.8x\n", index, key, value);
   }
 }
 
