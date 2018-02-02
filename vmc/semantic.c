@@ -218,6 +218,8 @@ doInterpret()
 
 }
 
+#ifdef DONT_DEFINE_ME
+
 static char *assemblehead1 = "\
 \n\
 #ifndef _U\n\
@@ -427,6 +429,8 @@ int assemble(char *filename, char **ans, int *len)\n\
       syntaxerror(\"*Illegal character \\\"%c\\\"\", c);\n\
     }\n";
 
+#endif
+
 static char *assemblehead4 = "\
 \n\
 struct ite {\n\
@@ -526,7 +530,7 @@ doAssemble()
 {
   char *name, *param, *code;
   int opcode = 0;
-#if 0
+#ifdef DONT_DEFINE_ME
   fprintf(cfile, "%s", assemblehead1);
   fprintf(cfile, "%s", assemblehead2);
   fprintf(cfile, "%s", assemblehead3);
