@@ -189,7 +189,6 @@ void
 doInterpret()
 {
   char *name, *param, *desc, *type, *code;
-  int opcode = 0;
 
   fprintf(cfile, "%s", interprethead);
   SListForEachByThree(state, name, desc, type) {
@@ -649,7 +648,6 @@ void
 doCFile()
 {
   char *name, *param, *code;
-  int opcode = 0;
   fprintf(cfile, "#include \"%s\"\n", fn_filename(hfilename));
 
   if (doInstructionBodies) {
@@ -704,7 +702,6 @@ main(
   int c,
   char **v)
 {
-  FILE *inf;
   c--;
   v++;
   while (c && v[0][0] == '-') {
