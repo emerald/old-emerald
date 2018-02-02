@@ -25,7 +25,7 @@ toLower(
   register char *s)
 {
   register char c;
-  while (c = *s) {
+  while ((c = *s)) {
     if (c >= 'A' && c <= 'Z') *s += ('a' - 'A');
     s++;
   }
