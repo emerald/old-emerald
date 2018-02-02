@@ -229,10 +229,10 @@ register ISet sc;
 
   printf(
     "\nDump of sc @ 0x%05x, %d entr%s, current max %d\nIndex\tKey\n",
-    sc, sc->count, sc->count == 1 ? "y" : "ies",  sc->maxCount);
+    (unsigned int)sc, sc->count, sc->count == 1 ? "y" : "ies",  sc->maxCount);
   for (index = 0; index < sc->size; index++) {
     key = sc->table[index].key;
-    printf("%3d\t%-16.16s\n", index, key);
+    printf("%3d\t%-16.16s\n", index, (char *)key);
   }
 }
 
