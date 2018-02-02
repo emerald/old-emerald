@@ -225,7 +225,7 @@ IIScPrint(
   for (index = 0; index < sc->size; index++) {
     key = sc->table[index].key;
     value = sc->table[index].value;
-    printf("%3d\t0x%08.8x\t%08.8x\n", index, key, value);
+    printf("%3d\t0x%8.8x\t%8.8x\n", index, key, value);
   }
 }
 
