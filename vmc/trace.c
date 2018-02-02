@@ -14,10 +14,10 @@ typedef struct {
 } flagTable, *flagTablePtr;
 
 flagTable table [] = {
-  "help", &tracehelp,
-  "init", &traceinit,
-  "parse", &traceparse,
-  NULL, 0
+  { "help"  , &tracehelp  },
+  { "init"  , &traceinit  },
+  { "parse" , &traceparse },
+  { NULL    , 0           }
 };
 
 void
