@@ -617,7 +617,7 @@ printQuote(
   register int c;
   putc('"', cfile);
   putc('{', cfile);
-  while (c = *s++) {
+  while ((c = *s++)) {
     switch (c) {
     case '\"':
     case '\\':
