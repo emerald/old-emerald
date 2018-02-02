@@ -13,20 +13,20 @@ OBJ = vmclex.o vmcpar.o semantic.o trace.o \
 
 CC = gcc -g
 
-vmc:	$(OBJ)
+vmc:	$(OBJ) Makefile
 	$(CC) $(CFLAGS) -o vmc $(OBJ) -ll
 
-vmclex.c: vmclex.l
+vmclex.c: vmclex.l Makefile
 	lex -o vmclex.c vmclex.l
 
-vmclex.o:	vmcpar.h
+vmclex.o:	vmcpar.h Makefile
 
-vmcpar.h vmcpar.c:	vmcpar.y
+vmcpar.h vmcpar.c:	vmcpar.y Makefile
 	yacc -o vmcpar.c -d vmcpar.y
 
-vmc.o:	tokenNames.c vmcpar.h
+vmc.o:	tokenNames.c vmcpar.h Makefile
 
-tokenNames.c:	vmcpar.y
+tokenNames.c:	vmcpar.y Makefile
 	csh MAKETN
 
 clean:
@@ -42,7 +42,7 @@ start:
 
 install: $(INSTALLIN)/vmc
 
-$(INSTALLIN)/vmc : vmc
+$(INSTALLIN)/vmc : vmc Makefile
 	if issymlink $@ ; then \
 	  true ; \
 	else \
@@ -54,3 +54,4 @@ $(INSTALLIN)/vmc : vmc
 lint:
 	lint -bh *.c | egrep -v 'pointer alignment'
 
+.PHONY: clean mothball start install lint
