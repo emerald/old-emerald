@@ -40,7 +40,7 @@ a line, if present.
 
 Although `vmc` accepts an empty file as a machine description, it does
 not generate valid C code for a description without an explicitly
-empty set of definitoins. (For instance, see how the spurious,
+empty set of definitions. (For instance, see how the spurious,
 top-level `(null)` is replaced by an empty line in
 [`tests/data/empty_defs.patch`](tests/data/empty_defs.patch), as we go
 from [an empty file](tests/data/empty.desc), to [a file containing
