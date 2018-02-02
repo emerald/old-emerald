@@ -1,4 +1,4 @@
-CFLAGS = -I. -m32 -Wall -Wextra -pedantic -Werror -std=c11
+CFLAGS = -I. -m32 -Wall -Wextra -pedantic -std=c11 ${EXTRA_CFLAGS}
 INSTALLIN = $(EMERALDROOT)/bin/$(EMERALDARCH)
 OBJ = vmclex.o vmcpar.o semantic.o trace.o \
 		iisc.o iset.o slist.o sisc.o ilist.o strings.o

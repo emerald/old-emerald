@@ -1,4 +1,6 @@
 language: c
+env:
+  - EXTRA_CFLAGS=-Werror
 addons:
   apt:
     packages:
