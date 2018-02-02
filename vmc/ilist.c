@@ -132,7 +132,7 @@ IListPrint(
   printf(
     "\nDump of sq @ 0x%05x, %d entr%s, current max %d\n\
     Index\tKey\n",
-    sq, sq->count, sq->count == 1 ? "y" : "ies",  sq->size);
+    (unsigned int)sq, sq->count, sq->count == 1 ? "y" : "ies",  sq->size);
   for (index = 0; index < sq->size; index++) {
     key = sq->table[index].key;
     printf("%3d\t%-16.16d\n", index, key);
