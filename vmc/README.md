@@ -70,14 +70,23 @@ be matched by a closing brace.
 
 A state has a _name_, _description_, and a _type_. The name and type
 will be used as a C identifier, and a C type, respectively. The
-description is used inside a C comment. The parser demands that the
-name conforms to the regular expression `[A-Za-z_][A-Za-z0-9_]*`,
-while it is more liberal about both description _and_ type:
+description is used inside a C comment.
+
+The `state` non-terminal is defined as follows:
+
+```
+state ::= id string string
+```
+
+Where `id` must conform to the regular expression
+`[A-Za-z_][A-Za-z0-9_]*`, while a `string` must conform to
 `"([^\"]|\.)*"`.
 
-This is indeed rather liberal, so it is very easy to generate
-non-operational or malicious C code, as exemplified in some of the
-test-cases below.
+This leaves a lot of room for descriptions and types. It is easy to
+end up with non-operational or malicious C code, if one is not
+careful. This is illustrated in the test-cases below.
+
+[Test-files](tests) that support the claims above:
 
 | Description | Patch |
 |-------------|-------|
