@@ -66,6 +66,21 @@ be matched by a closing brace.
 | [all_empty.desc](tests/data/all_empty.desc) | [all_empty.patch](tests/data/all_empty.patch) |
 | [defs_with_braces.desc](tests/data/defs_with_braces.desc) | [defs_with_braces.patch](tests/data/defs_with_braces.patch) |
 
+### States
+
+A state has a _name_, _description_, and a _type_. The name and type
+will be used as a C identifier, and a C type, respectively. The
+description is used inside a C comment. The parser demands that the
+name conforms to the regular expression `[A-Za-z_][A-Za-z0-9_]*`,
+while it is more liberal about both description _and_ type:
+`"([^\"]|\.)*"`.
+
+| Description | Patch |
+|-------------|-------|
+| [pos_state_name_tests.desc](tests/data/pos_state_name_tests.desc) | [pos_state_name_tests.patch](tests/data/pos_state_names_tests.patch) |
+| [pos_state_desc_tests.desc](tests/data/pos_state_desc_tests.desc) | [pos_state_desc_tests.patch](tests/data/pos_state_desc_tests.patch) |
+| [pos_state_type_tests.desc](tests/data/pos_state_type_tests.desc) | [pos_state_type_tests.patch](tests/data/pos_state_type_tests.patch) |
+
 ## Building
 
 There exists a Docker-image where this builds.
