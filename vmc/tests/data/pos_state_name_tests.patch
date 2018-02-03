@@ -1,0 +1,52 @@
+--- pos_state_name_tests.desc.c	2018-01-01 00:00:00.000000000 +0100
++++ pos_state_name_tests.desc.c	2018-01-01 00:00:00.000000000 +0100
+@@ -13,6 +13,9 @@
+ int interpret(State *state)
+ {
+   u32 pc;
++  int a;		/* This is a */
++#define  state-> 		/* This is b */
++  long Aa0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9__;		/* This is c */
+   long long addtototalbytecodes = 0;
+   unsigned char opcode;
+ #if defined(INTERPRETERLOCALS)
+@@ -42,6 +45,7 @@
+     }
+   }
+ }
++#undef 
+ 
+ struct ite {
+   char *name; char *param; int val;
+--- pos_state_name_tests.desc_i.h	2018-01-01 00:00:00.000000000 +0100
++++ pos_state_name_tests.desc_i.h	2018-01-01 00:00:00.000000000 +0100
+@@ -56,10 +56,17 @@
+ typedef struct State {
+   u32 firstThing;
+   u32 pc;
++  int a;		/* This is a */
++  char ;		/* This is b */
++  long Aa0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9__;		/* This is c */
+ } State;
+ #define F_SYNCH() (\
++  state->a = a,\
++  state->Aa0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9__ = Aa0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9__,\
+   state->pc = pc)
+ #define F_UNSYNCH() (\
++  a = state->a,\
++  Aa0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9__ = state->Aa0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9__,\
+   pc = state->pc )
+ #ifdef COUNTBYTECODES
+ #define SYNCH() (\
+@@ -71,7 +78,11 @@
+   addtototalbytecodes = 0 )
+ #else /* COUNTBYTECODES */
+ #define SYNCH() (\
++  state->a = a,\
++  state->Aa0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9__ = Aa0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9__,\
+   state->pc = pc)
+ #define UNSYNCH() (\
++  a = state->a,\
++  Aa0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9__ = state->Aa0Bb1Cc2Dd3Ee4Ff5Gg6Hh7Ii8Jj9__,\
+   pc = state->pc )
+ #endif

@@ -1,0 +1,48 @@
+--- pos_state_type_tests.desc.c	2018-01-01 00:00:00.000000000 +0100
++++ pos_state_type_tests.desc.c	2018-01-01 00:00:00.000000000 +0100
+@@ -13,6 +13,9 @@
+ int interpret(State *state)
+ {
+   u32 pc;
++  !@#$%^&*()_+}|<> a;		/* This is a */
++   b;		/* This is b */
++  double d; long c;		/* This is c */
+   long long addtototalbytecodes = 0;
+   unsigned char opcode;
+ #if defined(INTERPRETERLOCALS)
+--- pos_state_type_tests.desc_i.h	2018-01-01 00:00:00.000000000 +0100
++++ pos_state_type_tests.desc_i.h	2018-01-01 00:00:00.000000000 +0100
+@@ -56,10 +56,19 @@
+ typedef struct State {
+   u32 firstThing;
+   u32 pc;
++  !@#$%^&*()_+}|<> a;		/* This is a */
++   b;		/* This is b */
++  double d; long c;		/* This is c */
+ } State;
+ #define F_SYNCH() (\
++  state->a = a,\
++  state->b = b,\
++  state->c = c,\
+   state->pc = pc)
+ #define F_UNSYNCH() (\
++  a = state->a,\
++  b = state->b,\
++  c = state->c,\
+   pc = state->pc )
+ #ifdef COUNTBYTECODES
+ #define SYNCH() (\
+@@ -71,7 +80,13 @@
+   addtototalbytecodes = 0 )
+ #else /* COUNTBYTECODES */
+ #define SYNCH() (\
++  state->a = a,\
++  state->b = b,\
++  state->c = c,\
+   state->pc = pc)
+ #define UNSYNCH() (\
++  a = state->a,\
++  b = state->b,\
++  c = state->c,\
+   pc = state->pc )
+ #endif
