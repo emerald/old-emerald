@@ -94,6 +94,26 @@ careful. This is illustrated in the test-cases below.
 | [pos_state_desc_tests.desc](tests/data/pos_state_desc_tests.desc) | [pos_state_desc_tests.patch](tests/data/pos_state_desc_tests.patch) |
 | [pos_state_type_tests.desc](tests/data/pos_state_type_tests.desc) | [pos_state_type_tests.patch](tests/data/pos_state_type_tests.patch) |
 
+### Interrupts
+
+An interrupt has a _name_ and some _code_. A name adhere to the same
+constraints as a state name, and code adheres to the same constraints
+as the code in the definitions.
+
+The `int` non-terminal is defined as follows:
+
+```
+int ::= id code
+```
+
+[Test-files](tests) that support the claims above:
+
+| Description | Patch |
+|-------------|-------|
+| [one_int.desc](tests/data/one_int.desc) | [one_int.patch](tests/data/one_int.patch) |
+| [three_ints.desc](tests/data/three_ints.desc) | [three_ints.patch](tests/data/three_ints.patch) |
+| [three_ints_no_linebreaks.desc](tests/data/three_ints_no_linebreaks.desc) | [three_ints_no_linebreaks.patch](tests/data/three_ints_no_linebreaks.patch) |
+
 ## Building
 
 There exists a Docker-image where this builds.
