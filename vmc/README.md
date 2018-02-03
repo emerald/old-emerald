@@ -96,9 +96,7 @@ careful. This is illustrated in the test-cases below.
 
 ### Interrupts
 
-An interrupt has a _name_ and some _code_. The name adheres to the
-same constraints as a state name, and code adheres to the same
-constraints as the code in the definitions.
+An interrupt has a _name_ and some _code_.
 
 The `int` non-terminal is defined as follows:
 
