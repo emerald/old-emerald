@@ -75,6 +75,10 @@ name conforms to the regular expression `[A-Za-z_][A-Za-z0-9_]*`,
 while it is more liberal about both description _and_ type:
 `"([^\"]|\.)*"`.
 
+This is indeed rather liberal, so it is very easy to generate
+non-operational or malicious C code, as exemplified in some of the
+test-cases below.
+
 | Description | Patch |
 |-------------|-------|
 | [pos_state_name_tests.desc](tests/data/pos_state_name_tests.desc) | [pos_state_name_tests.patch](tests/data/pos_state_name_tests.patch) |
