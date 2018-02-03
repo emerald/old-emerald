@@ -77,7 +77,7 @@ void SListPrint(/* SList sc */);
     int SListxx_index; \
     for (SListxx_index = (SList->count-1); SListxx_index >= 0; SListxx_index--) { \
       *(SListDomainType*)(&(SListkey)) = SList->table[SListxx_index].key; \
-      { 
+      {
 
 /* Iterate over the elements of the collection SList, two at a time.
  * At each iteration, SListkey1 and SListkey2 are set to the next keys
