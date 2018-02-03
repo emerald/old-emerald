@@ -77,7 +77,7 @@ while it is more liberal about both description _and_ type:
 
 | Description | Patch |
 |-------------|-------|
-| [pos_state_name_tests.desc](tests/data/pos_state_name_tests.desc) | [pos_state_name_tests.patch](tests/data/pos_state_names_tests.patch) |
+| [pos_state_name_tests.desc](tests/data/pos_state_name_tests.desc) | [pos_state_name_tests.patch](tests/data/pos_state_name_tests.patch) |
 | [pos_state_desc_tests.desc](tests/data/pos_state_desc_tests.desc) | [pos_state_desc_tests.patch](tests/data/pos_state_desc_tests.patch) |
 | [pos_state_type_tests.desc](tests/data/pos_state_type_tests.desc) | [pos_state_type_tests.patch](tests/data/pos_state_type_tests.patch) |
 
