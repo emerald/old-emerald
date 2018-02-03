@@ -8,11 +8,9 @@
 
 #include "iset.h"
 
-/*
- * Sets:
- *
- * Expanding hash tables with a key.
- */
+// Sets:
+//
+// Expanding hash tables with a key.
 
 
 static int sizes[] = {
@@ -24,10 +22,8 @@ static int sizes[] = {
   4194371, 8388697, 16777291 };
 #define MAXFILL 0.375
 
-/*
- * Turning this on will cause the package to self-check on every (modifying)
- * operation.  The package runs very slowly when this is enabled.
- */
+// Turning this on will cause the package to self-check on every (modifying)
+// operation. The package runs very slowly when this is enabled.
 #undef DEBUGSC
 
 #define Hash(key, sc) (ISetHASH(key) % sc->size)
@@ -36,7 +32,7 @@ static int sizes[] = {
 static void CheckOutHashTable();
 #endif
 
-/* Return a new, empty ISet */
+// Return a new, empty ISet
 ISet
 ISetCreate()
 {
@@ -53,7 +49,7 @@ ISetCreate()
   }
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
   return sc;
 }
 
@@ -65,8 +61,8 @@ ISetDestroy(
   free((char *)sc);
 }
 
-/* Expand the hash table.  Each element in the table is re-hashed and entered 
- * in the new table. */
+// Expand the hash table.  Each element in the table is re-hashed and entered
+// in the new table.
 static void
 ExpandHashTable(
   register ISet sc)
@@ -102,10 +98,10 @@ ExpandHashTable(
   sc->table = nh;
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
 }
 
-/* Is key in the set sc */
+// Is key in the set sc
 int
 ISetMember(
   register ISet sc,
@@ -116,10 +112,10 @@ ISetMember(
 
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
   while (1) {
     e = &sc->table[index];
-    if (e->key == (int)NULL) {  /* we did not find it */
+    if (e->key == (int)NULL) {  // we did not find it
       return 0;
     } else if (ISetCOMPARE(e->key, key)) {
       return 1;
@@ -128,7 +124,7 @@ ISetMember(
   }
 }
 
-/* Select a random (the first) key from the set sc */
+// Select a random (the first) key from the set sc
 ISetDomainType
 ISetSelect(
   register ISet sc)
@@ -138,17 +134,17 @@ ISetSelect(
 
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
   while (1) {
     e = &sc->table[index];
-    if (e->key != (int)NULL) {  /* we found it */
+    if (e->key != (int)NULL) {  // we found it
       return e->key;
     }
     if (++index >= sc->size) return (int)NULL;
   }
 }
 
-/* Insert the key in sc.  If the key already exists, do nothing. */
+// Insert the key in sc.  If the key already exists, do nothing.
 void
 ISetInsert(
   register ISet sc,
@@ -161,24 +157,24 @@ ISetInsert(
   index = Hash(key, sc);
   while (1) {
     e = &sc->table[index];
-    if (e->key == (int)NULL) {  /* put it here */
+    if (e->key == (int)NULL) {  // put it here
       e->key = key;
       sc->count++;
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
       return;
     } else if (ISetCOMPARE(e->key, key)) {
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
       return;
     }
     if (++index >= sc->size) index = 0;
   }
 }
 
-/* Remove the entry, if it is there */
+// Remove the entry, if it is there
 void
 ISetDelete(
   register ISet sc,
@@ -189,28 +185,28 @@ ISetDelete(
 
   while (1) {
     e = &sc->table[index];
-    if (e->key == (int)NULL) {  /* we did not find it */
+    if (e->key == (int)NULL) {  // we did not find it
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
       return;
     }
     if (ISetCOMPARE(e->key, key)) {
-      /* Found it, now remove it */
+      // Found it, now remove it
       sc->count--;
       e->key = (int)NULL;
       while (1) {
-        /* rehash until we reach nil again */
+        // rehash until we reach nil again
         if (++index >= sc->size) index = 0;
         e = & sc->table[index];
         key = e->key;
         if (key == (int)NULL) {
 #ifdef DEBUGSC
           CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
           return;
         }
-        /* rehashing is done by removing then reinserting */
+        // rehashing is done by removing then reinserting
         e->key = (int)NULL;
         sc->count--;
         ISetInsert(sc, key);
@@ -220,7 +216,7 @@ ISetDelete(
   }
 }
 
-/* DEBUGGING: Print the sc */
+// DEBUGGING: Print the sc
 void ISetPrint(sc)
 register ISet sc;
 {
@@ -237,10 +233,9 @@ register ISet sc;
 }
 
 #ifdef DEBUGSC
-/* Make sure that the hash table is internally consistent:
- *	every key is findable, 
- *	count reflects the number of elements
- */
+// Make sure that the hash table is internally consistent:
+//  every key is findable,
+//  count reflects the number of elements
 static void
 CheckOutHashTable(
   register ISet sc)
@@ -258,7 +253,7 @@ CheckOutHashTable(
       firstIndex = index;
       while (1) {
         e = &sc->table[index];
-        if (e->key == NULL) { /* we did not find it */
+        if (e->key == NULL) { // we did not find it
           break;
         } else if (ISetCOMPARE(e->key, realElement->key)) {
           break;

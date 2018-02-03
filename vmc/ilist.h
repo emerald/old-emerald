@@ -1,32 +1,27 @@
 #ifndef EMERALD_VMC_ILIST_H
 #define EMERALD_VMC_ILIST_H
 
-/*
- * Seqs are an array sequence of some domain.
- * Operations:
- *	create, destroy, insert, member, size, and print
- */
+// Seqs are an array sequence of some domain.
+// Operations:
+//  create, destroy, insert, member, size, and print
 
-/*
- * Before using this, one must define the following:
- *	IListDomainType	- a typedef for the domain
- *	IListCOMPARE	- a macro that compares two elements of 
- *				  the domain, evaluating to 1 if they are 
- *				  the same
- */
+// Before using this, one must define the following:
+//  IListDomainType - a typedef for the domain
+//  IListCOMPARE  - a macro that compares two elements of
+//                  the domain, evaluating to 1 if they are
+//                  the same
 #define IListDomainType int
 #define IListCOMPARE(X,Y) ((X)==(Y))
 
-/*
- * Hidden, private type declarations.  The only thing
- * that applications of this package are to see is IList,
- * and they are to treat it as opaque:  that is, they may
- * assign it, and pass it as arguments, but not manipulate
- * what it points to directly.
- */
+
+// Hidden, private type declarations.  The only thing
+// that applications of this package are to see is IList,
+// and they are to treat it as opaque:  that is, they may
+// assign it, and pass it as arguments, but not manipulate
+// what it points to directly.
 
 typedef struct IListTE {
-    IListDomainType key;  /* the key for this entry */
+    IListDomainType key;  // the key for this entry
 } IListTE, *IListTEPtr;
 
 typedef struct IListRecord {
@@ -34,33 +29,32 @@ typedef struct IListRecord {
     int size, count;
 } IListRecord, *IList;
 
-/* OPERATIONS */
+// OPERATIONS
 
-/* Return a new, empty Searchable Collection */
+// Return a new, empty Searchable Collection
 IList IListCreate();
 
-/* Destroy a collection */
+// Destroy a collection
 void IListDestroy();
 
-/* Insert the key into the set IList */
+// Insert the key into the set IList
 void IListInsert(IList sq, IListDomainType key);
 
-/* Delete the key key from the set IList */
+// Delete the key key from the set IList
 void IListDelete(IList sq, IListDomainType key);
 
-/* Return the key if it is in the set otherwise NULL */
+// Return the key if it is in the set otherwise NULL
 IListDomainType IListMember(IList sc, IListDomainType key);
 
-/* DEBUGGING: Print the collection IList */
+// DEBUGGING: Print the collection IList
 void IListPrint(IList sc);
 
-/* Iterate over the elements of the collection IList.  
- * At each iteration, IListkey is set to the next key in the set.  
- * Usage:
- *	IListForEach(someSq, key) {
- *	  / * whatever you want to do with key * /
- *	} IListNext();
- */
+// Iterate over the elements of the collection IList.
+// At each iteration, IListkey is set to the next key in the set.
+// Usage:
+//  IListForEach(someSq, key) {
+//    // whatever you want to do with key
+//  } IListNext();
 #define IListForEach(IList, IListkey) \
   { \
     int IListxx_index; \
@@ -68,13 +62,12 @@ void IListPrint(IList sc);
       *(IListDomainType*)(&(IListkey)) = IList->table[IListxx_index].key; \
       {
 
-/* Iterate over the elements of the collection IList.  
- * At each iteration, IListkey is set to the next key in the set.  
- * Usage:
- *	IListForEachReverse(someSq, key) {
- *	  / * whatever you want to do with key * /
- *	} IListNext();
- */
+// Iterate over the elements of the collection IList.
+// At each iteration, IListkey is set to the next key in the set.
+// Usage:
+//  IListForEachReverse(someSq, key) {
+//    // whatever you want to do with key
+//  } IListNext();
 #define IListForEachReverse(IList, IListkey) \
   { \
     int IListxx_index; \
@@ -82,14 +75,13 @@ void IListPrint(IList sc);
       *(IListDomainType*)(&(IListkey)) = IList->table[IListxx_index].key; \
       {
 
-/* Iterate over the elements of the collection IList, two at a time.
- * At each iteration, IListkey1 and IListkey2 are set to the next keys
- * in the list.
- * Usage:
- *	IListForEachByTwo(someSq, key1, key2) {
- *	  / * whatever you want to do with key1 and key2 * /
- *	} IListNext();
- */
+// Iterate over the elements of the collection IList, two at a time.
+// At each iteration, IListkey1 and IListkey2 are set to the next keys
+// in the list.
+// Usage:
+//  IListForEachByTwo(someSq, key1, key2) {
+//    // whatever you want to do with key1 and key2
+//  } IListNext();
 #define IListForEachByTwo(IList, IListkey1, IListkey2) \
   { \
     int IListxx_index; \
@@ -98,14 +90,13 @@ void IListPrint(IList sc);
       *(IListDomainType*)(&(IListkey2)) = IList->table[IListxx_index+1].key; \
       {
 
-/* Iterate over the elements of the collection IList, three at a time.
- * At each iteration, IListkey1, IListkey2, IListkey3 are set to the next
- * keys in the set.
- * Usage:
- *	IListForEachByThree(someSq, key1, key2, key3) {
- *	  / * whatever you want to do with key1, key2, key3 * /
- *	} IListNext();
- */
+// Iterate over the elements of the collection IList, three at a time.
+// At each iteration, IListkey1, IListkey2, IListkey3 are set to the next
+// keys in the set.
+// Usage:
+//  IListForEachByThree(someSq, key1, key2, key3) {
+//    // whatever you want to do with key1, key2, key3
+//  } IListNext();
 #define IListForEachByThree(IList, IListkey1, IListkey2, IListkey3) \
   { \
     int IListxx_index; \
@@ -120,7 +111,7 @@ void IListPrint(IList sc);
     } \
   }
 
-/* Return the number of elements in IList */
+// Return the number of elements in IList
 #define IListSize(IList) ((IList)->count)
 
 #ifdef USEGCMALLOC

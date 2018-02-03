@@ -193,9 +193,9 @@ doInterpret()
   fprintf(cfile, "%s", interprethead);
   SListForEachByThree(state, name, desc, type) {
     if (*name == '_') {
-      fprintf(cfile, "#define %s state->%s \t\t/* %s */\n", name+1, name+1, desc);
+      fprintf(cfile, "#define %s state->%s \t\t// %s\n", name+1, name+1, desc);
     } else {
-      fprintf(cfile, "  %s %s;\t\t/* %s */\n", type, name, desc);
+      fprintf(cfile, "  %s %s;\t\t// %s\n", type, name, desc);
     }
   } SListNext();
   fprintf(cfile, "%s", interpretmid1);
@@ -203,7 +203,7 @@ doInterpret()
   fprintf(cfile, "  UNSYNCH();\n");
 
   fprintf(cfile, "%s", interpretmid2);
-  /* do cases */
+  // do cases
   SListForEachByThree(instructions, name, param, code) {
     fprintf(cfile, "      case %s: {%s}\n", name, code);
     fprintf(cfile, "        break;\n");
@@ -309,7 +309,7 @@ static int doAChar(FILE *f, int *value)\n\
   if (c == '\\\\') {\n\
     c = getc(f);\n\
     if ('0' <= c && c <= '7') {\n\
-      /* a C octal escape */\n\
+      // a C octal escape\n\
       num = c - '0';\n\
       c = getc(f);\n\
       if ('0' <= c && c <= '7') {\n\
@@ -388,7 +388,7 @@ int assemble(char *filename, char **ans, int *len)\n\
 	  val->val.val = pos-base;\n\
 	  SIScInsert(lookup, strsave(buffer), (int)val);\n\
 	} else {\n\
-	  /* Backpatch */\n\
+	  // Backpatch\n\
 	  Backpatch(val, pos-base);\n\
 	  val->defined = 1;\n\
 	  val->val.val = pos-base;\n\
@@ -558,7 +558,7 @@ doHFile()
   fprintf(hfile, "  u32 firstThing;\n");
   fprintf(hfile, "  u32 pc;\n");
   SListForEachByThree(state, name, desc, type) {
-    fprintf(hfile, "  %s %s;\t\t/* %s */\n", type,
+    fprintf(hfile, "  %s %s;\t\t// %s\n", type,
       *name == '_' ? name+1 : name, desc);
   } SListNext();
   fprintf(hfile, "} State;\n");
@@ -585,7 +585,7 @@ doHFile()
   fprintf(hfile, "#define UNSYNCH() (\\\n");
   fprintf(hfile, "  F_UNSYNCH(),\\\n");
   fprintf(hfile, "  addtototalbytecodes = 0 )\n");
-  fprintf(hfile, "#else /* COUNTBYTECODES */\n");
+  fprintf(hfile, "#else // COUNTBYTECODES\n");
   fprintf(hfile, "#define SYNCH() (\\\n");
   SListForEachByThree(state, name, desc, type) {
     if (*name != '_') {

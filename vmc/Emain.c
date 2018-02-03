@@ -35,7 +35,7 @@ main()
 #ifdef DOINSTRUCTIONBODIES
   discompile(code, len, stdout);
 #else
-  /* printcode(code, len); */
+  // printcode(code, len);
   disassemble(code, len, stdout);
   state.pc = (int) code;
   state.sp = (int) stack;

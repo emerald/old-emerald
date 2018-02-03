@@ -1,32 +1,28 @@
 #ifndef EMERALD_VMC_SLIST_H
 #define EMERALD_VMC_SLIST_H
 
-/*
- * SLists are an array sequence of some domain.
- * Operations:
- *	create, destroy, insert, member, size, and print
- */
+// SLists are an array sequence of some domain.
+// Operations:
+//  create, destroy, insert, member, size, and print
 
-/*
- * Before using this, one must define the following:
- *	SListDomainType	- a typedef for the domain
- *	SListCOMPARE	- a macro that compares two elements of
- *				  the domain, evaluating to 1 if they are
- *				  the same
- */
+
+// Before using this, one must define the following:
+//  SListDomainType	- a typedef for the domain
+//  SListCOMPARE	- a macro that compares two elements of
+//                  the domain, evaluating to 1 if they are
+//                  the same
+
 typedef char *SListDomainType;
 #define SListCOMPARE(X,Y) ((X)==(Y))
 
-/*
- * Hidden, private type declarations.  The only thing
- * that applications of this package are to see is SList,
- * and they are to treat it as opaque:  that is, they may
- * assign it, and pass it as arguments, but not manipulate
- * what it points to directly.
- */
+// Hidden, private type declarations.  The only thing
+// that applications of this package are to see is SList,
+// and they are to treat it as opaque:  that is, they may
+// assign it, and pass it as arguments, but not manipulate
+// what it points to directly.
 
 typedef struct SListTE {
-    SListDomainType key;  /* the key for this entry */
+    SListDomainType key;  // the key for this entry
 } SListTE, *SListTEPtr;
 
 typedef struct SListRecord {
@@ -34,30 +30,29 @@ typedef struct SListRecord {
     int size, count;
 } SListRecord, *SList;
 
-/* OPERATIONS */
+// OPERATIONS
 
-/* Return a new, empty Searchable Collection */
+// Return a new, empty Searchable Collection
 SList SListCreate();
 
-/* Destroy a collection */
+// Destroy a collection
 void SListDestroy();
 
-/* Insert the key into the set SList */
+// Insert the key into the set SList
 void SListInsert(SList sq, SListDomainType key);
 
-/* Return the key if it is in the set otherwise NULL */
+// Return the key if it is in the set otherwise NULL
 SListDomainType SListMember(SList sc, SListDomainType key);
 
-/* DEBUGGING: Print the collection SList */
+// DEBUGGING: Print the collection SList
 void SListPrint(SList sc);
 
-/* Iterate over the elements of the collection SList.
- * At each iteration, SListkey is set to the next key in the list.
- * Usage:
- *	SListForEach(someSq, key) {
- *	  / * whatever you want to do with key * /
- *	} SListNext();
- */
+// Iterate over the elements of the collection SList.
+// At each iteration, SListkey is set to the next key in the list.
+// Usage:
+//  SListForEach(someSq, key) {
+//    // whatever you want to do with key
+//  } SListNext();
 #define SListForEach(SList, SListkey) \
   { \
     int SListxx_index; \
@@ -65,13 +60,12 @@ void SListPrint(SList sc);
       *(SListDomainType*)(&(SListkey)) = SList->table[SListxx_index].key; \
       {
 
-/* Iterate over the elements of the collection SList.  
- * At each iteration, SListkey is set to the next key in the set.  
- * Usage:
- *	SListForEachReverse(someSq, key) {
- *	  / * whatever you want to do with key * /
- *	} SListNext();
- */
+// Iterate over the elements of the collection SList.
+// At each iteration, SListkey is set to the next key in the set.
+// Usage:
+//  SListForEachReverse(someSq, key) {
+//    // whatever you want to do with key
+//  } SListNext();
 #define SListForEachReverse(SList, SListkey) \
   { \
     int SListxx_index; \
@@ -79,14 +73,13 @@ void SListPrint(SList sc);
       *(SListDomainType*)(&(SListkey)) = SList->table[SListxx_index].key; \
       {
 
-/* Iterate over the elements of the collection SList, two at a time.
- * At each iteration, SListkey1 and SListkey2 are set to the next keys
- * in the list.
- * Usage:
- *	SListForEachByTwo(someSq, key1, key2) {
- *	  / * whatever you want to do with key1 and key2 * /
- *	} SListNext();
- */
+// Iterate over the elements of the collection SList, two at a time.
+// At each iteration, SListkey1 and SListkey2 are set to the next keys
+// in the list.
+// Usage:
+//  SListForEachByTwo(someSq, key1, key2) {
+//    // whatever you want to do with key1 and key2
+//  } SListNext();
 #define SListForEachByTwo(SList, SListkey1, SListkey2) \
   { \
     int SListxx_index; \
@@ -95,14 +88,13 @@ void SListPrint(SList sc);
       *(SListDomainType*)(&(SListkey2)) = SList->table[SListxx_index+1].key; \
       {
 
-/* Iterate over the elements of the collection SList, three at a time.
- * At each iteration, SListkey1, SListkey2, SListkey3 are set to the next
- * keys in the set.
- * Usage:
- *	SListForEachByThree(someSq, key1, key2, key3) {
- *	  / * whatever you want to do with key1, key2, key3 * /
- *	} SListNext();
- */
+// Iterate over the elements of the collection SList, three at a time.
+// At each iteration, SListkey1, SListkey2, SListkey3 are set to the next
+// keys in the set.
+// Usage:
+//  SListForEachByThree(someSq, key1, key2, key3) {
+//    // whatever you want to do with key1, key2, key3
+//  } SListNext();
 #define SListForEachByThree(SList, SListkey1, SListkey2, SListkey3) \
   { \
     int SListxx_index; \
@@ -117,7 +109,7 @@ void SListPrint(SList sc);
     } \
   }
 
-/* Return the number of elements in SList */
+// Return the number of elements in SList
 #define SListSize(SList) ((SList)->count)
 
 #ifdef USEGCMALLOC

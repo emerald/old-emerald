@@ -1,9 +1,7 @@
-/*
- * Sequences:  Expanding arrays of keys
- *  Adopted by Kim Gillies from Dr. Norm Hutchinson's iset.c
- *  In sequence structure, count is the current number of items in the 
- *  array, size is the physical length of the array
- */
+// Sequences:  Expanding arrays of keys
+//  Adopted by Kim Gillies from Dr. Norm Hutchinson's iset.c
+//  In sequence structure, count is the current number of items in the
+//  array, size is the physical length of the array
 
 #ifndef NULL
 #include <stdio.h>
@@ -23,7 +21,7 @@ static int sizes[] = {
   262187, 524869, 1048829, 2097223,
   4194371, 8388697, 16777291 };
 
-/* Return a new, empty ISet */
+// Return a new, empty ISet
 IList
 IListCreate()
 {
@@ -50,9 +48,8 @@ IListDestroy(
   free((char *)sq);
 }
 
-/* Expand the array.  Each element in the table is copied 
- * in the new table.  The new space is initialized to NULL
- */
+// Expand the array. Each element in the table is copied
+// in the new table. The new space is initialized to NULL
 static void
 ExpandTable(
   register IList sq)
@@ -60,14 +57,14 @@ ExpandTable(
   register int oldTableSize = sq->size, i;
 
   for (i = 0; sizes[i] <= oldTableSize; i++) ;
-  sq->size = sizes[i];  /* the new size  */
+  sq->size = sizes[i];  // the new size
   sq->table = (IListTEPtr)realloc(sq->table, (sq->size *sizeof(IListTE)));
   for (i = oldTableSize; i < sq->size; i++) {
     sq->table[i].key = (int)NULL;
   }
 }
 
-/* Is key in the sequence sq, if so--return it (probably stupid) */
+// Is key in the sequence sq, if so--return it (probably stupid)
 IListDomainType
 IListMember(
   register IList sq,
@@ -83,11 +80,11 @@ IListMember(
       return e->key;
     }
   }
-  /* nothing found */
+  // nothing found
   return (int)NULL;
 }
 
-/* Add the key to the end of sq */
+// Add the key to the end of sq
 void
 IListInsert(
   register IList sq,
@@ -101,7 +98,7 @@ IListInsert(
   sq->count++;
 }
 
-/* Remove the entry, if it is there */
+// Remove the entry, if it is there
 void
 IListDelete(
   register IList sq,
@@ -121,7 +118,7 @@ IListDelete(
   }
 }
 
-/* DEBUGGING: Print the sq */
+// DEBUGGING: Print the sq
 void
 IListPrint(
   register IList sq)

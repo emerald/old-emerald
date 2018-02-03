@@ -69,7 +69,7 @@ typedef struct State {
 #define UNSYNCH() (\
   F_UNSYNCH(),\
   addtototalbytecodes = 0 )
-#else /* COUNTBYTECODES */
+#else // COUNTBYTECODES
 #define SYNCH() (\
   state->pc = pc)
 #define UNSYNCH() (\

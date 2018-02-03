@@ -1,34 +1,30 @@
 #ifndef EMERALD_VMC_ISET_H
 #define EMERALD_VMC_ISET_H
 
-/*
- * ISets are set of some domain.  Operations:
- *	create, destroy, insert, member, size, and print
- */
+// ISets are set of some domain.  Operations:
+// create, destroy, insert, member, size, and print
 
-/*
- * Before using this, one must define the following:
- *	ISetDomainType	- a typedef for the domain
- *	ISetHASH		- a macro that computes an integer from a given
- *			  element of the domain
- *	ISetCOMPARE	- a macro that compares two elements of 
- *				  the domain, evaluating to 1 if they are 
- *				  the same
- */
+// Before using this, one must define the following:
+//  ISetDomainType  - a typedef for the domain
+//  ISetHASH  - a macro that computes an integer from a given
+//              element of the domain
+//  ISetCOMPARE - a macro that compares two elements of 
+//                the domain, evaluating to 1 if they are 
+//                the same
+
 #define ISetDomainType int
 #define ISetHASH(X) ((unsigned)((X) ^ ((X) << 4)))
 #define ISetCOMPARE(X,Y) ((X)==(Y))
 
-/*
- * Hidden, private type declarations.  The only thing
- * that applications of this package are to see is ISet,
- * and they are to treat it as opaque:  that is, they may
- * assign it, and pass it as arguments, but not manipulate
- * what it points to directly.
- */
+
+// Hidden, private type declarations.  The only thing
+// that applications of this package are to see is ISet,
+// and they are to treat it as opaque:  that is, they may
+// assign it, and pass it as arguments, but not manipulate
+// what it points to directly.
 
 typedef struct ISetTE {
-    ISetDomainType   key;   /* the key for this entry */
+    ISetDomainType  key;    // the key for this entry
 } ISetTE, *ISetTEPtr;
 
 typedef struct ISetRecord {
@@ -36,36 +32,35 @@ typedef struct ISetRecord {
     int size, maxCount, count;
 } ISetRecord, *ISet;
 
-/* OPERATIONS */
+// OPERATIONS
 
-/* Return a new, empty Searchable Collection */
+// Return a new, empty Searchable Collection
 ISet ISetCreate();
 
-/* Destroy a collection */
+// Destroy a collection
 void ISetDestroy();
 
-/* Insert the key into the set ISet */
+// Insert the key into the set ISet
 void ISetInsert(ISet sc, ISetDomainType key);
 
-/* Delete the key key from the set ISet */
+// Delete the key key from the set ISet
 void ISetDelete(ISet sc, ISetDomainType key);
 
-/* Select a random (the first) key from the set sc */
+// Select a random (the first) key from the set sc
 ISetDomainType ISetSelect(ISet sc);
 
-/* Return if key is in the set */
+// Return if key is in the set
 int ISetMember(ISet sc, ISetDomainType key);
 
-/* DEBUGGING: Print the collection ISet */
+// DEBUGGING: Print the collection ISet
 void ISetPrint(ISet sc);
 
-/* Iterate over the elements of the collection ISet.
- * At each iteration, ISetkey is set to the next key in the set.  
- * Usage:
- *	ISetForEach(someSc, key) {
- *	  / * whatever you want to do with key * /
- *	} ISetNext();
- */
+// Iterate over the elements of the collection ISet.
+// At each iteration, ISetkey is set to the next key in the set.
+// Usage:
+//  ISetForEach(someSc, key) {
+//    // whatever you want to do with key
+//  } ISetNext();
 #define ISetForEach(ISet, ISetkey) \
   { \
     int ISetxx_index; \
@@ -80,7 +75,7 @@ void ISetPrint(ISet sc);
     } \
   }
 
-/* Return the number of elements in ISet */
+// Return the number of elements in ISet
 #define ISetSize(ISet) ((ISet)->count)
 
 #ifdef USEGCMALLOC

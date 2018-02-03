@@ -1,10 +1,8 @@
 #include "iisc.h"
 
-/*
- * Searchable Collections:
- *
- * Expanding hash tables with a key and data.
- */
+// Searchable Collections:
+//
+// Expanding hash tables with a key and data.
 
 #ifndef NULL
 #include <stdio.h>
@@ -25,10 +23,9 @@ static int sizes[] = {
   4194371, 8388697, 16777291 };
 #define MAXFILL 0.375
 
-/*
- * Turning this on will cause the package to self-check on every (modifying)
- * operation.  The package runs very slowly when this is enabled.
- */
+// Turning this on will cause the package to self-check on every (modifying)
+// operation.  The package runs very slowly when this is enabled.
+
 #undef DEBUGSC
 
 #define Hash(key, sc) (IIScHASH(key) % sc->size)
@@ -37,7 +34,7 @@ static int sizes[] = {
 static void CheckOutHashTable();
 #endif
 
-/* Return a new, empty IISc */
+// Return a new, empty IISc
 IISc
 IIScCreate()
 {
@@ -54,7 +51,7 @@ IIScCreate()
   }
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
   return sc;
 }
 
@@ -66,8 +63,8 @@ IIScDestroy(
   free((char *)sc);
 }
 
-/* Expand the hash table.  Each element in the table is re-hashed and entered 
- * in the new table. */
+// Expand the hash table. Each element in the table is re-hashed and entered
+// in the new table.
 static void
 ExpandHashTable(
   register IISc sc)
@@ -104,10 +101,10 @@ ExpandHashTable(
   sc->table = nh;
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
 }
 
-/* Return the value associated with key in collection sc, or -1 */
+// Return the value associated with key in collection sc, or -1
 IIScRangeType
 IIScLookup(
   register IISc sc,
@@ -118,10 +115,10 @@ IIScLookup(
 
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
   while (1) {
     e = &sc->table[index];
-    if (e->key == 0) {  /* we did not find it */
+    if (e->key == 0) {  // we did not find it
       return -1;
     } else if (IIScCOMPARE(e->key, key)) {
       return e->value;
@@ -130,8 +127,8 @@ IIScLookup(
   }
 }
 
-/* Insert the key, value pair in sc.  If the key already exists, change its 
- * value. */
+// Insert the key, value pair in sc. If the key already exists, change its
+// value.
 void
 IIScInsert(
   register IISc sc,
@@ -145,26 +142,26 @@ IIScInsert(
   index = Hash(key, sc);
   while (1) {
     e = &sc->table[index];
-    if (e->key == 0) {  /* put it here */
+    if (e->key == 0) {  // put it here
       e->key = key;
       e->value = value;
       sc->count++;
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
       return;
     } else if (IIScCOMPARE(e->key, key)) {
       e->value = value;
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
       return;
     }
     if (++index >= sc->size) index = 0;
   }
 }
 
-/* Remove the entry, if it is there */
+// Remove the entry, if it is there
 void
 IIScDelete(
   register IISc sc,
@@ -176,29 +173,29 @@ IIScDelete(
 
   while (1) {
     e = &sc->table[index];
-    if (e->key == 0) {  /* we did not find it */
+    if (e->key == 0) {  // we did not find it
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
       return;
     }
     if (IIScCOMPARE(e->key, key)) {
-      /* Found it, now remove it */
+      // Found it, now remove it
       sc->count--;
       e->key = 0;
       e->value = 0;
       while (1) {
-        /* rehash until we reach nil again */
+        // rehash until we reach nil again
         if (++index >= sc->size) index = 0;
         e = & sc->table[index];
         key = e->key;
         if (key == 0) {
 #ifdef DEBUGSC
           CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
           return;
         }
-        /* rehashing is done by removing then reinserting */
+        // rehashing is done by removing then reinserting
         value = e->value;
         e->key = 0;
         e->value = 0;
@@ -210,7 +207,7 @@ IIScDelete(
   }
 }
 
-/* DEBUGGING: Print the sc */
+// DEBUGGING: Print the sc
 void
 IIScPrint(
   register IISc sc)
@@ -230,10 +227,9 @@ IIScPrint(
 }
 
 #ifdef DEBUGSC
-/* Make sure that the hash table is internally consistent:
- *	every key is findable, 
- *	count reflects the number of elements
- */
+// Make sure that the hash table is internally consistent:
+//  every key is findable,
+//  count reflects the number of elements
 static void
 CheckOutHashTable(
   register IISc sc)
@@ -251,7 +247,7 @@ CheckOutHashTable(
       firstIndex = index;
       while (1) {
         e = &sc->table[index];
-        if (e->key == 0) {  /* we did not find it */
+        if (e->key == 0) {  // we did not find it
           break;
         } else if (IIScCOMPARE(e->key, realElement->key)) {
           break;

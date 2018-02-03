@@ -4,9 +4,9 @@
  int interpret(State *state)
  {
    u32 pc;
-+  !@#$%^&*()_+}|<> a;		/* This is a */
-+   b;		/* This is b */
-+  double d; long c;		/* This is c */
++  !@#$%^&*()_+}|<> a;		// This is a
++   b;		// This is b
++  double d; long c;		// This is c
    long long addtototalbytecodes = 0;
    unsigned char opcode;
  #if defined(INTERPRETERLOCALS)
@@ -16,9 +16,9 @@
  typedef struct State {
    u32 firstThing;
    u32 pc;
-+  !@#$%^&*()_+}|<> a;		/* This is a */
-+   b;		/* This is b */
-+  double d; long c;		/* This is c */
++  !@#$%^&*()_+}|<> a;		// This is a
++   b;		// This is b
++  double d; long c;		// This is c
  } State;
  #define F_SYNCH() (\
 +  state->a = a,\
@@ -34,7 +34,7 @@
  #define SYNCH() (\
 @@ -71,7 +80,13 @@
    addtototalbytecodes = 0 )
- #else /* COUNTBYTECODES */
+ #else // COUNTBYTECODES
  #define SYNCH() (\
 +  state->a = a,\
 +  state->b = b,\

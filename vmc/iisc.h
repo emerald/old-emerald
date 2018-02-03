@@ -1,38 +1,34 @@
 #ifndef EMERALD_VMC_IISC_H
 #define EMERALD_VMC_IISC_H
 
-/*
- * IIScs (searchable collections) are things that map 
- * elements of some domain onto some range.  Operations:
- *	create, destroy, insert, lookup, size, and print
- */
+// IIScs (searchable collections) are things that map
+// elements of some domain onto some range.  Operations:
+// create, destroy, insert, lookup, size, and print
 
-/*
- * Before using this, one must define the following:
- *	IIScDomainType	- a typedef for the domain
- *	IIScRangeType	- a typedef for the range
- *	IIScHASH		- a macro that computes an integer from a given
- *			  element of the domain
- *	IIScCOMPARE	- a macro that compares two elements of 
- *				  the domain, evaluating to 1 if they are 
- *				  the same
- */
+// Before using this, one must define the following:
+// IIScDomainType - a typedef for the domain
+// IIScRangeType  - a typedef for the range
+// IIScHASH - a macro that computes an integer from a given
+//            element of the domain
+// IIScCOMPARE- a macro that compares two elements of
+//              the domain, evaluating to 1 if they are
+//              the same
+
 #define IIScDomainType int
 #define IIScRangeType  int
 #define IIScHASH(X) ((unsigned)((X) ^ ((X) << 4)))
 #define IIScCOMPARE(X,Y) ((X)==(Y))
 
-/*
- * Hidden, private type declarations.  The only thing
- * that applications of this package are to see is IISc,
- * and they are to treat it as opaque:  that is, they may
- * assign it, and pass it as arguments, but not manipulate
- * what it points to directly.
- */
+
+// Hidden, private type declarations.  The only thing
+// that applications of this package are to see is IISc,
+// and they are to treat it as opaque:  that is, they may
+// assign it, and pass it as arguments, but not manipulate
+// what it points to directly.
 
 typedef struct IIScTE {
-    IIScDomainType   key;   /* the key for this entry */
-    IIScRangeType  value;   /* what we want */
+    IIScDomainType  key;    // the key for this entry
+    IIScRangeType value;    // what we want
 } IIScTE, *IIScTEPtr;
 
 typedef struct IIScRecord {
@@ -40,35 +36,34 @@ typedef struct IIScRecord {
     int size, maxCount, count;
 } IIScRecord, *IISc;
 
-/* OPERATIONS */
+// OPERATIONS
 
-/* Return a new, empty Searchable Collection */
+// Return a new, empty Searchable Collection
 IISc IIScCreate();
 
-/* Destroy a collection */
+// Destroy a collection
 void IIScDestroy();
 
-/* Insert the pair <key, value> into collection IISc */
+// Insert the pair <key, value> into collection IISc
 void IIScInsert(IISc sc, IIScDomainType key, IIScRangeType value);
 
-/* Delete the pair with key key from the collection IISc */
+// Delete the pair with key key from the collection IISc
 void IIScDelete(IISc sc, IIScDomainType key);
 
-/* Return the value associated with key in collection 
- * IISc, or 0 if no such pair exists */
+// Return the value associated with key in collection
+// IISc, or 0 if no such pair exists
 int IIScLookup(IISc sc, IIScDomainType key);
 
-/* DEBUGGING: Print the collection IISc */
+// DEBUGGING: Print the collection IISc
 void IIScPrint(IISc sc);
 
-/* Iterate over the elements of the collection IISc.
- * At each iteration, IISckey and IIScvalue are set to the next
- * <key, value> pair in the collection.  
- * Usage:
- *	IIScForEach(someSc, key, value) {
- *	  / * whatever you want to do with key, value * /
- *	} IIScNext();
- */
+// Iterate over the elements of the collection IISc.
+// At each iteration, IISckey and IIScvalue are set to the next
+// <key, value> pair in the collection.
+// Usage:
+//  IIScForEach(someSc, key, value) {
+//    // whatever you want to do with key, value
+//  } IIScNext();
 #define IIScForEach(IISc, IISckey, IIScvalue) \
   { \
     int IIScxx_index; \
@@ -84,7 +79,7 @@ void IIScPrint(IISc sc);
     } \
   }
 
-/* Return the number of elements in IISc */
+//Return the number of elements in IISc
 #define IIScSize(IISc) ((IISc)->count)
 
 #endif // EMERALD_VMC_IISC_H

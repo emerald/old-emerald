@@ -1,8 +1,6 @@
-/*
- * Searchable Collections:
- *
- * Expanding hash tables with a key and data.
- */
+// Searchable Collections:
+//
+// Expanding hash tables with a key and data.
 
 #ifndef NULL
 #include <stdio.h>
@@ -23,10 +21,8 @@ static int sizes[] = {
   4194371, 8388697, 16777291 };
 #define MAXFILL 0.85
 
-/*
- * Turning this on will cause the package to self-check on every (modifying)
- * operation.  The package runs very slowly when this is enabled.
- */
+// Turning this on will cause the package to self-check on every (modifying)
+// operation.  The package runs very slowly when this is enabled.
 #undef DEBUGSC
 
 static unsigned
@@ -39,7 +35,7 @@ static void
 CheckOutHashTable();
 #endif
 
-/* Return a new, empty SISc */
+// Return a new, empty SISc
 SISc
 SIScCreate()
 {
@@ -56,7 +52,7 @@ SIScCreate()
   }
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
   return sc;
 }
 
@@ -68,8 +64,8 @@ SIScDestroy(
   free((char *)sc);
 }
 
-/* Expand the hash table.  Each element in the table is re-hashed and entered 
- * in the new table. */
+// Expand the hash table. Each element in the table is re-hashed and entered
+// in the new table.
 static void
 ExpandHashTable(
   register SISc sc)
@@ -106,10 +102,10 @@ ExpandHashTable(
   sc->table = nh;
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
 }
 
-/* Return the value associated with key in collection sc, or -1 */
+// Return the value associated with key in collection sc, or -1
 RangeType
 SIScLookup(
   register SISc sc,
@@ -120,10 +116,10 @@ SIScLookup(
 
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
   while (1) {
     e = &sc->table[index];
-    if (e->key == NULL) { /* we did not find it */
+    if (e->key == NULL) { // we did not find it
       return -1;
     } else if (COMPARE(e->key, key)) {
       return e->value;
@@ -132,8 +128,8 @@ SIScLookup(
   }
 }
 
-/* Insert the key, value pair in sc.  If the key already exists, change its 
- * value. */
+// Insert the key, value pair in sc.  If the key already exists, change its
+// value.
 void
 SIScInsert(
   register SISc sc,
@@ -147,26 +143,26 @@ SIScInsert(
   index = Hash((unsigned char *)key, sc);
   while (1) {
     e = &sc->table[index];
-    if (e->key == NULL) { /* put it here */
+    if (e->key == NULL) { // put it here
       e->key = key;
       e->value = value;
       sc->count++;
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
       return;
     } else if (COMPARE(e->key, key)) {
       e->value = value;
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
       return;
     }
     if (++index >= sc->size) index = 0;
   }
 }
 
-/* Remove the entry, if it is there */
+// Remove the entry, if it is there
 void
 SIScDelete(
   register SISc sc,
@@ -178,29 +174,29 @@ SIScDelete(
 
   while (1) {
     e = &sc->table[index];
-    if (e->key == NULL) { /* we did not find it */
+    if (e->key == NULL) { // we did not find it
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
       return;
     }
     if (COMPARE(e->key, key)) {
-      /* Found it, now remove it */
+      // Found it, now remove it
       sc->count--;
       e->key = NULL;
       e->value = (int)NULL;
       while (1) {
-        /* rehash until we reach nil again */
+        // rehash until we reach nil again
         if (++index >= sc->size) index = 0;
         e = & sc->table[index];
         key = e->key;
         if (key == NULL) {
 #ifdef DEBUGSC
           CheckOutHashTable(sc);
-#endif /* DEBUGSC */
+#endif // DEBUGSC
           return;
         }
-        /* rehashing is done by removing then reinserting */
+        // rehashing is done by removing then reinserting
         value = e->value;
         e->key = NULL;
         e->value = (int)NULL;
@@ -212,7 +208,7 @@ SIScDelete(
   }
 }
 
-/* DEBUGGING: Print the sc */
+// DEBUGGING: Print the sc
 void
 SIScPrint(
   register SISc sc)
@@ -227,16 +223,15 @@ SIScPrint(
   for (index = 0; index < sc->size; index++) {
     key = sc->table[index].key;
     value = sc->table[index].value;
-/* FIX THIS */
+// FIX THIS
     printf("%3d\t%-16.16s0x%8.8x\n", index, key, value);
   }
 }
 
 #ifdef DEBUGSC
-/* Make sure that the hash table is internally consistent:
- *	every key is findable, 
- *	count reflects the number of elements
- */
+// Make sure that the hash table is internally consistent:
+//  every key is findable,
+//  count reflects the number of elements
 static void
 CheckOutHashTable(
   register SISc sc)
@@ -254,7 +249,7 @@ CheckOutHashTable(
       firstIndex = index;
       while (1) {
         e = &sc->table[index];
-        if (e->key == NULL) { /* we did not find it */
+        if (e->key == NULL) { // we did not find it
           break;
         } else if (COMPARE(e->key, realElement->key)) {
           break;
@@ -269,7 +264,7 @@ CheckOutHashTable(
       }
 
       if (index == -1 || !COMPARE(e->key, realElement->key)) {
-        /* FIX THIS */
+        // FIX THIS
         fprintf(stderr,
           "Sc problem: Key %s, rightIndex %d, realIndex %d value 0x%x\n",
           realElement->key, firstIndex, index, realElement->value);
@@ -285,7 +280,7 @@ CheckOutHashTable(
   }
 }
 #endif
-/* String hashing function, from Red Dragon Book */
+// String hashing function, from Red Dragon Book
 
 static unsigned
 stringintHash(
