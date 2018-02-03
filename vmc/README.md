@@ -90,6 +90,9 @@ careful. This is illustrated in the test-cases below.
 
 | Description | Patch |
 |-------------|-------|
+| [one_state.desc](tests/data/one_state.desc) | [one_state.patch](tests/data/one_state.patch) |
+| [three_states.desc](tests/data/three_states.desc) | [three_states.patch](tests/data/three_states.patch) |
+| [three_states_no_linebreaks.desc](tests/data/three_states_no_linebreaks.desc) | [three_states_no_linebreaks.patch](tests/data/three_states_no_linebreaks.patch) |
 | [pos_state_name_tests.desc](tests/data/pos_state_name_tests.desc) | [pos_state_name_tests.patch](tests/data/pos_state_name_tests.patch) |
 | [pos_state_desc_tests.desc](tests/data/pos_state_desc_tests.desc) | [pos_state_desc_tests.patch](tests/data/pos_state_desc_tests.patch) |
 | [pos_state_type_tests.desc](tests/data/pos_state_type_tests.desc) | [pos_state_type_tests.patch](tests/data/pos_state_type_tests.patch) |
