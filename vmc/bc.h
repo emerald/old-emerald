@@ -18,4 +18,4 @@
 #define PUTS 14
 #define QUIT 15
 
-#endif /* EMERALD_VMC_BC_H */
+#endif // EMERALD_VMC_BC_H

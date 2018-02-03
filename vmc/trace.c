@@ -1,7 +1,7 @@
 #include "assert.h"
 #include "trace.h"
 #include <stdarg.h>
-#include <string.h> /* strcmp */
+#include <string.h> // strcmp
 
 int
     traceinit,

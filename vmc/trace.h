@@ -64,4 +64,4 @@ initializeTrace();
 #endif
 #endif
 
-#endif /* EMERALD_VMC_TRACE_H */
+#endif // EMERALD_VMC_TRACE_H

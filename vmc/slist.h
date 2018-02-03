@@ -130,4 +130,4 @@ extern char *gc_malloc(), *gc_calloc(), *gc_realloc(), *gc_free();
 #include <stdlib.h>
 #endif
 
-#endif /* EMERALD_VMC_SLIST_H */
+#endif // EMERALD_VMC_SLIST_H
