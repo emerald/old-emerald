@@ -31,8 +31,8 @@
  */
 
 typedef struct IIScTE {
-    IIScDomainType	 key;		/* the key for this entry */
-    IIScRangeType	 value;		/* what we want */
+    IIScDomainType   key;   /* the key for this entry */
+    IIScRangeType  value;   /* what we want */
 } IIScTE, *IIScTEPtr;
 
 typedef struct IIScRecord {
@@ -74,12 +74,12 @@ void IIScPrint(/* IISc sc */);
     int IIScxx_index; \
     for (IIScxx_index = 0; IIScxx_index < (IISc)->size; IIScxx_index++) { \
       if ((IISc)->table[IIScxx_index].key != NULL) { \
-	*(IIScDomainType*)(&(IISckey)) = IISc->table[IIScxx_index].key; \
-	*(IIScRangeType *)(&(IIScvalue)) = IISc->table[IIScxx_index].value; \
-	{ 
+        *(IIScDomainType*)(&(IISckey)) = IISc->table[IIScxx_index].key; \
+        *(IIScRangeType *)(&(IIScvalue)) = IISc->table[IIScxx_index].value; \
+        {
 
 #define IIScNext() \
-	} \
+        } \
       } \
     } \
   }

@@ -28,7 +28,7 @@
  */
 
 typedef struct ISetTE {
-    ISetDomainType	 key;		/* the key for this entry */
+    ISetDomainType   key;   /* the key for this entry */
 } ISetTE, *ISetTEPtr;
 
 typedef struct ISetRecord {
@@ -71,11 +71,11 @@ void ISetPrint(/* ISet sc */);
     int ISetxx_index; \
     for (ISetxx_index = 0; ISetxx_index < (ISet)->size; ISetxx_index++) { \
       if ((ISet)->table[ISetxx_index].key != 0) { \
-	*(ISetDomainType*)(&(ISetkey)) = ISet->table[ISetxx_index].key; \
-	{ 
+        *(ISetDomainType*)(&(ISetkey)) = ISet->table[ISetxx_index].key; \
+        {
 
 #define ISetNext() \
-	} \
+        } \
       } \
     } \
   }
