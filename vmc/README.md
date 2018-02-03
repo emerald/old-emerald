@@ -112,6 +112,24 @@ int ::= id code
 | [three_ints.desc](tests/data/three_ints.desc) | [three_ints.patch](tests/data/three_ints.patch) |
 | [three_ints_no_linebreaks.desc](tests/data/three_ints_no_linebreaks.desc) | [three_ints_no_linebreaks.patch](tests/data/three_ints_no_linebreaks.patch) |
 
+### Instructions
+
+An instruction has a _name_, _parameter_, and _code_.
+
+The `instr` non-terminal is defined as follows:
+
+```
+instr ::= id string code
+```
+
+[Test-files](tests) that support the claims above:
+
+| Description | Patch |
+|-------------|-------|
+| [one_instr.desc](tests/data/one_instr.desc) | [one_instr.patch](tests/data/one_instr.patch) |
+| [three_instrs.desc](tests/data/three_instrs.desc) | [three_instrs.patch](tests/data/three_instrs.patch) |
+| [three_instrs_no_linebreaks.desc](tests/data/three_instrs_no_linebreaks.desc) | [three_instrs_no_linebreaks.patch](tests/data/three_instrs_no_linebreaks.patch) |
+
 ## Building
 
 There exists a Docker-image where this builds.
