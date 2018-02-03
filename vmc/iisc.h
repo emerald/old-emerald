@@ -61,7 +61,7 @@ int IIScLookup(IISc sc, IIScDomainType key);
 /* DEBUGGING: Print the collection IISc */
 void IIScPrint(IISc sc);
 
-/* Iterate over the elements of the collection IISc.  
+/* Iterate over the elements of the collection IISc.
  * At each iteration, IISckey and IIScvalue are set to the next
  * <key, value> pair in the collection.  
  * Usage:

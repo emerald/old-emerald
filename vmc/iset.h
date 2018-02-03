@@ -59,7 +59,7 @@ int ISetMember(ISet sc, ISetDomainType key);
 /* DEBUGGING: Print the collection ISet */
 void ISetPrint(ISet sc);
 
-/* Iterate over the elements of the collection ISet.  
+/* Iterate over the elements of the collection ISet.
  * At each iteration, ISetkey is set to the next key in the set.  
  * Usage:
  *	ISetForEach(someSc, key) {

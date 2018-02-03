@@ -64,7 +64,7 @@ int SIScLookup(SISc sc, DomainType key);
 /* DEBUGGING: Print the collection SISc */
 void SIScPrint(SISc sc);
 
-/* Iterate over the elements of the collection SISc.  
+/* Iterate over the elements of the collection SISc.
  * At each iteration, SISckey and SIScvalue are set to the next
  * <key, value> pair in the collection.  
  * Usage:
