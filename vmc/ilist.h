@@ -43,16 +43,16 @@ IList IListCreate();
 void IListDestroy();
 
 /* Insert the key into the set IList */
-void IListInsert(/* IList sq, IListDomainType key */);
+void IListInsert(IList sq, IListDomainType key);
 
 /* Delete the key key from the set IList */
-void IListDelete(/* IList sq, IListDomainType key */);
+void IListDelete(IList sq, IListDomainType key);
 
 /* Return the key if it is in the set otherwise NULL */
-IListDomainType IListMember(/* IList sc, IListDomainType key */);
+IListDomainType IListMember(IList sc, IListDomainType key);
 
 /* DEBUGGING: Print the collection IList */
-void IListPrint(/* IList sc */);
+void IListPrint(IList sc);
 
 /* Iterate over the elements of the collection IList.  
  * At each iteration, IListkey is set to the next key in the set.  

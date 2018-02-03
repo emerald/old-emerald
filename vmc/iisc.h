@@ -49,17 +49,17 @@ IISc IIScCreate();
 void IIScDestroy();
 
 /* Insert the pair <key, value> into collection IISc */
-void IIScInsert(/* IISc sc, IIScDomainType key, IIScRangeType value */);
+void IIScInsert(IISc sc, IIScDomainType key, IIScRangeType value);
 
 /* Delete the pair with key key from the collection IISc */
-void IIScDelete(/* IISc sc, IIScDomainType key */);
+void IIScDelete(IISc sc, IIScDomainType key);
 
 /* Return the value associated with key in collection 
  * IISc, or 0 if no such pair exists */
-int IIScLookup(/* IISc sc, IIScDomainType key */);
+int IIScLookup(IISc sc, IIScDomainType key);
 
 /* DEBUGGING: Print the collection IISc */
-void IIScPrint(/* IISc sc */);
+void IIScPrint(IISc sc);
 
 /* Iterate over the elements of the collection IISc.  
  * At each iteration, IISckey and IIScvalue are set to the next

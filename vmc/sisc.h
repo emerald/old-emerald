@@ -52,17 +52,17 @@ SISc SIScCreate();
 void SIScDestroy();
 
 /* Insert the pair <key, value> into collection SISc */
-void SIScInsert(/* SISc sc, DomainType key, RangeType value */);
+void SIScInsert(SISc sc, DomainType key, RangeType value);
 
 /* Delete the pair with key key from the collection SISc */
-void SIScDelete(/* SISc sc, DomainType key */);
+void SIScDelete(SISc sc, DomainType key);
 
 /* Return the value associated with key in collection 
  * SISc, or 0 if no such pair exists */
-int SIScLookup(/* SISc sc, DomainType key */);
+int SIScLookup(SISc sc, DomainType key);
 
 /* DEBUGGING: Print the collection SISc */
-void SIScPrint(/* SISc sc */);
+void SIScPrint(SISc sc);
 
 /* Iterate over the elements of the collection SISc.  
  * At each iteration, SISckey and SIScvalue are set to the next

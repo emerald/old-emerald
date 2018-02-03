@@ -43,13 +43,13 @@ SList SListCreate();
 void SListDestroy();
 
 /* Insert the key into the set SList */
-void SListInsert(/* SList sq, SListDomainType key */);
+void SListInsert(SList sq, SListDomainType key);
 
 /* Return the key if it is in the set otherwise NULL */
-SListDomainType SListMember(/* SList sc, SListDomainType key */);
+SListDomainType SListMember(SList sc, SListDomainType key);
 
 /* DEBUGGING: Print the collection SList */
-void SListPrint(/* SList sc */);
+void SListPrint(SList sc);
 
 /* Iterate over the elements of the collection SList.
  * At each iteration, SListkey is set to the next key in the list.
