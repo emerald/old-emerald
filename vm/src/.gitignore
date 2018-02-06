@@ -3,6 +3,10 @@ vm.c
 vm.h
 vm_i.h
 
+# Ignore files generated using gencctab
+cctab.c
+cctab.h
+
 # Created by https://www.gitignore.io/api/c
 
 ### C ###
