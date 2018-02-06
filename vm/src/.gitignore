@@ -1,3 +1,8 @@
+# Ignore files generated using vmc
+vm.c
+vm.h
+vm_i.h
+
 # Created by https://www.gitignore.io/api/c
 
 ### C ###
