@@ -119,9 +119,9 @@ REALSRC = \
 
 CCALLSOBJ = cctab.o $(CCALLS_OBJ)
 
-CCALLSSRC = cctab.c $(CCALLS_SRC) 
+CCALLSSRC = cctab.c $(CCALLS_SRC)
 
-SRC =	$(REALSRC) $(CCALLSSRC) vm.d
+SRC = $(REALSRC) $(CCALLSSRC) vm.d
 
 OBJ = \
 	vm.o \
