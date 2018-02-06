@@ -148,7 +148,7 @@ $ docker run \
 
 Where `${image}` is the following:
 
-* `portoleks/emerald-vmc-builder:v0.1`
+* `portoleks/emerald-vmc-builder:latest`
 
 (More images coming soon.)
 
