@@ -1,0 +1,13 @@
+# make export generates 1 binary and creates these header files:
+xsed
+emstream.h
+string.h
+rand.h
+misk.h
+regexp.h
+xforms.h
+xliba.h
+xta.h
+xma.h
+bani.h
+myristream.h
