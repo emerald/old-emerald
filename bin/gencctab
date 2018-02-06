@@ -1,4 +1,4 @@
-#!/bin/csh -f
+#!/usr/bin/env tcsh
 #
 # Generate the tables and lists that drive the new ccalls mechanism
 
