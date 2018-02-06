@@ -74,7 +74,7 @@ extern int srandom(unsigned int);
 #endif
 extern int interpret(struct State *);
 
-/* 
+/*
  * Compute the offset of a field within a structure.
  */
 #define OffsetOf(within, addr) ((char *)(addr) - (char *)(within))
@@ -128,7 +128,7 @@ extern int interpret(struct State *);
       static int branches = 10;
 #else
 #   define CHECKSWITCH(a, b)
-#   define TIMESLICELOCALS 
+#   define TIMESLICELOCALS
 #endif /* TIMESLICE */
 
 #define BRANCHCHECKSWITCH CHECKSWITCH(branches, CONTEXTSWITCHBRANCHS)
@@ -181,11 +181,11 @@ extern int interpret(struct State *);
 #   define PROFILERET() profileRet()
 #else
 #   define TOPOFTHEINTERPRETLOOPA
-#   define PROFILEBUMP(pc,ove,a) 
+#   define PROFILEBUMP(pc,ove,a)
 #   define PROFILERET()
 #endif
 
-#define TOPOFTHEINTERPRETLOOPB 
+#define TOPOFTHEINTERPRETLOOPB
 #if defined(SINGLESTEP)
 #   define TOPOFTHEINTERPRETLOOPC \
         if (instructionsToExecute > 0 && addtototalbytecodes >= instructionsToExecute) { DEBUG(gotsigint ? "Interrupt" : "Single step"); }
@@ -224,7 +224,7 @@ extern int interpret(struct State *);
 @        return value n        (variable)        8
 @        argument     1        (variable)        8
 @        ...
-@        argument     n        (variable)        8     <-- fp - ARGOFF 
+@        argument     n        (variable)        8     <-- fp - ARGOFF
 @       saved cp                        4
 @        saved op                        4
 @        saved fp                        4
@@ -631,9 +631,9 @@ restofcalloid: ;
       POP(ConcreteType, a);
       POP(Object, o);
 
-      if (ISNIL(a)) { 
-        (opindex) = 0; 
-      } else { 
+      if (ISNIL(a)) {
+        (opindex) = 0;
+      } else {
         OpVector ov = (a)->d.opVector;
         OpVectorElement ope;
         int i;
@@ -641,7 +641,7 @@ restofcalloid: ;
         for (i = 3; i < ov->d.items; i++) {
           ope = ov->d.data[i];
           if (ope->d.id == (opoid)) {
-            (opindex) = i; 
+            (opindex) = i;
             break;
           }
         }
@@ -724,7 +724,7 @@ restofcalloid: ;
                   }
 #endif
                 }
-    QUIT "u8"        { 
+    QUIT "u8"        {
                   u8 nargs;
                   Object xop;
                   ConcreteType xcp;
@@ -752,9 +752,9 @@ restofcalloid: ;
                           ("QUIT forking process in object %#x (%.*s)",
                            xop, xcp->d.name->d.items, xcp->d.name->d.data ) );
                     run(xop, OVE_PROCESS, 1);
-                  } 
+                  }
                 }
-    GETLOCSRV "" { 
+    GETLOCSRV "" {
                     Object o;
                   o = locsrv;
                   PUSH(Object, o);
@@ -821,10 +821,10 @@ restofcalloid: ;
                   SETTOP(Vector, o);
                 }
 @ Terminate a process
-    QUITP ""    { 
+    QUITP ""    {
       extern State *processDone(State *, int);
       if (TRACING(call, 1)) doret(fp, sb, -2, cp);
-      SYNCH(); 
+      SYNCH();
       TRACE( process, 2,
             ( "End of process in object %#x (%.*s)", state->op,
              state->cp->d.name->d.items, state->cp->d.name->d.data ) );
@@ -832,7 +832,7 @@ restofcalloid: ;
         makeReady(state);
       }
       return 0;
-    }                   
+    }
 @ branching instructions
     BR "s16"        { s16 o; IFETCH2(o); pc += o; if (o < 0) BRANCHCHECKSWITCH;}
     BRT "s16"        { s16 o; u32 t; IFETCH2(o); POP(u32, t);
@@ -840,7 +840,7 @@ restofcalloid: ;
     BRF "s16"        { s16 o; u32 f; IFETCH2(o); POP(u32, f);
                   if (!f) pc += o; }
     CASE "case32"        { s16 low, high, off; s32 v;
-                      IFETCH2(low); 
+                      IFETCH2(low);
                   IFETCH2(high);
                   POP(s32, v);
                   v -= low; high -= low;
@@ -853,7 +853,7 @@ restofcalloid: ;
     TRAPF ""        { u32 t; POP(u32, t); if (!t) DEBUG("Assertion failure"); }
     RETFAIL "u8"{ DEBUG("Return and fail"); }
     LDSELF ""        { PUSH(Object, op); }
-    LDSELFV ""        { 
+    LDSELFV ""        {
                   PUSH(Object, op);
 #ifdef USEABCONS
                   if (ISNIL(cp->d.type)) {
@@ -862,7 +862,7 @@ restofcalloid: ;
                     PUSH(AbCon, findAbCon(OIDOf(cp->d.type), OIDOf(cp)));
                   }
 #else
-                  PUSH(ConcreteType, cp); 
+                  PUSH(ConcreteType, cp);
 #endif
                 }
     PUSHNIL ""  { PUSH(u32, 0x80000000); }
@@ -877,7 +877,7 @@ restofcalloid: ;
                   IFETCH1(sysindex);
                   IFETCH1(ac);
                   if (sysindex < 0 || sysindex >= JSYS_OPS) {
-                    sprintf(buf, "Illegal sys index %d (ac = %d)", 
+                    sprintf(buf, "Illegal sys index %d (ac = %d)",
                             sysindex, ac);
                     DEBUG(buf);
                     continue;
@@ -1018,7 +1018,7 @@ nextInstruction: ;
                   UNSYNCH();
                 }
               }
- 
+
     BREAKPT "" {
                  DEBUG("Breakpoint");
                    }
@@ -1118,7 +1118,7 @@ nextInstruction: ;
                   /* This currently leaves the stack unaligned (4 not 8) */
                   /* PUSH(ConcreteType, p); */
                   if (!ISNIL(ove)) {
-                    if (ove->d.nargs > 0 && 
+                    if (ove->d.nargs > 0 &&
                         (ISNIL(v) || ove->d.nargs < v->d.items)) {
                       DEBUG("Not enough arguments to XCREATE");
                       continue;
@@ -1314,7 +1314,7 @@ nextInstruction: ;
                 }
     LAND ""     { BINARY(s32,&) }
     LOR  ""     { BINARY(s32,|) }
-    LSETBIT ""  { 
+    LSETBIT ""  {
                   u32 a, b, v;
                   POP(u32, v);
                   POP(u32, b);
@@ -1360,7 +1360,7 @@ nextInstruction: ;
                   PUSH(u32, conforms(a, b));
                 }
 
-    DSTR ""     { 
+    DSTR ""     {
                   u32 secs;
                   String s, timeToDate(int);
                   POP(u32, secs);
@@ -1450,7 +1450,7 @@ nextInstruction: ;
                    }
                  }
 @GETOID returns three integers: the ipaddress, the incarnation (port and epoch), and the seq
-@ of the OID of the argument object.  If the 
+@ of the OID of the argument object.  If the
 @ argument object doesn't yet have an OID it is assigned one.
    GETOID     "" {
                     OID theOID;
@@ -1539,15 +1539,15 @@ nextInstruction: ;
                      TRACE(process, 3, ("No waiters - synchronizing process exit"));
                    }
                  }
-    LDLITB "u8"        { 
+    LDLITB "u8"        {
                         u8 t;
                   IFETCH1(t);
                   PUSH(Object, cp->d.literals->d.data[t].ptr);
                 }
 
-    SWAPV  ""    { u32 ad, at, bd, bt; 
-                   POP(u32, at); 
-                   POP(u32, ad); 
+    SWAPV  ""    { u32 ad, at, bd, bt;
+                   POP(u32, at);
+                   POP(u32, ad);
                    POP(u32, bt);
                    POP(u32, bd);
                    PUSH(u32, ad);
@@ -1560,7 +1560,7 @@ nextInstruction: ;
                     POP(ConcreteType, c);
                     /* fix the literals in c */
                     TRACE(trans, 1, ("Fixing literals in %#x (OID %#x) a %.*s",
-                                     c, OIDSeqOf((Object)c), 
+                                     c, OIDSeqOf((Object)c),
                                      c->d.name->d.items, c->d.name->d.data));
                     fixCTLiterals(c);
                   }
@@ -1581,7 +1581,7 @@ nextInstruction: ;
                      gcollect_old();
                      UNSYNCH();
     }
-  
+
     CODEOF "" {
 #ifdef USEABCONS
       AbCon abcon;
@@ -1661,7 +1661,7 @@ nextInstruction: ;
         UNSYNCH();
         INVOKECHECKSWITCH;
       }
-    }                
+    }
 
     CONDSIGNALANDEXIT "u8" {
                   Object o;
@@ -1702,7 +1702,7 @@ nextInstruction: ;
                     TRACE(process, 3, ("Condition signal and exit, no waiters"));
                   }
                 }
-    LSETBITS ""  { 
+    LSETBITS ""  {
                   u32 a, o, l, v, m = -1L;
                   POP(u32, v);
                   POP(u32, l);
@@ -1833,7 +1833,7 @@ nextInstruction: ;
       if (res < 0) DEBUG("Invalid time");
       PUSH(u32, res);
     }
-      
+
     CREATEGAGGLE "" {
       Object manager;
       ConcreteType xxx;
@@ -1854,12 +1854,12 @@ nextInstruction: ;
     ADDTOGAGGLE "" {
       Object manager, newobject;
       ConcreteType xxx, oct;
-        
+
       POP(ConcreteType, oct);
       POP(Object, newobject);
       POP(ConcreteType, xxx);
       POP(Object, manager);
-      
+
 #ifdef DISTRIBUTED
       {
         OID moid, ooid;
@@ -1876,7 +1876,7 @@ nextInstruction: ;
       }
 #endif
     }
-    
+
     GETGAGGLEMEMBER "" {
       Object manager;
       ConcreteType xxx;
