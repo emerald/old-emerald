@@ -1,6 +1,6 @@
 #!/usr/bin/env tcsh
 #
-# Generate the tables and lists that drive the new ccalls mechanism
+# Generate the tables and lists that drive the ccalls mechanism
 
 set files = ($*)
 set ccdef = $EMERALDROOT/lib/ccdef
