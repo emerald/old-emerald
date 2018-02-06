@@ -5,6 +5,7 @@
 set files = ($*)
 set ccdef = $EMERALDROOT/lib/ccdef
 @ moduleindex = 0
+mkdir -p $EMERALDROOT/lib
 cp /dev/null $ccdef
 
 foreach file ($files)
