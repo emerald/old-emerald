@@ -10,12 +10,12 @@ functions that are callable from within Emerald code. Small bits of C
 live in the misk directory (as opposed to having their own directory.)
 
 Usage
-====
+=====
 
-After adding or deleting a directory of C code, or changing any entry in any
-of those directories: 
+After adding or deleting a directory of C code, or changing any entry
+in any of those directories:
 
-   emmake export
+    $ emmake export
 
 Adding CCALLS
 ============
