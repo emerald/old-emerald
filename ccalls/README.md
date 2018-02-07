@@ -17,66 +17,67 @@ in any of those directories:
 
     $ emmake export
 
-Adding CCALLS
-============
+Adding CCALLs
+=============
 
-1.  Create a subdirectory of $EMERALDROOT/ccalls.  Placing in it all of the
-    C source necessary for your extension.  The C source must consist of
-    precisely one file, named the same as the module, and that name must not
-    conflict with any source file name in $EMERALDROOT/vm/src (otherwise
-    liker havoc results).
+1.  Create a subdirectory of `$EMERALDROOT/ccalls`. Placing in it all
+    of the C source necessary for your extension.  The C source must
+    consist of precisely one file, named the same as the module, and
+    that name must not conflict with any source file name in
+    `$EMERALDROOT/vm/src` (otherwise liker havoc results).
 
 2.  Create a Makefile in that directory.
-    
-    The Makefile that lives here manufactures ../lib/ccdef, a list of all
-    defined ccalls module indicies and function indicies by invoking 
 
-       emmake export
-    
-    on each subdirectory in the list SUBDIRS, to do most of the work.
-    Hence, each  subdirectory's Makefile is responsible for providing an
-    export target, which needs to produce a file ../<directory>.h describing
-    the exported functions.
-    
+    The Makefile that lives here manufactures `../lib/ccdef`, a list
+    of all defined ccalls module indicies and function indicies by
+    invoking
+
+        emmake export
+
+    on each subdirectory in the list `SUBDIRS`, to do most of the
+    work. Hence, each  subdirectory's Makefile is responsible for
+    providing an export target, which needs to produce a file
+    `../<directory>.h` describing the exported functions.
+
     A typical export rule for a subdirectory Makefile:
-    
-      export : ../<directory>.h
-    
+
+        export : ../<directory>.h
+
     The Makefile that lives here may also invoke
-    
-      emmake clean
-    
-    in each subdirectory, and hence, each subdirectory Makefile must 
-    provide a clean target as well. 
-    
-    Note the use of emmake.  emmake is a mechanism to allow relatively
-    clean support for multiple architectures, and basically invokes make
-    after including (in an architecture independent way) a number of
-    common macro definitions, whose values vary widely from architecture
-    to architecture.  The subdirectory Makefiles should all make use
-    of any applicable macros, found in
-    
-      $EMERALDROOT/lib/$EMERALDARCH/macroMakefile
-    
+
+        emmake clean
+
+    in each subdirectory, and hence, each subdirectory Makefile must
+    provide a clean target as well.
+
+    Note the use of `emmake`. `emmake` is a mechanism to allow
+    relatively clean support for multiple architectures, and basically
+    invokes make after including (in an architecture independent way) a
+    number of common macro definitions, whose values vary widely from
+    architecture to architecture.  The subdirectory Makefiles should all
+    make use of any applicable macros, found in
+
+        $EMERALDROOT/lib/$EMERALDARCH/macroMakefile
+
     rather than attempt to define them themselves.
 
-3.  Add the name of the subdirectory to the END of the list of SUBDIRS and
-    add the name of the .h file to the END of the list of DOTHS in
-    $EMERALDROOT/ccalls/Makefile
+3.  Add the name of the subdirectory to the END of the list of
+    `SUBDIRS` and add the name of the .h file to the END of the list of
+    `DOTHS` in `$EMERALDROOT/ccalls/Makefile`
 
-4.  Edit $EMERALDROOT/lib/ccallsMf to include:
+4.  Edit `$EMERALDROOT/lib/ccallsMf` to include:
 
-    1.  Your new source file in CCALLS_SRC
-    2.  Rules for making the object file from the source file.  Yes, it is
-	imaginable that these could be figured out, but they need to include
-	-I the ccalls source directory, and I don't know how to get make to
-	do that.
+    1.  Your new source file in `CCALLS_SRC`
+    2.  Rules for making the object file from the source file. Yes, it is
+        imaginable that these could be figured out, but they need to include
+        `-I` the ccalls source directory, and I don't know how to get make
+        to do that.
     3.  Do NOT (repeat NOT NOT NOT) add your new object files to the
-	CCALLS_OBJ, unless every interpreter must use them.  Each
-	configuration of the interpreter chooses which ccalls to include by
-	having its own CCALLS_OBJ.  If it doesn't define one of its own it
-	gets the default from $EMERALDROOT/lib/ccallsMf.  That list should
-	contain just the basics:  emstream, string, misk.
+        `CCALLS_OBJ`, unless every interpreter must use them. Each
+        configuration of the interpreter chooses which ccalls to include
+        by having its own `CCALLS_OBJ`. If it doesn't define one of its
+        own itgets the default from `$EMERALDROOT/lib/ccallsMf`. That list
+        should contain just the basics: `emstream`, `string`, `misk`.
 
 The Description File
 -------------------
