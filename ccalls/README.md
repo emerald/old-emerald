@@ -1,12 +1,13 @@
-
 Emerald CCALL Support Mechanism
-==============================
+===============================
 
 (You are in a maze of twisty little subdirectories, all alike.)
-   > cd ccalls
-You are in a room full of directories containing source code for C 
-functions that are callable from within Emerald code.  Small bits of
-C live in the misk directory (as opposed to having their own directory.)
+
+    > cd ccalls
+
+You are in a room full of directories containing source code for C
+functions that are callable from within Emerald code. Small bits of C
+live in the misk directory (as opposed to having their own directory.)
 
 Usage
 ====
