@@ -35,15 +35,15 @@ $ PATH="$(pwd)/.gitc/bin:$PATH" gitc-shell.sh
 Make sure that the repository is _clean_: No non-staged or untracked
 files.
 
-Run
+Execute the following to get into a busybox shell, which will also
+record your commands, and commit them to Git when done:
 
 ```
 $ PATH="$(pwd)/.gitc/bin:$PATH" gitc-record.sh
 ```
 
-to get a busybox shell which will also record your commands, and
-commit them to get when done. You will get to modify the commit
-message before commit.
+You will get to modify the commit message before `gitc-record.sh`
+commits on your behalf.
 
 **NB!** The shell you get is a little rough, and things go bad if your
 commands fail. Press Ctrl+D when done.
