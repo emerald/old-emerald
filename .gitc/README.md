@@ -1,12 +1,16 @@
-# gitc - Git Containers - v0.1
+# gitc - Git Containers - v0.2
 
-Git Containers intend to help you journal the process by which you
+Git Containers intends to help you journal the process by which you
 generate a change in your Git repository, supplementing your
 line-by-line diffs with concise, reproducible edit commands.
 
 To achieve this, gitc will require you to commit the binaries used to
 generate the changes, and help you log the arguments you passed to
 those binaries to generate the changes.
+
+"But wait, committing binaries to Git is a cardinal sin?" - No, it is
+not; it merely renders the built-in diff command against those files
+useless. However, in gitc, binaries are never meant to change anyway.
 
 ## Current Implementation
 
