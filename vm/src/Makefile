@@ -251,7 +251,7 @@ vm.c:	vm.d
 	  mv -f vm_i.h vm_i.h.orig ; \
 	  rm -f vm.c vm.h vm_i.h ; \
 	fi
-	vmc vm.d
+	../../vmc/vmc vm.d
 	if [ -h vm.c ] ; then \
 	  if [ -r ../src/vm.h.orig ] && cmp -s ../src/vm.h ../src/vm.h.orig ; then mv ../src/vm.h.orig ../src/vm.h ; fi ; \
 	  if [ -r ../src/vm_i.h.orig ] && cmp -s ../src/vm_i.h ../src/vm_i.h.orig ; then mv ../src/vm_i.h.orig ../src/vm_i.h ; fi ; \
