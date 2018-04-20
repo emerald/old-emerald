@@ -1,13 +1,11 @@
-#
-# i386mach specific definitions
-# of commonly-used macros
-#
+# i686-specific definitions of commonly-used macros
 
 # architecture definition
 ARCH = `arch`
 
-# (ANSI) C compiler
-CC = cc
+CC = gcc
+
+CCALLS_OBJ=emstream.o string.o misk.o rand.o
 
 # definitions to enable common extensions in headers and libraries
 XCPFLAGS =
@@ -18,7 +16,7 @@ XLIB =
 CPP = cc -E
 
 # dependency generator
-DEPEND = cc -MM
+DEPEND = gcc -MM
 
 # 
 CFLAGSOPT = -g -O
