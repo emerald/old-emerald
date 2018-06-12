@@ -138,9 +138,9 @@ by one of the following characters:
 In order to make the modified header file remain palatable to the C 
 compiler, add the following lines before the pseudo-prototypes.  
 
-   #if !defined(CCALL)
-   #define CCALL(func, subcode, argstring) 
-   #endif /* CCALL */
+    #if !defined(CCALL)
+    #define CCALL(func, subcode, argstring)
+    #endif /* CCALL */
 
 For a complete example, check the string directory Makefile and string.[ch]
 files.
