@@ -85,11 +85,12 @@ The Description File
 We need the following pieces of information for each function to be
 able to call it from Emerald:
 
-   the C function name (to know which C function to call)
-   a description of the arguments and return type of the C function (to
-       know how to convert arguments from Emerald to C types and back) 
-   a CCALL subcode name (the name by which the C function's subcode 
-       will be referred to in Emerald source code) 
+  1. The C function name (to know which C function to call).
+  2. A description of the arguments and return type of the C function
+     (to know how to convert arguments from Emerald to C types and
+     back).
+  3. A CCALL subcode name (the name by which the C function's subcode
+     will be referred to in Emerald source code).
 
 As well, the C compiler requires the C function declarations to
 generate tables of the C functions.
