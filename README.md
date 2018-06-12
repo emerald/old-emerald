@@ -15,6 +15,8 @@ codebase. This choice is in accord with the [Google Shell Style
 Guide](https://google.github.io/styleguide/shell.xml), and `bash` does
 currently seem like the most frequently used shell scripting language.
 
+See also the project's [Shell Style Guide](style/shell.md).
+
 ## Layout
 
   * [vm](vm) — The Emerald VM
