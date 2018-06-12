@@ -8,6 +8,13 @@
 
   * 32-bit version of `libl.so` (usually part of the development package for `flex`).
 
+### `bash`
+
+`bash` is used as the shell scripting language throughout this
+codebase. This choice is in accord with the [Google Shell Style
+Guide](https://google.github.io/styleguide/shell.xml), and `bash` does
+currently seem like the most frequently used shell scripting language.
+
 ## Layout
 
   * [vm](vm) — The Emerald VM
