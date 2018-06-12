@@ -86,7 +86,7 @@ We need the following pieces of information for each function to be
 able to call it from Emerald:
 
    the C function name (to know which C function to call)
-   a description of the arguments and return type of the C function (to 
+   a description of the arguments and return type of the C function (to
        know how to convert arguments from Emerald to C types and back) 
    a CCALL subcode name (the name by which the C function's subcode 
        will be referred to in Emerald source code) 
@@ -94,40 +94,40 @@ able to call it from Emerald:
 As well, the C compiler requires the C function declarations to
 generate tables of the C functions.
 
-Typically, then, the exported description file will be a slightly 
-modified version of the package's usual .h file, and will simply be 
-copied to ..  The modifications consist of adding 'pseudo-prototypes' 
-for the exported functions to the file, and adding some 'glue' to 
-ensure that the modified header file is still palatable to the C 
-compiler.  The same file can (and should!) then be used by the C 
-compiler as a header for the package, and by numerous tools to produce 
-various files for use by Emerald. 
+Typically, then, the exported description file will be a slightly
+modified version of the package's usual .h file, and will simply be
+copied to ..  The modifications consist of adding 'pseudo-prototypes'
+for the exported functions to the file, and adding some 'glue' to
+ensure that the modified header file is still palatable to the C
+compiler.  The same file can (and should!) then be used by the C
+compiler as a header for the package, and by numerous tools to produce
+various files for use by Emerald.
 
 To export the header file:
 
   ../<directory>.h : <directory>.h
       cp <directory>.h $@
 
-Because the .h file is copied around, it should not #include any files 
-using relative paths.  (Ideally, it should not #include any files other 
-than standard ones, delimited by <>s.) 
+Because the .h file is copied around, it should not #include any files
+using relative paths.  (Ideally, it should not #include any files other
+than standard ones, delimited by <>s.)
 
-The pseudo-prototypes provide the information we need to know, listed 
-above, and are simply invocations of a macro CCALL. 
+The pseudo-prototypes provide the information we need to know, listed
+above, and are simply invocations of a macro CCALL.
 
    /* a function prototype */
    extern void funcname(int, void*, char*);
    /* a pseudo-prototype for it */
    CCALL(funcname, FUNCNAME, "vips")
 
-The arguments are the real, C, name of a function to be exported, the 
-Emerald CCALL subcode name by which you wish the C function to be known 
-(typically, the C name uppercased, although you might wish to name it 
-differently if this introduces a name conflict with any existing 
-Emerald subcode name) and an argstring, which reflects the types of the 
-return value (first character) and the arguments (remaining characters) 
+The arguments are the real, C, name of a function to be exported, the
+Emerald CCALL subcode name by which you wish the C function to be known
+(typically, the C name uppercased, although you might wish to name it
+differently if this introduces a name conflict with any existing
+Emerald subcode name) and an argstring, which reflects the types of the
+return value (first character) and the arguments (remaining characters)
 of the function in question.  Each return/argument type is represented
-by one of the following characters: 
+by one of the following characters:
 
     v   void       (only valid as a return type)
     b   boolean    (an integer, but knowing the intended use is helpful)
@@ -135,8 +135,8 @@ by one of the following characters:
     p   pointer    (left uninterpreted, consider it a magic cookie)
     s   string     (i.e. char*)
 
-In order to make the modified header file remain palatable to the C 
-compiler, add the following lines before the pseudo-prototypes.  
+In order to make the modified header file remain palatable to the C
+compiler, add the following lines before the pseudo-prototypes.
 
     #if !defined(CCALL)
     #define CCALL(func, subcode, argstring)
@@ -161,6 +161,5 @@ are inserted into the lookup tables for non selected modules.
 To understand this fully, watch the messages produced when constructing
 cctab.[ch], and then take a look at the produced cctab.h.
 
-Some C call support code is always part of the interpreter.  It's 
+Some C call support code is always part of the interpreter.  It's
 contained in the routine doNCCall() in misc.c in the interpreter directory.
-
