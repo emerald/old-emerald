@@ -5,8 +5,6 @@ INCS := xma.h
 
 all:
 
-# begin --- Emerald interpreter targets ---
-
 export: ../xma.h
 
 ../xma.h: $(INCS)
@@ -17,5 +15,3 @@ xsed: ../xsed.c xma.va
 	../xsed < xma.va > xma.c
 
 clean:
-
-# end --- Emerald interpreter targets ---

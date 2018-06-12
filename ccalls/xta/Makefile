@@ -5,8 +5,6 @@ INCS := xta.h
 
 all:
 
-# begin --- Emerald interpreter targets ---
-
 export: xsed ../xta.h
 
 ../xta.h: $(INCS)
@@ -17,5 +15,3 @@ xsed: ../xsed.c xta.va
 	../xsed < xta.va > xta.c
 
 clean:
-
-# end --- Emerald interpreter targets ---
