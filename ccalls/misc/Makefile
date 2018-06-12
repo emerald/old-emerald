@@ -1,9 +1,7 @@
-.PHONY: default all export clean
+.PHONY: all export clean
 
 SRCS := hello.c
 INCS := hello.h exit.h
-
-default: all
 
 all:
 

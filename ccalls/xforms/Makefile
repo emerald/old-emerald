@@ -1,9 +1,7 @@
-.PHONY: default all export clean
+.PHONY: all export clean
 
 SRCS :=
 INCS := xforms.h
-
-default: all
 
 all:
 
