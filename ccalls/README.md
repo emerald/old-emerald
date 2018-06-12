@@ -106,8 +106,8 @@ various files for use by Emerald.
 
 To export the header file:
 
-  ../<directory>.h : <directory>.h
-      cp <directory>.h $@
+    ../<directory>.h : <directory>.h
+        cp <directory>.h $@
 
 Because the .h file is copied around, it should not #include any files
 using relative paths.  (Ideally, it should not #include any files other
