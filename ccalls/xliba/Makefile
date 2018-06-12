@@ -2,8 +2,8 @@
 # X library CCALL Makefile
 #
 
-SRCS = 
-INCS = xliba.h
+SRCS :=
+INCS := xliba.h
 
 default: all
 

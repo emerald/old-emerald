@@ -2,8 +2,8 @@
 # X library CCALL Makefile
 #
 
-SRCS = 
-INCS = xta.h
+SRCS :=
+INCS := xta.h
 
 default: all
 

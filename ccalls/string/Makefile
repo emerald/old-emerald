@@ -1,7 +1,7 @@
 # emerald/ccalls/string/Makefile
 
-SRCS = string.c
-INCS = string.h
+SRCS := string.c
+INCS := string.h
 
 all:
 

@@ -2,8 +2,8 @@
 # Miscellaneous CCALL makefile
 #
 
-SRCS = 
-INCS = misk.h
+SRCS :=
+INCS := misk.h
 
 default: all
 

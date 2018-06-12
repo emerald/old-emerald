@@ -2,8 +2,8 @@
 # Random CCALL makefile
 #
 
-SRCS = 
-INCS = random.h
+SRCS :=
+INCS := random.h
 
 default: all
 

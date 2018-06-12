@@ -2,8 +2,8 @@
 # X library CCALL Makefile
 #
 
-SRCS = 
-INCS = xma.h
+SRCS :=
+INCS := xma.h
 
 default: all
 

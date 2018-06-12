@@ -2,8 +2,8 @@
 # Miscellaneous CCALL makefile
 #
 
-SRCS = hello.c
-INCS = hello.h exit.h
+SRCS := hello.c
+INCS := hello.h exit.h
 
 default: all
 

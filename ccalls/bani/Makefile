@@ -2,8 +2,8 @@
 # Miscellaneous CCALL makefile
 #
 
-SRCS = 
-INCS = bani.h
+SRCS :=
+INCS := bani.h
 
 default: all
 

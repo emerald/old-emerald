@@ -1,7 +1,7 @@
 # emerald/ccalls/myristream/Makefile
 
-SRCS = myristream.c
-INCS = myristream.h
+SRCS := myristream.c
+INCS := myristream.h
 
 all:
 

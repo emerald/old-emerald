@@ -2,8 +2,8 @@
 # X library CCALL Makefile
 #
 
-SRCS = 
-INCS = xforms.h
+SRCS :=
+INCS := xforms.h
 
 default: all
 

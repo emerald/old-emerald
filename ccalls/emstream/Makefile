@@ -1,7 +1,7 @@
 # emerald/ccalls/emstream/Makefile
 
-SRCS = emstream.c
-INCS = emstream.h
+SRCS := emstream.c
+INCS := emstream.h
 
 all:
 
