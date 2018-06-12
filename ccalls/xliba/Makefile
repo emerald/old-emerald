@@ -1,7 +1,3 @@
-#
-# X library CCALL Makefile
-#
-
 SRCS :=
 INCS := xliba.h
 
@@ -19,5 +15,3 @@ export: ../xliba.h
 clean:
 
 # end --- Emerald interpreter targets ---
-
-# EOF

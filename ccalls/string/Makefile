@@ -1,5 +1,3 @@
-# emerald/ccalls/string/Makefile
-
 SRCS := string.c
 INCS := string.h
 
@@ -11,5 +9,3 @@ export: ../string.h
 	cat $(INCS) >$@
 
 clean:
-
-# EOF

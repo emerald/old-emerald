@@ -77,5 +77,3 @@ dMakefile:	Makefile
 
 mv:	$(OBJ) regerror.o
 	mv $(OBJ) regerror.o $(DEST)
-
-# EOF

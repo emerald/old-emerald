@@ -1,7 +1,3 @@
-#
-# Miscellaneous CCALL makefile
-#
-
 SRCS := hello.c
 INCS := hello.h exit.h
 
@@ -19,5 +15,3 @@ export: ../misc.h
 clean:
 
 # end --- Emerald interpreter targets ---
-
-# EOF

@@ -1,7 +1,3 @@
-#
-# Random CCALL makefile
-#
-
 SRCS :=
 INCS := random.h
 
@@ -19,5 +15,3 @@ export: ../trandom.h
 clean:
 
 # end --- Emerald interpreter targets ---
-
-# EOF

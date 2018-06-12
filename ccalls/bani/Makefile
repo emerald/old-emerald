@@ -1,7 +1,3 @@
-#
-# Miscellaneous CCALL makefile
-#
-
 SRCS :=
 INCS := bani.h
 
@@ -19,5 +15,3 @@ export: ../bani.h
 clean:
 
 # end --- Emerald interpreter targets ---
-
-# EOF

@@ -1,5 +1,3 @@
-# emerald/ccalls/emstream/Makefile
-
 SRCS := emstream.c
 INCS := emstream.h
 
@@ -11,5 +9,3 @@ export: ../emstream.h
 	cat $(INCS) >$@
 
 clean:
-
-# EOF

@@ -1,5 +1,3 @@
-# emerald/ccalls/myristream/Makefile
-
 SRCS := myristream.c
 INCS := myristream.h
 
@@ -11,5 +9,3 @@ export: ../myristream.h
 	cat $(INCS) >$@
 
 clean:
-
-# EOF

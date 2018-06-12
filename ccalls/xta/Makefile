@@ -1,7 +1,3 @@
-#
-# X library CCALL Makefile
-#
-
 SRCS :=
 INCS := xta.h
 
@@ -23,5 +19,3 @@ xsed: ../xsed.c xta.va
 clean:
 
 # end --- Emerald interpreter targets ---
-
-# EOF

@@ -1,7 +1,3 @@
-#
-# X library CCALL Makefile
-#
-
 SRCS :=
 INCS := xforms.h
 
@@ -19,5 +15,3 @@ export: ../xforms.h
 clean:
 
 # end --- Emerald interpreter targets ---
-
-# EOF
