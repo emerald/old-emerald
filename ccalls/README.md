@@ -143,8 +143,8 @@ compiler, add the following lines before the pseudo-prototypes.
     #define CCALL(func, subcode, argstring)
     #endif /* CCALL */
 
-For a complete example, check the string directory Makefile and string.[ch]
-files.
+For a complete example, check the [string](string) directory
+`Makefile` and `string.[ch]` files.
 
 
 Internal Machinations
