@@ -1,3 +1,5 @@
+.PHONY: all export clean
+
 SRCS := emstream.c
 INCS := emstream.h
 

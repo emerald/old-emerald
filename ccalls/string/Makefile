@@ -1,3 +1,5 @@
+.PHONY: all export clean
+
 SRCS := string.c
 INCS := string.h
 

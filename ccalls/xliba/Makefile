@@ -1,3 +1,5 @@
+.PHONY: default all export clean
+
 SRCS :=
 INCS := xliba.h
 
