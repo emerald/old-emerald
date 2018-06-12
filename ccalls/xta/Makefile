@@ -10,7 +10,7 @@ all:
 export: xsed ../xta.h
 
 ../xta.h: $(INCS)
-	cat $(INCS) >$@
+	cat $^ >$@
 
 xsed: ../xsed.c xta.va
 	rm -f xta.c

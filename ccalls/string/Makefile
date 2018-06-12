@@ -8,6 +8,6 @@ all:
 export: ../string.h
 
 ../string.h : $(INCS)
-	cat $(INCS) >$@
+	cat $^ >$@
 
 clean:

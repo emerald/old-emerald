@@ -8,6 +8,6 @@ all:
 export: ../myristream.h
 
 ../myristream.h : $(INCS)
-	cat $(INCS) >$@
+	cat $^ >$@
 
 clean:

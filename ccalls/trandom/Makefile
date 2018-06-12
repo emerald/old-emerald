@@ -10,7 +10,7 @@ all:
 export: ../trandom.h
 
 ../trandom.h: $(INCS)
-	cat $(INCS) >$@
+	cat $^ >$@
 
 clean:
 

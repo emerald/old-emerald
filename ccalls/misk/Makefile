@@ -10,7 +10,7 @@ all:
 export: ../misk.h
 
 ../misk.h: $(INCS)
-	cat $(INCS) >$@
+	cat $^ >$@
 
 clean:
 

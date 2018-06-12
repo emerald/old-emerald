@@ -10,7 +10,7 @@ all:
 export: ../xliba.h
 
 ../xliba.h: $(INCS)
-	cat $(INCS) >$@
+	cat $^ >$@
 
 clean:
 
