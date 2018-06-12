@@ -129,11 +129,11 @@ return value (first character) and the arguments (remaining characters)
 of the function in question.  Each return/argument type is represented
 by one of the following characters: 
 
-   v   void       (only valid as a return type)
-   b   boolean    (an integer, but knowing the intended use is helpful)
-   i   integer 
-   p   pointer    (left uninterpreted, consider it a magic cookie)
-   s   string     (i.e. char*)
+    v   void       (only valid as a return type)
+    b   boolean    (an integer, but knowing the intended use is helpful)
+    i   integer
+    p   pointer    (left uninterpreted, consider it a magic cookie)
+    s   string     (i.e. char*)
 
 In order to make the modified header file remain palatable to the C 
 compiler, add the following lines before the pseudo-prototypes.  
