@@ -116,10 +116,10 @@ than standard ones, delimited by <>s.)
 The pseudo-prototypes provide the information we need to know, listed
 above, and are simply invocations of a macro CCALL.
 
-   /* a function prototype */
-   extern void funcname(int, void*, char*);
-   /* a pseudo-prototype for it */
-   CCALL(funcname, FUNCNAME, "vips")
+    /* a function prototype */
+    extern void funcname(int, void*, char*);
+    /* a pseudo-prototype for it */
+    CCALL(funcname, FUNCNAME, "vips")
 
 The arguments are the real, C, name of a function to be exported, the
 Emerald CCALL subcode name by which you wish the C function to be known
