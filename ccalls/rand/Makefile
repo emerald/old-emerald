@@ -12,7 +12,7 @@ all:
 export: ../rand.h
 
 ../rand.h: $(INCS)
-	cat $^ >$@
+	cat $^ > $@
 
 clean:
 

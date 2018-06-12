@@ -10,7 +10,7 @@ all:
 export: ../bani.h
 
 ../bani.h: $(INCS)
-	cat $^ >$@
+	cat $^ > $@
 
 clean:
 

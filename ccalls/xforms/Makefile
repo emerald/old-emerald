@@ -10,7 +10,7 @@ all:
 export: ../xforms.h
 
 ../xforms.h: $(INCS)
-	cat $^ >$@
+	cat $^ > $@
 
 clean:
 

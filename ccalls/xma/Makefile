@@ -10,7 +10,7 @@ all:
 export: ../xma.h
 
 ../xma.h: $(INCS)
-	cat $^ >$@
+	cat $^ > $@
 
 xsed: ../xsed.c xma.va
 	rm -f xma.c

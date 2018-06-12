@@ -8,6 +8,6 @@ all:
 export: ../emstream.h
 
 ../emstream.h : $(INCS)
-	cat $^ >$@
+	cat $^ > $@
 
 clean:
