@@ -13,11 +13,11 @@ DOTHS := \
 	bani.h \
 	myristream.h
 
-lib/ccdef: ../../genccdef $(DOTHS)
-	EMERALDROOT="$(PWD)" $^
-
 test: lib/ccdef
 	test $(shell git status --porcelain lib/ccdef | wc -l ) = 0
+
+lib/ccdef: ../../genccdef $(DOTHS)
+	EMERALDROOT="$(PWD)" $^
 
 clean:
 	git checkout lib/ccdef
