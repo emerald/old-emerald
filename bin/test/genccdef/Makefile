@@ -1,6 +1,6 @@
 .PHONY: test lib/ccdef clean
 
-DOTHS = \
+DOTHS := \
 	emstream.h \
 	string.h \
 	rand.h \
