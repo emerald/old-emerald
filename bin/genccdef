@@ -1,29 +1,34 @@
-#!/usr/bin/env tcsh
-#
-# Generate the tables and lists that drive the ccalls mechanism
+#!/usr/bin/env bash
 
-set files = ($*)
-set ccdef = $EMERALDROOT/lib/ccdef
-@ moduleindex = 0
-mkdir -p $EMERALDROOT/lib
-cp /dev/null $ccdef
+set -euo pipefail
 
-foreach file ($files)
-  set modulename = `echo $file:r | tr a-z A-Z`
-  echo Generating $modulename
-  echo >> $ccdef "#define ${modulename} $moduleindex"
-  set ccs = `grep '^CCALL' $file | sed -e 's/CCALL *( *//' -e 's/,/ /g' -e 's/)//' -e 's/"//g' -e 's/;//' -e 's/\r//'`
-  @ i = 1
-  @ functionindex = 0
-  while ($i < $#ccs)
-    set functionname = $ccs[$i]
-    @ i ++
-    set ccallname = $ccs[$i]
-    @ i ++
-    set ccallstring = $ccs[$i]
-    @ i ++
-    echo >> $ccdef "#define ${ccallname} $functionindex"
-    @ functionindex ++
-  end
-  @ moduleindex ++
-end
+files=$*
+libdir=${EMERALDROOT}/lib
+ccdef=${libdir}/ccdef
+
+mkdir -p "${libdir}"
+cp /dev/null "${ccdef}"
+
+mi=0
+for file in $files; do
+  modulename="$( printf "%s" "${file%.*}" | tr a-z A-Z )"
+  printf "Generating %s\n" "${modulename}"
+  printf "#define %s %d\n" "${modulename}" ${mi} >> "${ccdef}"
+  mi=$((mi+1))
+
+  ccalls=$( ( egrep "^CCALL" "${file}" || true ) | \
+    perl -pe "s/^CCALL\s*\(\s*//" | \
+    tr , ' ' | \
+    tr -d ")\";\r" )
+
+  if [ -z "${ccalls}" ]; then
+    continue
+  fi
+
+  fi=0
+  while read ccall; do
+    read _ ccallname _ <<< $ccall
+    printf "#define %s %d\n" "${ccallname}" ${fi} >> "${ccdef}"
+    fi=$((fi+1))
+  done <<< $ccalls
+done
