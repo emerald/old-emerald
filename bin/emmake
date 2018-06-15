@@ -31,41 +31,41 @@ if [ .$1 = '.-v' ] ; then
   shift
 fi
 
-  # if there are Emerald common macros, remember to include them
-  if [ -r $EMERALDROOT/lib/macroMf ] ; then
-    commonmakefile="-f $EMERALDROOT/lib/macroMf"
+# if there are Emerald common macros, remember to include them
+if [ -r $EMERALDROOT/lib/macroMf ] ; then
+  commonmakefile="-f $EMERALDROOT/lib/macroMf"
+fi
+
+# if there are CCalls common macros, remember to include them
+if [ -r $EMERALDROOT/lib/ccallsMf ] ; then
+  commonmakefile="$commonmakefile -f $EMERALDROOT/lib/ccallsMf"
+fi
+
+# if there are architecture specific macros, remember to include them
+if [ -r $EMERALDROOT/lib/$EMERALDARCH/macroMf ] ; then
+  archmakefile="-f $EMERALDROOT/lib/$EMERALDARCH/macroMf"
+fi
+
+# if there are any -f arguments, don't provide "-f Makefile"
+for i do
+  if [ $i = '-f' ] ; then
+    domake $commonmakefile $archmakefile $*
+    exit
   fi
+done
 
-  # if there are CCalls common macros, remember to include them
-  if [ -r $EMERALDROOT/lib/ccallsMf ] ; then
-    commonmakefile="$commonmakefile -f $EMERALDROOT/lib/ccallsMf"
-  fi
-
-  # if there are architecture specific macros, remember to include them
-  if [ -r $EMERALDROOT/lib/$EMERALDARCH/macroMf ] ; then
-    archmakefile="-f $EMERALDROOT/lib/$EMERALDARCH/macroMf"
-  fi
-
-  # if there are any -f arguments, don't provide "-f Makefile"
-  for i do
-    if [ $i = '-f' ] ; then
-      domake $commonmakefile $archmakefile $*
-	  exit 
-    fi
-  done
-
-  # simulate make behaviour of searching first for 'makefile'
-  # and then for 'Makefile'
-  if [ -r makefile ] ; then
-    if [ -r makefile.depend ] ; then
-      domake $commonmakefile $archmakefile -f makefile -f makefile.depend $*
-    else
-      domake $commonmakefile $archmakefile -f makefile $*
-    fi
+# simulate make behaviour of searching first for 'makefile'
+# and then for 'Makefile'
+if [ -r makefile ] ; then
+  if [ -r makefile.depend ] ; then
+    domake $commonmakefile $archmakefile -f makefile -f makefile.depend $*
   else
-    if [ -r Makefile.depend ] ; then
-      domake $commonmakefile $archmakefile -f Makefile -f Makefile.depend $*
-    else
-      domake $commonmakefile $archmakefile -f Makefile $*
-    fi
+    domake $commonmakefile $archmakefile -f makefile $*
   fi
+else
+  if [ -r Makefile.depend ] ; then
+    domake $commonmakefile $archmakefile -f Makefile -f Makefile.depend $*
+  else
+    domake $commonmakefile $archmakefile -f Makefile $*
+  fi
+fi
