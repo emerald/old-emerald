@@ -22,3 +22,4 @@ See also the project's [Shell Style Guide](style/shell.md).
   * [vm](vm) — The Emerald VM
   * [vmc](vmc) — The Emerald VM description compiler
   * [ccalls](ccalls) — Special "primitive" operations in Emerald
+  * [EC](EC) — The Emerald Compiler (written in Emerald)
