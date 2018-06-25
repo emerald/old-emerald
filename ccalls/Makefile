@@ -9,6 +9,11 @@
 # compatibility with old already compiled code, we need to deal with them in
 # the same order, so that they get the same identifiers.  
 #
+
+ifndef EMMAKE
+  $(error EMMAKE is not declcared; try emmake, rather than make.)
+endif
+
 SUBDIRS = \
 	emstream \
 	string \
