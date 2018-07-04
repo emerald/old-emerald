@@ -51,6 +51,27 @@ to make, which results in absolute directory paths (where the
 Makefiles are located) being written to stdout. Hence, the test
 execution engine is written in `bash`.
 
+## Common Makefiles
+
+### Tests Where Common Makefiles Are Present
+
+  * [`libMacroMf`](./libMacroMf)
+  * [`libCcallsMf`](./libCcallsMf)
+  * [`libArchMacroMf`](./libArchMacroMf)
+  * [`libCcallsAndArchMacroMf`](./libCcallsAndArchMacroMf)
+  * [`libMacroAndArchMacroMf`](./libMacroAndArchMacroMf)
+  * [`libMacroAndCcallsMf`](./libMacroAndCcallsMf)
+  * [`libAllMf`](./libAllMf)
+
+### Tests Where Common Makefiles Are Absent
+
+  * [`withmakefile`](./withmakefile)
+  * [`withMakefile`](./withMakefile)
+  * [`withmakefile_depend`](./withmakefile_depend)
+  * [`withmakefile_Depend`](./withmakefile_Depend)
+  * [`withMakefile_depend`](./withMakefile_depend)
+  * [`withMakefile_Depend`](./withMakefile_Depend)
+
 ## Running the Tests
 
 ```
