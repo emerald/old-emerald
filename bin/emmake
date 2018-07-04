@@ -31,6 +31,7 @@ if [ .$1 = '.-v' ] ; then
   shift
 fi
 
+# append common makefiles, if any
 commonmakefile=""
 if [ -n "$EMERALDROOT" ]; then
   # if there are Emerald common macros, remember to include them
