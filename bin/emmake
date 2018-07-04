@@ -31,6 +31,8 @@ if [ .$1 = '.-v' ] ; then
   shift
 fi
 
+commonmakefile=""
+
 # if there are Emerald common macros, remember to include them
 if [ -r $EMERALDROOT/lib/macroMf ] ; then
   commonmakefile="-f $EMERALDROOT/lib/macroMf"
