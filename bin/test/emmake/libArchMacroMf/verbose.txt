@@ -1,0 +1,1 @@
+make -f ./lib/i686/macroMf -f makefile

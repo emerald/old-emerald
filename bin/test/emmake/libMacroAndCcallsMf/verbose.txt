@@ -1,0 +1,1 @@
+make -f ./lib/macroMf -f ./lib/ccallsMf -f makefile
