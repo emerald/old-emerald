@@ -37,7 +37,8 @@ test_path() (
 
   set +e
   set -x
-  EMERALDROOT=. ../../../emmake $@ > "${basename}" 2>&1
+  EMERALDROOT=. EMERALDARCH=i686 \
+    ../../../emmake $@ > "${basename}" 2>&1
   actual_exitcode=$?
   set +x
   set -e
