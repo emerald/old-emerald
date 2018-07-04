@@ -33,8 +33,8 @@ test-cases is probably within reach.
 It is also probably a good idea to have both some positive, and some
 negative tests, checking for adequate success and failure of `emmake`.
 This means that the test execution engine should be written in
-something where we can temporarily remain insensitive to the exit
-codes of `emmake` sub-processes.
+something where we can temporarily remain insensitive to, and record
+the exit codes of `emmake` sub-processes.
 
 Other than the exit codes, the output from, and effect of calling
 `emmake`should be compared to some expected output and effect. This
