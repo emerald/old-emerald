@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-#
 # emmake
 #
 # invoke make as usual, but ensure that if we're building in a
@@ -12,7 +11,6 @@ set -euo pipefail
 # The -v option (which must be first, else it is passed through)
 # will cause emmake to be verbose about exactly what make line is
 # executed.
-#
 
 #
 # domake - make, and echo if appropriate
