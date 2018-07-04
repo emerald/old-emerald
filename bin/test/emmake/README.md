@@ -9,7 +9,7 @@ these are included using the `-f` option of `make`.
 
 Unfortunately, providing this option also means that `make` _will not_
 conduct its regular search for Makefiles in the working directory.
-`emmake` must therefore mimic this behaviour on `make`s behalf
+`emmake` must therefore mimic this behaviour on behalf of `make`
 (**sigh**).
 
 `emmake` originally uses `/bin/sh` in its shebang. This violated the
