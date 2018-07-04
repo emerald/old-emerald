@@ -34,7 +34,7 @@ test_path() (
   expected_exitcode=$(cat exitcode.txt | tr -d '[:blank:]')
 
   set +e
-  EMERALDROOT="${dirname}" ../../../emmake $@ > "${basename}" 2>&1
+  EMERALDROOT=. ../../../emmake $@ > "${basename}" 2>&1
   actual_exitcode=$?
   set -e
 
