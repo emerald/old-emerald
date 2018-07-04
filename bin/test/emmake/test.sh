@@ -29,13 +29,17 @@ test_path() (
   dirname="$(dirname "${path}")"
   basename="$(basename "${path}")"
 
+  printf "Testing with the %s directory..\n" "${dirname}"
+
   cd "${dirname}"
 
   expected_exitcode=$(cat exitcode.txt | tr -d '[:blank:]')
 
   set +e
+  set -x
   EMERALDROOT=. ../../../emmake $@ > "${basename}" 2>&1
   actual_exitcode=$?
+  set +x
   set -e
 
   if [ $actual_exitcode != $expected_exitcode ]; then
