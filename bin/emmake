@@ -36,7 +36,7 @@ fi
 # append common makefiles, if any
 commonmakefile=""
 archmakefile=""
-if [ -n "$EMERALDROOT" ]; then
+if [ -n "${EMERALDROOT+x}" ]; then
   # if there are Emerald common macros, remember to include them
   if [ -r $EMERALDROOT/lib/macroMf ] ; then
     commonmakefile="-f $EMERALDROOT/lib/macroMf"
@@ -47,7 +47,7 @@ if [ -n "$EMERALDROOT" ]; then
     commonmakefile="$commonmakefile -f $EMERALDROOT/lib/ccallsMf"
   fi
 
-  if [ -n "$EMERALDARCH" ]; then
+  if [ -n "${EMERALDARCH+x}" ]; then
     # if there are architecture specific macros, remember to include them
     if [ -r $EMERALDROOT/lib/$EMERALDARCH/macroMf ] ; then
       archmakefile="-f $EMERALDROOT/lib/$EMERALDARCH/macroMf"
