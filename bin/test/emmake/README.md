@@ -13,8 +13,8 @@ conduct its regular search for Makefiles in the working directory.
 (**sigh**).
 
 `emmake` originally uses `/bin/sh` in its shebang. This violated the
-style guide for shell scripts in this repository, which should all be
-written in `bash`.
+style guide for shell scripts in this repository (all shell scripts
+must be written in `bash`).
 
 Although `bash` ought to behave as `/bin/sh`, there is no guarantee of
 this. This seemed like a fine opportunity to declare a small
