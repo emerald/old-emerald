@@ -97,7 +97,7 @@ not be appended if the accompanying file is called `makefile`. I find
 it debatable whether this adequate behaviour.
 
   * [`withmakefile_Depend`](./withmakefile_Depend)
-  * [`withmakefile_Depend`](./withmakefile_Depend)
+  * [`withMakefile_depend`](./withMakefile_depend)
 
 ## Running the Tests
 
