@@ -32,20 +32,23 @@ if [ .$1 = '.-v' ] ; then
 fi
 
 commonmakefile=""
+if [ -n "$EMERALDROOT" ]; then
+  # if there are Emerald common macros, remember to include them
+  if [ -r $EMERALDROOT/lib/macroMf ] ; then
+    commonmakefile="-f $EMERALDROOT/lib/macroMf"
+  fi
 
-# if there are Emerald common macros, remember to include them
-if [ -r $EMERALDROOT/lib/macroMf ] ; then
-  commonmakefile="-f $EMERALDROOT/lib/macroMf"
-fi
+  # if there are CCalls common macros, remember to include them
+  if [ -r $EMERALDROOT/lib/ccallsMf ] ; then
+    commonmakefile="$commonmakefile -f $EMERALDROOT/lib/ccallsMf"
+  fi
 
-# if there are CCalls common macros, remember to include them
-if [ -r $EMERALDROOT/lib/ccallsMf ] ; then
-  commonmakefile="$commonmakefile -f $EMERALDROOT/lib/ccallsMf"
-fi
-
-# if there are architecture specific macros, remember to include them
-if [ -r $EMERALDROOT/lib/$EMERALDARCH/macroMf ] ; then
-  archmakefile="-f $EMERALDROOT/lib/$EMERALDARCH/macroMf"
+  if [ -n "$EMERALDARCH" ]; then
+    # if there are architecture specific macros, remember to include them
+    if [ -r $EMERALDROOT/lib/$EMERALDARCH/macroMf ] ; then
+      archmakefile="-f $EMERALDROOT/lib/$EMERALDARCH/macroMf"
+    fi
+  fi
 fi
 
 # if there are any -f arguments, don't provide "-f Makefile"
