@@ -18,7 +18,7 @@ domake () {
   if [ $verbose = 1 ] ; then
     echo "make $*"
   fi
-  make $*
+  exec make $*
 }
 
 #
