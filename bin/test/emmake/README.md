@@ -72,6 +72,22 @@ execution engine is written in `bash`.
   * [`withMakefile_depend`](./withMakefile_depend)
   * [`withMakefile_Depend`](./withMakefile_Depend)
 
+## Negative Tests
+
+It is clearly a mistake if `emmake` is called in a directory where
+there is no Makefile:
+
+  * [`nomakefile`](./nomakefile)
+
+`emmake` will only append `makefile.depend`, if the `makefile` has
+matching casing. That is, `makefile.depend` will not be appended if
+the accompanying file is called `Makefile`, and `Makefile.depnd` will
+not be appended if the accompanying file is called `makefile`. I find
+it debatable whether this adequate behaviour.
+
+  * [`withmakefile_Depend`](./withmakefile_Depend)
+  * [`withmakefile_Depend`](./withmakefile_Depend)
+
 ## Running the Tests
 
 ```
