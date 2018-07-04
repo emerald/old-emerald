@@ -26,13 +26,16 @@ domake () {
 #
 # consume emmake options
 verbose=0
-if [ .$1 = '.-v' ] ; then
-  verbose=1
-  shift
+if [ $# -gt 0 ]; then
+  if [ .$1 = '.-v' ] ; then
+    verbose=1
+    shift
+  fi
 fi
 
 # append common makefiles, if any
 commonmakefile=""
+archmakefile=""
 if [ -n "$EMERALDROOT" ]; then
   # if there are Emerald common macros, remember to include them
   if [ -r $EMERALDROOT/lib/macroMf ] ; then
