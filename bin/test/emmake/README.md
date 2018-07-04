@@ -51,6 +51,17 @@ to make, which results in absolute directory paths (where the
 Makefiles are located) being written to stdout. Hence, the test
 execution engine is written in `bash`.
 
+All subdirectories of this directory are orchestrated test-cases for
+[`test.sh`](test.sh). However, [`test.sh`](test.sh) will only regard a
+subdirectory as a test-case if it has a file `quiet.txt` or
+`verbose.txt`. These files correspond to the expected cumulative
+stdout and stderr output from `emmake` for this directory.
+
+All test-case subdirectories also contain an `exitcode.txt` containing
+the expected exit code form `emmake` for that directory.
+
+The following is a more detailed overview of the subdirectories:
+
 ## Common Makefiles
 
 ### Tests Where Common Makefiles Are Present
