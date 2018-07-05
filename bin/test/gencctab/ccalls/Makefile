@@ -22,5 +22,3 @@ DOTHS = \
 
 doths:
 	@echo $(DOTHS)
-
-
