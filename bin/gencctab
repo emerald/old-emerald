@@ -1,12 +1,19 @@
-#!/usr/bin/env tcsh
+#!/usr/bin/env bash
 #
-# Generate the tables and lists that drive the new ccalls mechanism
+# Generate the tables and lists that drive the ccalls mechanism
 
-set allfiles = `cd $EMERALDROOT/ccalls ; emmake doths |& egrep -v 'Entering|Leaving'`
-set selectedfiles = `echo $* | sed -e 's/\.o/.h/g'`
-set ncctabc = cctab.c
-set ncctabh = cctab.h
-@ moduleindex = 0
+set -euo pipefail
+
+allfiles=$(\
+  cd "${EMERALDROOT}/ccalls" ; \
+  emmake doths | egrep -v 'Entering|Leaving')
+
+selectedfiles=$(echo $* | sed -e 's/\.o/\.h/g')
+
+ncctabc=cctab.c
+ncctabh=cctab.h
+
+moduleindex=0
 
 cp /dev/null $ncctabc
 cp /dev/null $ncctabh
@@ -45,61 +52,69 @@ cat << THEEND >> $ncctabc
 #include "$ncctabh"
 
 THEEND
-foreach file ($allfiles)
-  set absfile = $EMERALDROOT/ccalls/$file
-  set modulename = `echo $file:r | tr a-z A-Z`
-  set selected = 0
-  foreach i ($selectedfiles) 
-    if ($i == $file) set selected = 1
-  end
-  if ($selected) then
-    echo Generating $modulename
-  else
-    echo Skipping $modulename
-    continue
-  endif
-  echo >> $ncctabc "CCallDescriptor ${modulename}_table[] = { "
-  echo >> $ncctabh "#define ${modulename} $moduleindex"
-  set ccs = `grep '^CCALL' $absfile | sed -e 's/CCALL *( *//' -e 's/,/ /g' -e 's/)//' -e 's/"//g' -e 's/;//' -e 's/\015//'`
-  @ i = 1
-  @ functionindex = 0
-  if ($#ccs == 0) then
-    echo >> $ncctabc \ \ \{ \(ccallFunction\) notselected, \"\", \"\" \},
-  else
-    while ($i < $#ccs)
-      set functionname = $ccs[$i]
-      @ i ++
-      set ccallname = $ccs[$i]
-      @ i ++
-      set ccallstring = $ccs[$i]
-      @ i ++
-      if ($selected) then
-	echo >> $ncctabc \ \ \{ \(ccallFunction\) $functionname, \"$ccallname\", \"$ccallstring\" \},
-	echo >> $ncctabh "extern int $functionname(void);"
-      else
-	echo >> $ncctabc \ \ \{ \(ccallFunction\) notselected, \"$ccallname\", \"$ccallstring\" \},
-      endif
-      echo >> $ncctabh "#define ${ccallname} $functionindex"
-      @ functionindex ++
-    end
-  endif
-  echo >> $ncctabc "};"
-  @ moduleindex ++
-end
 
-echo >> $ncctabc "CCallDescriptor *ccalltable[] = {"
-foreach absfile ($allfiles)
-  set file = $absfile:t
-  set selected = 0
-  foreach i ($selectedfiles) 
-    if ($i == $file) set selected = 1
-  end
-  if ($selected) then
-    set modulename = `echo $file:r | tr a-z A-Z`
-    echo >> $ncctabc "  ${modulename}_table,"
+for file in $allfiles
+do
+  absfile="$EMERALDROOT/ccalls/$file"
+  modulename="$(echo "${file%.*}" | tr a-z A-Z)"
+  selected=""
+  for selectedfile in $selectedfiles
+  do
+    if [ "$selectedfile" == "$file" ]; then
+      selected="1"
+    fi
+  done
+
+  if [ $selected ]; then
+    printf "Generating %s\n" $modulename
   else
-    echo >> $ncctabc "  0,"
-  endif
-end
-echo >> $ncctabc "};"
-echo >> $ncctabh "#endif"
+    printf "Skipping %s\n" $modulename
+    continue
+  fi
+
+  printf "%s\n" "CCallDescriptor ${modulename}_table[] = { " >> $ncctabc
+  printf "%s\n" "#define ${modulename} $moduleindex" >> $ncctabh
+  ccss=$(grep '^CCALL' $absfile | sed -e 's/CCALL *( *//' -e 's/,/ /g' -e 's/)//' -e 's/"//g' -e 's/;//' -e 's/\015//')
+  functionindex=0
+  if [ $(echo "$ccss" | wc -l) -eq 0 ]; then
+    printf "%s\n" "  { (ccallFunction) notselected, \"\", \"\" }," >> $ncctabc
+  else
+    while read css; do
+      read -r -a cs <<< "$css"
+      functionname=${cs[0]}
+      ccallname=${cs[1]}
+      ccallstring=${cs[2]}
+      if [ $selected ]; then
+        printf "%s\n" "  { (ccallFunction) $functionname, \"$ccallname\", \"$ccallstring\" }," >> $ncctabc
+        printf "%s\n" "extern int $functionname(void);" >> $ncctabh
+      else
+        printf "%s\n" "  { (ccallFunction) notselected, \"$ccallname\", \"$ccallstring\" }," >> $ncctabc
+      fi
+      printf "%s\n" "#define ${ccallname} $functionindex" >> $ncctabh
+      functionindex=$((functionindex+1))
+    done <<<"$ccss"
+  fi
+  printf "%s\n" "};" >> $ncctabc
+  moduleindex=$((moduleindex+1))
+done
+
+printf "%s\n" "CCallDescriptor *ccalltable[] = {" >> $ncctabc
+for absfile in $allfiles
+do
+  file="$(basename $absfile)"
+  selected=""
+  for selectedfile in $selectedfiles
+  do
+    if [ "$selectedfile" == "$file" ]; then
+      selected="1"
+    fi
+  done
+  if [ $selected ]; then
+    modulename="$(echo "${file%.*}" | tr a-z A-Z)"
+    printf "%s\n" "  ${modulename}_table," >> $ncctabc
+  else
+    printf "%s\n" "  0," >> $ncctabc
+  fi
+done
+printf "%s\n" "};" >> $ncctabc
+printf "%s\n" "#endif" >> $ncctabh
