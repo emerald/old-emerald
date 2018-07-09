@@ -7,6 +7,9 @@ vm_i.h
 cctab.c
 cctab.h
 
+# Ignore the binary generated here
+emx
+
 # Created by https://www.gitignore.io/api/c
 
 ### C ###
