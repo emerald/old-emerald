@@ -118,7 +118,7 @@ static void CancelAlarm(void)
 #endif /* WIN32 */
 }
 
-inline struct timeval TimeMinus(struct timeval a, struct timeval b)
+struct timeval TimeMinus(struct timeval a, struct timeval b)
 {
   struct timeval r;
   if (b.tv_usec > a.tv_usec) {
