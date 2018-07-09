@@ -1,5 +1,7 @@
 .PHONY: test clean
 
+SHELL:=/usr/bin/env bash
+
 WD:=$(shell pwd)
 
 test: cctab.h cctab.c
