@@ -1434,7 +1434,7 @@ void doToExternalRoots(void (*pointers_f)(int, Object *),
   }
 }
 
-inline int sizeOfX(Object o, Object new, ConcreteType ct)
+int sizeOfX(Object o, Object new, ConcreteType ct)
 {
   int size;
 

@@ -66,6 +66,7 @@
 #include "squeue.h"
 #include "vm_i.h"
 #include "move.h"
+#include "misc.h"
 
 /*
  * This garbage collector implements both a copying collector for the newest

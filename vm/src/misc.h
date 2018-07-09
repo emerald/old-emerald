@@ -39,6 +39,7 @@ extern int currentCpuTime(void);
 extern void start_times(void);
 void tryToInit(Object obj);
 void becomeStub(Object o, ConcreteType ct, void *stub);
+extern int sizeOfX(Object o, Object new, ConcreteType ct);
 extern int sizeOf(Object o);
 extern int sizeFromTemplate(Template t);
 extern int findLineNumber(unsigned pc, Code code, Template template);
