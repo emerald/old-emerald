@@ -11,7 +11,9 @@ DOTHS = \
 	emstream.h \
 	string.h \
 	rand.h \
-	misk.h
+	misk.h \
+	bani.h \
+	regexp.h
 
 doths:
 	@echo $(DOTHS)

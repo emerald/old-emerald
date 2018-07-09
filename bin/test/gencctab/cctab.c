@@ -64,4 +64,6 @@ CCallDescriptor *ccalltable[] = {
   STRING_table,
   RAND_table,
   MISK_table,
+  0,
+  0,
 };
