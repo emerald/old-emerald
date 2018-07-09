@@ -1,0 +1,20 @@
+.PHONY: test clean
+
+WD:=$(shell pwd)
+
+test: cctab.h cctab.c
+	test $(shell git status --porcelain $? | wc -l ) = 0
+
+cctab.h: ../../gencctab
+	EMERALDROOT="$(WD)" \
+	  PATH="${PATH}:$(WD)/../../" \
+	  ../../gencctab \
+	  emstream.o \
+	  misk.o \
+	  rand.o \
+	  string.o
+
+cctab.c: cctab.h
+
+clean:
+	git checkout cctab.h cctab.c
