@@ -94,7 +94,9 @@ do
 
   fndx=0
   if [ $(echo "$ccss" | wc -l) -eq 0 ]; then
-    printf "%s\n" "  { (ccallFunction) notselected, \"\", \"\" }," >> $ncctabc
+    printf "%s\n" \
+      "  { (ccallFunction) notselected, \"\", \"\" }," \
+      >> $ncctabc
   else
     while read css; do
       read -r -a cs <<< "$css"
@@ -103,9 +105,13 @@ do
       ccstring=${cs[2]}
       if [ $selected ]; then
         printf "%s\n" "extern int $fname(void);" >> $ncctabh
-        printf "%s\n" "  { (ccallFunction) $fname, \"$ccname\", \"$ccstring\" }," >> $ncctabc
+        printf "%s\n" \
+          "  { (ccallFunction) $fname, \"$ccname\", \"$ccstring\" }," \
+          >> $ncctabc
       else
-        printf "%s\n" "  { (ccallFunction) notselected, \"$ccname\", \"$ccstring\" }," >> $ncctabc
+        printf "%s\n" \
+          "  { (ccallFunction) notselected, \"$ccname\", \"$ccstring\" }," \
+          >> $ncctabc
       fi
       printf "%s\n" "#define ${ccname} $fndx" >> $ncctabh
       fndx=$((fndx+1))
