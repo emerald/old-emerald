@@ -53,10 +53,8 @@ cat << THEEND >> $ncctabc
 
 THEEND
 
-for file in $allfiles
-do
-  absfile="$EMERALDROOT/ccalls/$file"
-  modulename="$(echo "${file%.*}" | tr a-z A-Z)"
+isSelected() {
+  file=$1
   selected=""
   for selectedfile in $selectedfiles
   do
@@ -64,8 +62,15 @@ do
       selected="1"
     fi
   done
+  test "$selected"
+}
 
-  if [ $selected ]; then
+for file in $allfiles
+do
+  absfile="$EMERALDROOT/ccalls/$file"
+  modulename="$(echo "${file%.*}" | tr a-z A-Z)"
+
+  if isSelected "${file}"; then
     printf "Generating %s\n" $modulename
   else
     printf "Skipping %s\n" $modulename
@@ -102,14 +107,7 @@ printf "%s\n" "CCallDescriptor *ccalltable[] = {" >> $ncctabc
 for absfile in $allfiles
 do
   file="$(basename $absfile)"
-  selected=""
-  for selectedfile in $selectedfiles
-  do
-    if [ "$selectedfile" == "$file" ]; then
-      selected="1"
-    fi
-  done
-  if [ $selected ]; then
+  if isSelected "${file}"; then
     modulename="$(echo "${file%.*}" | tr a-z A-Z)"
     printf "%s\n" "  ${modulename}_table," >> $ncctabc
   else
