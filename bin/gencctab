@@ -10,13 +10,13 @@ allfiles=$(\
 
 selectedfiles=$(echo $* | sed -e 's/\.o/\.h/g')
 
-ncctabc=cctab.c
 ncctabh=cctab.h
+ncctabc=cctab.c
 
 moduleindex=0
 
-cp /dev/null $ncctabc
 cp /dev/null $ncctabh
+cp /dev/null $ncctabc
 
 cat << THEEND >> $ncctabh
 /*
@@ -72,8 +72,8 @@ do
     continue
   fi
 
-  printf "%s\n" "CCallDescriptor ${modulename}_table[] = { " >> $ncctabc
   printf "%s\n" "#define ${modulename} $moduleindex" >> $ncctabh
+  printf "%s\n" "CCallDescriptor ${modulename}_table[] = { " >> $ncctabc
   ccss=$(grep '^CCALL' $absfile | sed -e 's/CCALL *( *//' -e 's/,/ /g' -e 's/)//' -e 's/"//g' -e 's/;//' -e 's/\015//')
   functionindex=0
   if [ $(echo "$ccss" | wc -l) -eq 0 ]; then
@@ -85,8 +85,8 @@ do
       ccallname=${cs[1]}
       ccallstring=${cs[2]}
       if [ $selected ]; then
-        printf "%s\n" "  { (ccallFunction) $functionname, \"$ccallname\", \"$ccallstring\" }," >> $ncctabc
         printf "%s\n" "extern int $functionname(void);" >> $ncctabh
+        printf "%s\n" "  { (ccallFunction) $functionname, \"$ccallname\", \"$ccallstring\" }," >> $ncctabc
       else
         printf "%s\n" "  { (ccallFunction) notselected, \"$ccallname\", \"$ccallstring\" }," >> $ncctabc
       fi
@@ -116,5 +116,5 @@ do
     printf "%s\n" "  0," >> $ncctabc
   fi
 done
-printf "%s\n" "};" >> $ncctabc
 printf "%s\n" "#endif" >> $ncctabh
+printf "%s\n" "};" >> $ncctabc
