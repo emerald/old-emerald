@@ -122,9 +122,8 @@ do
 done
 
 printf "%s\n" "CCallDescriptor *ccalltable[] = {" >> $ncctabc
-for absfile in $allfiles
+for file in $allfiles
 do
-  file="$(basename $absfile)"
   if isSelected "${file}"; then
   mname="$(getModulename "${file}")"
     printf "%s\n" "  ${mname}_table," >> $ncctabc
