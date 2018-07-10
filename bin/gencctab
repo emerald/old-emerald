@@ -13,7 +13,7 @@ selectedfiles=$(echo $* | sed -e 's/\.o/\.h/g')
 ncctabh=cctab.h
 ncctabc=cctab.c
 
-moduleindex=0
+mndx=0
 
 cp /dev/null $ncctabh
 cp /dev/null $ncctabc
@@ -72,17 +72,17 @@ isSelected() {
 for file in $allfiles
 do
   absfile="$EMERALDROOT/ccalls/$file"
-  modulename="$(getModulename "${file}")"
+  mname="$(getModulename "${file}")"
 
   if isSelected "${file}"; then
-    printf "Generating %s\n" $modulename
+    printf "Generating %s\n" $mname
   else
-    printf "Skipping %s\n" $modulename
+    printf "Skipping %s\n" $mname
     continue
   fi
 
-  printf "%s\n" "#define ${modulename} $moduleindex" >> $ncctabh
-  printf "%s\n" "CCallDescriptor ${modulename}_table[] = { " >> $ncctabc
+  printf "%s\n" "#define ${mname} $mndx" >> $ncctabh
+  printf "%s\n" "CCallDescriptor ${mname}_table[] = { " >> $ncctabc
 
   ccss=$(grep '^CCALL' $absfile | sed \
       -e 's/CCALL *( *//' \
@@ -92,27 +92,27 @@ do
       -e 's/;//' \
       -e 's/\015//')
 
-  functionindex=0
+  fndx=0
   if [ $(echo "$ccss" | wc -l) -eq 0 ]; then
     printf "%s\n" "  { (ccallFunction) notselected, \"\", \"\" }," >> $ncctabc
   else
     while read css; do
       read -r -a cs <<< "$css"
-      functionname=${cs[0]}
-      ccallname=${cs[1]}
-      ccallstring=${cs[2]}
+      fname=${cs[0]}
+      ccname=${cs[1]}
+      ccstring=${cs[2]}
       if [ $selected ]; then
-        printf "%s\n" "extern int $functionname(void);" >> $ncctabh
-        printf "%s\n" "  { (ccallFunction) $functionname, \"$ccallname\", \"$ccallstring\" }," >> $ncctabc
+        printf "%s\n" "extern int $fname(void);" >> $ncctabh
+        printf "%s\n" "  { (ccallFunction) $fname, \"$ccname\", \"$ccstring\" }," >> $ncctabc
       else
-        printf "%s\n" "  { (ccallFunction) notselected, \"$ccallname\", \"$ccallstring\" }," >> $ncctabc
+        printf "%s\n" "  { (ccallFunction) notselected, \"$ccname\", \"$ccstring\" }," >> $ncctabc
       fi
-      printf "%s\n" "#define ${ccallname} $functionindex" >> $ncctabh
-      functionindex=$((functionindex+1))
+      printf "%s\n" "#define ${ccname} $fndx" >> $ncctabh
+      fndx=$((fndx+1))
     done <<<"$ccss"
   fi
   printf "%s\n" "};" >> $ncctabc
-  moduleindex=$((moduleindex+1))
+  mndx=$((mndx+1))
 done
 
 printf "%s\n" "CCallDescriptor *ccalltable[] = {" >> $ncctabc
@@ -120,8 +120,8 @@ for absfile in $allfiles
 do
   file="$(basename $absfile)"
   if isSelected "${file}"; then
-  modulename="$(getModulename "${file}")"
-    printf "%s\n" "  ${modulename}_table," >> $ncctabc
+  mname="$(getModulename "${file}")"
+    printf "%s\n" "  ${mname}_table," >> $ncctabc
   else
     printf "%s\n" "  0," >> $ncctabc
   fi
