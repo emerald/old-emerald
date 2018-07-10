@@ -53,6 +53,10 @@ cat << THEEND >> $ncctabc
 
 THEEND
 
+getModulename() {
+  echo "${1%.*}" | tr a-z A-Z
+}
+
 isSelected() {
   file=$1
   selected=""
@@ -68,7 +72,7 @@ isSelected() {
 for file in $allfiles
 do
   absfile="$EMERALDROOT/ccalls/$file"
-  modulename="$(echo "${file%.*}" | tr a-z A-Z)"
+  modulename="$(getModulename "${file}")"
 
   if isSelected "${file}"; then
     printf "Generating %s\n" $modulename
@@ -108,7 +112,7 @@ for absfile in $allfiles
 do
   file="$(basename $absfile)"
   if isSelected "${file}"; then
-    modulename="$(echo "${file%.*}" | tr a-z A-Z)"
+  modulename="$(getModulename "${file}")"
     printf "%s\n" "  ${modulename}_table," >> $ncctabc
   else
     printf "%s\n" "  0," >> $ncctabc
