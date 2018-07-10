@@ -83,7 +83,15 @@ do
 
   printf "%s\n" "#define ${modulename} $moduleindex" >> $ncctabh
   printf "%s\n" "CCallDescriptor ${modulename}_table[] = { " >> $ncctabc
-  ccss=$(grep '^CCALL' $absfile | sed -e 's/CCALL *( *//' -e 's/,/ /g' -e 's/)//' -e 's/"//g' -e 's/;//' -e 's/\015//')
+
+  ccss=$(grep '^CCALL' $absfile | sed \
+      -e 's/CCALL *( *//' \
+      -e 's/,/ /g' \
+      -e 's/)//' \
+      -e 's/"//g' \
+      -e 's/;//' \
+      -e 's/\015//')
+
   functionindex=0
   if [ $(echo "$ccss" | wc -l) -eq 0 ]; then
     printf "%s\n" "  { (ccallFunction) notselected, \"\", \"\" }," >> $ncctabc
