@@ -142,7 +142,7 @@ You can fire up Docker as follows:
 ```
 $ docker run \
     --interactive --tty --rm \
-    --volume "$(pwd)/:/home/docker/" \
+    --volume "$(pwd)/:/home/docker/data/" \
     ${image}
 ```
 
