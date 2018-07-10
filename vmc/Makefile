@@ -26,14 +26,6 @@ tokenNames.c:	vmcpar.y Makefile
 clean:
 	rm -f vmc $(OBJ) tokenNames.c vmcpar.h vmcpar.c vmclex.c core
 
-mothball: clean
-	rcsclean
-	compress RCS/*
-
-start:
-	-uncompress RCS/*.Z
-	co RCS
-
 install: $(INSTALLIN)/vmc
 
 $(INSTALLIN)/vmc : vmc Makefile
@@ -48,4 +40,4 @@ $(INSTALLIN)/vmc : vmc Makefile
 lint:
 	lint -bh *.c | egrep -v 'pointer alignment'
 
-.PHONY: clean mothball start install lint
+.PHONY: clean install lint
