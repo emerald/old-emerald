@@ -45,7 +45,7 @@ ISetCreate()
   sc->count = 0;
   sc->table = (ISetTEPtr) malloc((unsigned) sc->size * sizeof(ISetTE));
   for (i = 0; i < sc->size; i++) {
-    sc->table[i].key = (int)NULL;
+    sc->table[i].key = 0;
   }
 #ifdef DEBUGSC
   CheckOutHashTable(sc);
@@ -76,15 +76,15 @@ ExpandHashTable(
   sc->size = sizes[i];
   sc->maxCount = sc->size * MAXFILL;
   nh = (ISetTEPtr) malloc((unsigned)(sc->size * sizeof(ISetTE)));
-  for (i = 0; i < sc->size; i++) nh[i].key = (int)NULL;
+  for (i = 0; i < sc->size; i++) nh[i].key = 0;
   for (i = 0; i < oldHashTableSize; i++) {
     oe = &sc->table[i];
     key = oe->key;
-    if (key == (int)NULL) continue;
+    if (key == 0) continue;
     index = Hash(key, sc);
     while (1) {
       ne = &nh[index];
-      if (ne->key == (int)NULL) {
+      if (ne->key == 0) {
         ne->key = oe->key;
         break;
       } else {
@@ -115,7 +115,7 @@ ISetMember(
 #endif // DEBUGSC
   while (1) {
     e = &sc->table[index];
-    if (e->key == (int)NULL) {  // we did not find it
+    if (e->key == 0) {  // we did not find it
       return 0;
     } else if (ISetCOMPARE(e->key, key)) {
       return 1;
@@ -137,10 +137,10 @@ ISetSelect(
 #endif // DEBUGSC
   while (1) {
     e = &sc->table[index];
-    if (e->key != (int)NULL) {  // we found it
+    if (e->key != 0) {  // we found it
       return e->key;
     }
-    if (++index >= sc->size) return (int)NULL;
+    if (++index >= sc->size) return 0;
   }
 }
 
@@ -157,7 +157,7 @@ ISetInsert(
   index = Hash(key, sc);
   while (1) {
     e = &sc->table[index];
-    if (e->key == (int)NULL) {  // put it here
+    if (e->key == 0) {  // put it here
       e->key = key;
       sc->count++;
 #ifdef DEBUGSC
@@ -185,7 +185,7 @@ ISetDelete(
 
   while (1) {
     e = &sc->table[index];
-    if (e->key == (int)NULL) {  // we did not find it
+    if (e->key == 0) {  // we did not find it
 #ifdef DEBUGSC
       CheckOutHashTable(sc);
 #endif // DEBUGSC
@@ -194,20 +194,20 @@ ISetDelete(
     if (ISetCOMPARE(e->key, key)) {
       // Found it, now remove it
       sc->count--;
-      e->key = (int)NULL;
+      e->key = 0;
       while (1) {
         // rehash until we reach nil again
         if (++index >= sc->size) index = 0;
         e = & sc->table[index];
         key = e->key;
-        if (key == (int)NULL) {
+        if (key == 0) {
 #ifdef DEBUGSC
           CheckOutHashTable(sc);
 #endif // DEBUGSC
           return;
         }
         // rehashing is done by removing then reinserting
-        e->key = (int)NULL;
+        e->key = 0;
         sc->count--;
         ISetInsert(sc, key);
       }
@@ -224,11 +224,11 @@ register ISet sc;
   int index;
 
   printf(
-    "\nDump of sc @ 0x%05x, %d entr%s, current max %d\nIndex\tKey\n",
-    (unsigned int)sc, sc->count, sc->count == 1 ? "y" : "ies",  sc->maxCount);
+    "\nDump of sc @ %p, %d entr%s, current max %d\nIndex\tKey\n",
+    (void*)sc, sc->count, sc->count == 1 ? "y" : "ies",  sc->maxCount);
   for (index = 0; index < sc->size; index++) {
     key = sc->table[index].key;
-    printf("%3d\t%-16.16s\n", index, (char *)key);
+    printf("%3d\t%d\n", index, key);
   }
 }
 

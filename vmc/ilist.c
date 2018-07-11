@@ -35,7 +35,7 @@ IListCreate()
   sq->table = (IListTEPtr) malloc((unsigned) sq->size * sizeof(IListTE));
   if (sq->table == NULL) return NULL;
   for (i = 0; i < sq->size; i++) {
-    sq->table[i].key = (int)NULL;
+    sq->table[i].key = 0;
   }
   return sq;
 }
@@ -60,7 +60,7 @@ ExpandTable(
   sq->size = sizes[i];  // the new size
   sq->table = (IListTEPtr)realloc(sq->table, (sq->size *sizeof(IListTE)));
   for (i = oldTableSize; i < sq->size; i++) {
-    sq->table[i].key = (int)NULL;
+    sq->table[i].key = 0;
   }
 }
 
@@ -81,7 +81,7 @@ IListMember(
     }
   }
   // nothing found
-  return (int)NULL;
+  return 0;
 }
 
 // Add the key to the end of sq
@@ -127,9 +127,9 @@ IListPrint(
   int index;
 
   printf(
-    "\nDump of sq @ 0x%05x, %d entr%s, current max %d\n\
+    "\nDump of sq @ %p, %d entr%s, current max %d\n\
     Index\tKey\n",
-    (unsigned int)sq, sq->count, sq->count == 1 ? "y" : "ies",  sq->size);
+    (void*)sq, sq->count, sq->count == 1 ? "y" : "ies",  sq->size);
   for (index = 0; index < sq->size; index++) {
     key = sq->table[index].key;
     printf("%3d\t%-16.16d\n", index, key);

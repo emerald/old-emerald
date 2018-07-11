@@ -184,7 +184,7 @@ SIScDelete(
       // Found it, now remove it
       sc->count--;
       e->key = NULL;
-      e->value = (int)NULL;
+      e->value = 0;
       while (1) {
         // rehash until we reach nil again
         if (++index >= sc->size) index = 0;
@@ -199,7 +199,7 @@ SIScDelete(
         // rehashing is done by removing then reinserting
         value = e->value;
         e->key = NULL;
-        e->value = (int)NULL;
+        e->value = 0;
         sc->count--;
         SIScInsert(sc, key, value);
       }
@@ -218,8 +218,8 @@ SIScPrint(
   int index;
 
   printf(
-    "\nDump of sc @ 0x%05x, %d entr%s, current max %d\nIndex\tKey\t\tValue\n",
-    (unsigned int)sc, sc->count, sc->count == 1 ? "y" : "ies",  sc->maxCount);
+    "\nDump of sc @ %p, %d entr%s, current max %d\nIndex\tKey\t\tValue\n",
+    (void *)sc, sc->count, sc->count == 1 ? "y" : "ies",  sc->maxCount);
   for (index = 0; index < sc->size; index++) {
     key = sc->table[index].key;
     value = sc->table[index].value;

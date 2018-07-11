@@ -217,8 +217,8 @@ IIScPrint(
   int index;
 
   printf(
-    "\nDump of sc @ 0x%05x, %d entr%s, current max %d\nIndex\tKey\t\tValue\n",
-    ((unsigned int)sc), sc->count, sc->count == 1 ? "y" : "ies",  sc->maxCount);
+    "\nDump of sc @ %p, %d entr%s, current max %d\nIndex\tKey\t\tValue\n",
+    (void*)sc, sc->count, sc->count == 1 ? "y" : "ies",  sc->maxCount);
   for (index = 0; index < sc->size; index++) {
     key = sc->table[index].key;
     value = sc->table[index].value;
