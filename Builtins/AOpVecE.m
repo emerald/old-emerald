@@ -26,38 +26,38 @@ const AOpVectorE <- immutable object AOpVectorE builtin 0x101c
       attached const name <- pname
       attached const arguments <- parguments
       attached const results <- presults
-      
+
       export function  getid -> [r : Integer]
-	r <- id
+        r <- id
       end getid
       export function  getNArgs -> [r : Integer]
-	if arguments == nil then
-	  r <- 0
-	else
-	  r <- arguments.upperbound + 1
-	end if
+        if arguments == nil then
+          r <- 0
+        else
+          r <- arguments.upperbound + 1
+        end if
       end getNArgs
       export function  getNRess -> [r : Integer]
-	if results == nil then
-	  r <- 0
-	else
-	  r <- results.upperbound + 1
-	end if
+        if results == nil then
+          r <- 0
+        else
+          r <- results.upperbound + 1
+        end if
       end getNRess
       export function  getIsFunction -> [r : Boolean]
-	r <- IsFunction
+        r <- IsFunction
       end getIsFunction
       export function  getName -> [r : String]
-	r <- name
+        r <- name
       end getName
       export function  getArguments -> [r : AParamList]
-	r <- arguments
+        r <- arguments
       end getArguments
       export function  getResults -> [r : AParamList]
-	r <- results
+        r <- results
       end getResults
     end aAOpVectorE
   end create
 end AOpVectorE
-  
+
 export AOpVectorE to "Builtins"
