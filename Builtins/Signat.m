@@ -1,6 +1,3 @@
-% 
-% @(#)Signature.m	1.2  3/6/91
-%
 const Signature <- immutable object signature builtin 0x1009
     const PAT <- immutable typeobject PAT builtin 0x1609
       function getSignature -> [Signature]

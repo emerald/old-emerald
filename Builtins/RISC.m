@@ -1,6 +1,3 @@
-% 
-% @(#)SequenceOfCharacter.m	1.2  3/6/91
-%
 const SequenceOfCharacter <- immutable object SequenceOfCharacter builtin 0x1014
   const SequenceOfCharacterType <- typeobject SequenceOfCharacterType builtin 0x1614
     function lowerbound -> [Integer]

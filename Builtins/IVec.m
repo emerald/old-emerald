@@ -1,7 +1,3 @@
-% 
-% @(#)ImmutableVector.m	1.2  3/6/91
-%
-
 const immutableVector <- 
   immutable object immutableVector builtin 0x1012
     export function of [ElementType : type] -> [result : NIMVT]

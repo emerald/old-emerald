@@ -1,6 +1,3 @@
-% 
-% @(#)COpVectorE.m	1.2  3/6/91
-%
 const COpVectorE <- immutable object COpVectorE builtin 0x101a
   const COpVectorEType <- typeobject COpVectorEType builtin 0x161a
     function  getID -> [Integer]

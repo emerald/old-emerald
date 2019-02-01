@@ -1,6 +1,3 @@
-% 
-% @(#)Nil.m	1.2  3/6/91
-%
 export None to "Builtins"
 
 const None <- immutable object None builtin 0x1007

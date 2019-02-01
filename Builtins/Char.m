@@ -1,6 +1,3 @@
-% 
-% @(#)Character.m	1.2  3/6/91
-%
 const Character <- immutable object Character builtin 0x1004
 
   const CharacterType <- immutable typeobject CharacterType builtin 0x1604

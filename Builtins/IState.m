@@ -1,6 +1,3 @@
-% 
-% @(#)IState.m	1.2  3/6/91
-%
 const InterpreterState <- immutable object InterpreterState builtin 0x101f
   const InterpreterStateType <- typeobject InterpreterStateType builtin 0x161f
     function  getPC -> [ Integer ]

@@ -1,6 +1,3 @@
-% 
-% @(#)Array.m	1.2  3/6/91
-%
 export Array to "Builtins"
 
 const Array <- 

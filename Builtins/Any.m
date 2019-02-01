@@ -1,6 +1,3 @@
-% 
-% @(#)Any.m	1.2  3/6/91
-%
 const Any <- immutable object Any builtin 0x1001
   const AnyType <- typeobject AnyType builtin 0x1601
   end AnyType

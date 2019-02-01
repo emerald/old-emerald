@@ -1,6 +1,3 @@
-% 
-% @(#)ConcreteType.m	1.2  3/6/91
-%
 const ConcreteType <- immutable object ConcreteType builtin 0x1018
   const ConcreteTypeType <- typeobject ConcreteTypeType builtin 0x1618
     function  getInstanceSize -> [Integer]

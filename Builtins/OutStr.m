@@ -1,6 +1,3 @@
-% 
-% @(#)OutStream.m	1.2  3/6/91
-%
 export OutStream to "Builtins"
 
 const OutStream <- immutable object OutStream builtin 0x1011

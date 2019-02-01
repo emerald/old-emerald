@@ -1,6 +1,3 @@
-% 
-% @(#)Integer.m	1.2  3/6/91
-%
 const Integer <- immutable object Integer builtin 0x1006
   const IntegerType <- immutable typeobject IntegerType builtin 0x1606
     function + [o : Integer] -> [r : Integer]

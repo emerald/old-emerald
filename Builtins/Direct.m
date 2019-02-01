@@ -1,6 +1,3 @@
-% 
-% %W%  %G%
-%
 export Directory to "Builtins"
 
 const Directory <- immutable object Directory builtin 0x1020

@@ -1,6 +1,3 @@
-% 
-% @(#)AOpVectorE.m	1.2  3/6/91
-%
 const AOpVectorE <- immutable object AOpVectorE builtin 0x101c
   const AOpVectorEType <- typeobject AOpVectorEType builtin 0x161c
     function  getID -> [Integer]

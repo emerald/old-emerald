@@ -1,6 +1,3 @@
-% 
-% @(#)Vector.m	1.2  3/6/91
-%
 const Vector <- 
   immutable object Vector builtin 0x100c
     export function of [ElementType : type] -> [result : NVT]

@@ -1,6 +1,3 @@
-% 
-% @(#)Real.m	1.2  3/6/91
-%
 const Real <- immutable object Real builtin 0x100a
   const RealType <- immutable typeobject RealType builtin 0x160a
     function + [o : Real] -> [r : Real]

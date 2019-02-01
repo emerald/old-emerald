@@ -1,6 +1,3 @@
-% 
-% @(#)SequenceOfAny.m	1.2  3/6/91
-%
 const SequenceOfAny <- immutable object SequenceOfAny builtin 0x1022
   const SequenceOfAnyType <- typeobject SequenceOfAnyType builtin 0x1622
     function lowerbound -> [Integer]

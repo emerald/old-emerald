@@ -1,6 +1,3 @@
-% 
-% @(#)Condition.m	1.2  3/6/91
-%
 const Condition <- immutable object Condition builtin 0x1005
   % Conditions implement Hoare style condition semantics, with the following
   % exceptions:

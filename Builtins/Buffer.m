@@ -1,6 +1,3 @@
-% 
-% @(#)Buffer.m	1.2   3/6/91
-%
 export Buffer to "Builtins"
 const Buffer == immutable object Buffer builtin 0x1017
   const BufferType == typeobject BufferType builtin 0x1617

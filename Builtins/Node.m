@@ -1,6 +1,3 @@
-% 
-% @(#)Node.m	1.2  3/6/91
-%
 const Node <- immutable object Node builtin 0x1008
   const NodeType <- typeobject NodeType builtin 0x1608
     operation getActiveNodes -> [ NodeList ]

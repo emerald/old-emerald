@@ -1,6 +1,3 @@
-% 
-% @(#)Boolean.m	1.2  3/6/91
-%
 const Boolean <- immutable object Boolean builtin 0x1003
   const BooleanType <- immutable typeobject BooleanType builtin 0x1603
     function > [o : Boolean] -> [r : Boolean]

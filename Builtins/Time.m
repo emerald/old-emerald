@@ -1,6 +1,3 @@
-% 
-% @(#)Time.m	1.2  3/6/91
-%
 const Time <- immutable object Time builtin 0x100d
   const TimeType <- immutable typeobject TimeType builtin 0x160d
     function + [o : Time] -> [r : Time]

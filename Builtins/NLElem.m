@@ -1,6 +1,3 @@
-% 
-% @(#)NodeListElement.m	1.2  3/6/91
-%
 const NodeListElement <- immutable object NodeListElement builtin 0x100e
   const NodeListElementType <- immutable typeobject T builtin 0x160e
     function getTheNode -> [ Node ]

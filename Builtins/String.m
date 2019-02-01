@@ -1,6 +1,3 @@
-% 
-% @(#)String.m	1.2  3/6/91
-%
 export String to "Builtins"
 
 const String <- immutable object String builtin 0x100b

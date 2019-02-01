@@ -1,6 +1,3 @@
-% 
-% @(#)Bitchunk.m	1.2  3/6/91
-%
 const Bitchunk <- immutable object Bitchunk builtin 0x1013
 
   const BitchunkType <- typeobject BitchunkType builtin 0x1613

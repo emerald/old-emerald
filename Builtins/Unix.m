@@ -1,6 +1,3 @@
-% 
-% @(#)Unix.m	1.1  3/6/91
-%
 export Unix to "Builtins"
 
 const Unix == immutable object Unix

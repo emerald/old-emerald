@@ -1,6 +1,3 @@
-% 
-% @(#)AbstractType.m	1.3  3/6/91
-%
 const type <- immutable object type builtin 0x1000
   const typeType <- immutable typeobject typeType builtin 0x1600
     function getSignature -> [Signature]
