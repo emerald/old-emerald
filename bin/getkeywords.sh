@@ -27,6 +27,7 @@
 #   4. Make sure the keyword constant suffix corresponds to the
 #      keyword string, lest the casing.
 #   5. If all looks well, list the keyword strings found above.
+#   6. Sort and show unique keywords in a case-insensitive manner.
 
 set -euo pipefail
 
@@ -64,4 +65,5 @@ if [ ${n_lines} != ${n_uniq} ]; then
   exit 1
 fi
 
-echo "${good}" | cut -d' ' -f2
+echo "${good}" | cut -d' ' -f2 | \
+  sort --ignore-case | uniq --ignore-case
