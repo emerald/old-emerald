@@ -30,10 +30,10 @@
 
 set -euo pipefail
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ECPATH="${DIR}/../EC/"
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ecpath="${dir}/../EC/"
 
-cd "${ECPATH}"
+cd "${ecpath}"
 
 regex="^\\s+const\\s+K([A-Z]+)\\s+<-\\s+[0-9]+\\s+\"([a-z]+)\",$"
 
