@@ -20,40 +20,40 @@ const Boolean <- immutable object Boolean builtin 0x1003
   export function create [data : Integer] -> [result : BooleanType]
     result <- immutable object aBoolean builtin 0x1403
       export function > [o : Boolean] -> [r : Boolean]
-	primitive self  "SUB" "GT" [r] <- [o]
+        primitive self  "SUB" "GT" [r] <- [o]
       end >
       export function >= [o : Boolean] -> [r : Boolean]
-	primitive self  "SUB" "GE" [r] <- [o]
+        primitive self  "SUB" "GE" [r] <- [o]
       end >=
       export function < [o : Boolean] -> [r : Boolean]
-	primitive self  "SUB" "LT" [r] <- [o]
+        primitive self  "SUB" "LT" [r] <- [o]
       end <
       export function <= [o : Boolean] -> [r : Boolean]
-	primitive self  "SUB" "LE" [r] <- [o]
+        primitive self  "SUB" "LE" [r] <- [o]
       end <=
       export function = [o : Boolean] -> [r : Boolean]
-	primitive self  "SUB" "EQ" [r] <- [o]
+        primitive self  "SUB" "EQ" [r] <- [o]
       end =
       export function != [o : Boolean] -> [r : Boolean]
-	primitive self  "SUB" "NE" [r] <- [o]
+        primitive self  "SUB" "NE" [r] <- [o]
       end !=
       export function & [o : Boolean] -> [r : Boolean]
-	primitive self "AND" [r] <- [o]
+        primitive self "AND" [r] <- [o]
       end &
       export function | [o : Boolean] -> [r : Boolean]
-	primitive self "OR" [r] <- [o]
+        primitive self "OR" [r] <- [o]
       end |
       export function ! -> [r : Boolean]
-	primitive self "NOT" [r] <- []
+        primitive self "NOT" [r] <- []
       end !
       export function asString -> [r : String]
-	primitive self "EBSTR" [r] <- []
+        primitive self "EBSTR" [r] <- []
       end asString
       export function ord -> [r : Integer]
-	primitive self [r] <- []
+        primitive self [r] <- []
       end ord
       export function hash -> [r : Integer]
-	primitive self [r] <- []
+        primitive self [r] <- []
       end hash
     end aBoolean
   end create
@@ -66,4 +66,3 @@ const Boolean <- immutable object Boolean builtin 0x1003
 end Boolean
 
 export Boolean to "Builtins"
-

@@ -19,5 +19,3 @@ const Sequence <- immutable object Sequence builtin 0x1024
 end Sequence
 
 export Sequence to "Builtins"
-
-

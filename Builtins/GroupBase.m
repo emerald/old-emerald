@@ -94,13 +94,13 @@ const GElection <- class GElection
   % next GElection ID, used by coordinator
   var GElectionIDCounter: GCounter <- nil
 
-  initially 
+  initially
     const n <- locate self
 
     if otherGE == nil then
       GDebug.out1["GElection", "initially - first GElection"]
       % I am the first GElection, and therefore coordinator
-     
+
       % initialize counter
       GElectionIDCounter <- GCounter.create[1]
 
@@ -153,20 +153,20 @@ const GElection <- class GElection
       GDebug.out1["GElection", "nodeDown - node without GElection failed, ignoring"]
       return
     end if
-    gENodeList.remove[gn] 
-        
+    gENodeList.remove[gn]
+
     if gn.getGElection == coordinator.getCoordinator.getGElection then
       % coordinator has failed
-      GDebug.out1["GElection", "nodeDown - picking new coordinator"] 
-  
+      GDebug.out1["GElection", "nodeDown - picking new coordinator"]
+
       % pick new coordinator
       ngn <- self.findhighestGElectionID
       coordinator.setCoordinator[gENodeList, ngn.getNode]
-        
+
       if coordinator.getCoordinator.getGElection == self then
         % I am the new coordinator
         GDebug.out1["GElection", "nodeDown - I am the new coordinator"]
-    
+
         % initialize GManagerID counter
         GElectionIDCounter <- GCounter.create[ngn.getID + 1]
       end if
@@ -202,7 +202,7 @@ const GElection <- class GElection
     self.verifyCoordinatorCalling[cgm]
 
     move newGENode to locate self
-    newGENode.moveTo[locate self]        
+    newGENode.moveTo[locate self]
     gENodeList.add[newGENode]
   end newGElection
 
@@ -218,13 +218,13 @@ const GElection <- class GElection
     var i: Integer <- 0
     for ( i <- 1 : i <= l.upperbound : i <- I + 1)
       if l.getElement[i].getID > highestGElectionID then
-        g <- l.getElement[i] 
+        g <- l.getElement[i]
         highestGElectionID <- l.getElement[i].getID
-      end if 
+      end if
     end for
   end findhighestGElectionID
 
-  operation verifyCoordinator 
+  operation verifyCoordinator
     if coordinator.getCoordinator.getGElection !== self then
       GDebug.out3["GElection", "verifyCoordinator - not coordinator"]
       assert false
@@ -235,10 +235,10 @@ const GElection <- class GElection
     if coordinator.getCoordinator.getGElection !== cge then
       GDebug.out3["GElection", "verifyCoordinatorCalling - non coordinator making coordinator call"]
       assert false
-    end if      
+    end if
   end verifyCoordinatorCalling
 end GElection
-   
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % GElectionNode - information for each node in a GElection list
@@ -278,7 +278,7 @@ const GElectionNode <- monitor class GElectionNode
     end if
   end =
 
-  export operation getComparator -> [o: Node] 
+  export operation getComparator -> [o: Node]
     o <- n
   end getComparator
 
@@ -364,7 +364,7 @@ const GHashTable <- monitor class GHashTable [size : Integer]
         return
       elseif k == a then
         r <- values[h]
-	return
+        return
       end if
       h <- h + 1
       if h >= currentsize then h <- 0 end if
@@ -404,7 +404,7 @@ const GHashTable <- monitor class GHashTable [size : Integer]
       nexthash <- s.hash # currentsize
     end if
 
-    loop 
+    loop
       exit when keys[next] == nil or hash != nexthash
       % found one that hashes to same spot, move it down
       keys[h] <- keys[next]
@@ -467,7 +467,7 @@ const GHashTable <- monitor class GHashTable [size : Integer]
     for i : Integer <- 0 while i < oldsize by i <- i + 1
       const k : Any <- oldkeys[i]
       if k !== nil then
-	self.iInsert[k, oldvalues[i]]
+        self.iInsert[k, oldvalues[i]]
       end if
     end for
   end enlarge
@@ -484,7 +484,7 @@ const GList <- immutable object GList
     forall cType
 
     suchthat
-      eType *> 
+      eType *>
         typeobject eType
           operation = [cType] -> [Boolean]
           operation getComparator -> [cType]
@@ -494,7 +494,7 @@ const GList <- immutable object GList
           operation setNext [eType]
         end eType
 
-    where 
+    where
       GListType <- typeobject GListType
         operation add [eType]
         operation remove [eType]
@@ -506,19 +506,19 @@ const GList <- immutable object GList
 
     where
       GListCreatorType <- immutable typeobject GListCreatorType
-	operation create -> [GListType]
-	function getSignature -> [Signature]
+        operation create -> [GListType]
+        function getSignature -> [Signature]
       end GListCreatorType
 
     r <- immutable object aGListCreator
       const thisGListCreator: GListCreatorType <- self
 
       export function getSignature -> [r : Signature]
-	r <- GListType
+        r <- GListType
       end getSignature
 
       export operation create -> [r : GListType]
-	r <- monitor object aGList
+          r <- monitor object aGList
           var dataHead: eType <- nil
           var dataTail: eType <- nil
 
@@ -544,17 +544,17 @@ const GList <- immutable object GList
             GDebug.out1["GList", "remove"]
             var currentRecord: eType <- dataHead
             var previousRecord: eType <- nil
-        
+
             loop
               % find current and previous record
               exit when currentRecord == nil
               if currentRecord == e then
                 exit
-              end if 
+              end if
               previousRecord <- currentRecord
               currentRecord <- currentRecord.getNext
             end loop
-        
+
             if currentRecord == nil then
               GDebug.out3["GList", "remove - attempt to remove non existent node"]
               assert false
@@ -579,34 +579,34 @@ const GList <- immutable object GList
             GDebug.out1["GList", "find"]
             r <- self.findInternal[c]
           end find
- 
+
           operation findInternal [c: cType] -> [r : eType]
             GDebug.out1["GList", "findInternal"]
             var currentRecord: eType <- dataHead
             r <- nil
-        
+
             loop
               exit when currentRecord == nil
               if currentRecord = c then
                 r <- currentRecord
                 return
-              end if 
+              end if
               currentRecord <- currentRecord.getNext
             end loop
           end findInternal
-        
+
           export operation list -> [v : Vector.of[eType]]
             GDebug.out1["GList", "list"]
             var count: Integer <- 0
             var currentRecord: eType <- dataHead
-        
+
             % determine how many elements
             loop
               exit when currentRecord == nil
               count <- count + 1
               currentRecord <- currentRecord.getNext
             end loop
-                
+
             % create and fill vector
             v <- Vector.of[eType].create[count]
             currentRecord <- dataHead
@@ -623,17 +623,17 @@ const GList <- immutable object GList
             GDebug.out1["GList", "clone"]
             var currentRecord: eType <- dataHead
             l <- thisGListCreator.create
-        
+
             loop
               exit when currentRecord == nil
               l.add[currentRecord.clone]
               currentRecord <- currentRecord.getNext
             end loop
           end clone
-        
+
           export operation moveTo [n : Node]
             var currentRecord: eType <- dataHead
-        
+
             loop
               exit when currentRecord == nil
               currentRecord.moveTo[n]
@@ -642,7 +642,7 @@ const GList <- immutable object GList
             end loop
             % move self to n
           end moveTo
-	end aGList
+        end aGList
       end create
     end aGListCreator
   end of
@@ -655,11 +655,11 @@ end GList
 const GArray <- immutable object GArray
   export function of [etype : type] -> [r : GArrayCreatorType]
     suchthat
-      etype *> 
+      etype *>
         typeobject eType
         end eType
 
-    where 
+    where
       GArrayType <- typeobject GArrayType
           operation add [eType]
           operation remove [eType]
@@ -671,8 +671,8 @@ const GArray <- immutable object GArray
 
     where
       GArrayCreatorType <- immutable typeobject GArrayCreatorType
-	operation create -> [GArrayType]
-	function getSignature -> [Signature]
+        operation create -> [GArrayType]
+        function getSignature -> [Signature]
       end GArrayCreatorType
 
 
@@ -680,11 +680,11 @@ const GArray <- immutable object GArray
       const thisGArrayCreator: GArrayCreatorType <- self
 
       export function getSignature -> [r : Signature]
-	r <- GArrayType
+        r <- GArrayType
       end getSignature
 
       export operation create -> [r : GArrayType]
-	r <- monitor object aGArray
+          r <- monitor object aGArray
           var data: Array.of[eType] <- Array.of[eType].empty
 
           export operation add [e : eType]
@@ -711,7 +711,7 @@ const GArray <- immutable object GArray
             GDebug.out1["GArray", "find"]
             i <- self.findInternal[e]
           end find
- 
+
           operation findInternal [e: eType] -> [i : Integer]
             GDebug.out1["GArray", "findInternal"]
             i <- -1
@@ -721,16 +721,16 @@ const GArray <- immutable object GArray
                 i <- j
                 return
               end if
-            end for 
+            end for
           end findInternal
-        
+
           export operation list -> [v : Vector.of[eType]]
             GDebug.out1["GArray", "list"]
             v <- Vector.of[eType].create[data.upperBound + 1 - data.lowerBound]
             var i: Integer
             for (i <- data.lowerBound : i <= data.upperBound : i <- i + 1)
               v.setElement[i - data.lowerBound, data.getElement[i]]
-            end for 
+            end for
           end list
 
           export operation clone -> [l : GArrayType]
@@ -741,13 +741,13 @@ const GArray <- immutable object GArray
               l.add[data.getElement[i + data.lowerBound]]
             end for
           end clone
-        
+
           export operation moveTo [n : Node]
             GDebug.out1["GArray", "moveTo"]
             % don't move elements
             % move self to n
           end moveTo
-	end aGArray
+        end aGArray
       end create
     end aGArrayCreator
   end of
@@ -781,7 +781,7 @@ const GDebug <- immutable class GDebug
   class export operation out1 [location: String, message: String]
     if print1 then
       (locate self)$stdout.PutString[header1 || location || ": " || message || "\n"]
-    end if 
+    end if
   end out1
 
   class export operation out1 [message: String]
@@ -793,7 +793,7 @@ const GDebug <- immutable class GDebug
   class export operation out2 [location: String, message: String]
     if print2 then
       (locate self)$stdout.PutString[header2 || location || ": " || message || "\n"]
-    end if 
+    end if
   end out2
 
   class export operation out2 [message: String]
@@ -805,7 +805,7 @@ const GDebug <- immutable class GDebug
   class export operation out3 [location: String, message: String]
     if print3 then
       (locate self)$stdout.PutString[header3 || location || ": " || message || "\n"]
-    end if 
+    end if
   end out3
 
   class export operation out3 [message: String]
@@ -814,7 +814,7 @@ const GDebug <- immutable class GDebug
     end if
   end out3
 end GDebug
- 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Exports 
@@ -833,8 +833,3 @@ export GDebug
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % EOF
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-

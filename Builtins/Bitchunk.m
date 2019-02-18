@@ -19,36 +19,36 @@ const Bitchunk <- immutable object Bitchunk builtin 0x1013
 
   export operation create[n : Integer] -> [ r : BitchunkType ]
     r <- object aBitchunk builtin 0x1413
-	
+
       export function addr -> [r : Integer]
-	primitive self [r] <- []
+        primitive self [r] <- []
       end addr
       export function getSigned [s : Integer, l : Integer] -> [ r : Integer ]
-	primitive self "BGETS" [ r ] <- [ s, l ]
+        primitive self "BGETS" [ r ] <- [ s, l ]
       end getSigned
       export function getUnsigned [s : Integer, l : Integer] -> [ r : Integer ]
-	primitive self "BGETU" [ r ] <- [ s, l ]
+        primitive self "BGETU" [ r ] <- [ s, l ]
       end getUnsigned
       export function getElement [s : Integer, l : Integer] -> [ r : Integer ]
-	primitive self "BGETU" [ r ] <- [ s, l ]
+        primitive self "BGETU" [ r ] <- [ s, l ]
       end getElement
       export operation setSigned [start : Integer, len : Integer, val : Integer]
-	primitive self "BSET" [] <- [start, len, val]
+        primitive self "BSET" [] <- [start, len, val]
       end setSigned
       export operation setUnsigned [start : Integer, len : Integer, val : Integer]
-	primitive self "BSET" [] <- [start, len, val]
+        primitive self "BSET" [] <- [start, len, val]
       end setUnsigned
       export operation setElement [start : Integer, len : Integer, val : Integer]
-	primitive self "BSET" [] <- [start, len, val]
+        primitive self "BSET" [] <- [start, len, val]
       end setElement
       export operation ntoh [start : Integer, len : Integer]
-	primitive self "NTOH" [] <- [start, len]
+        primitive self "NTOH" [] <- [start, len]
       end ntoh
       export function = [other : Bitchunk] -> [r : Boolean]
-	primitive self "SCMP" "EQ" [r] <- [other]
+        primitive self "SCMP" "EQ" [r] <- [other]
       end =
       export function != [other : Bitchunk] -> [r : Boolean]
-	primitive self "SCMP" "NE" [r] <- [other]
+        primitive self "SCMP" "NE" [r] <- [other]
       end !=
     end aBitchunk
   end create

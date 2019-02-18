@@ -32,33 +32,33 @@ const ConcreteType <- immutable object ConcreteType builtin 0x1018
       attached const template <- ptemplate
       attached const mytype <- pmytype
       attached const literals <- pLiterals
-      
+
       export function  getInstanceSize -> [r : Integer]
-	r <- instanceSize
+        r <- instanceSize
       end getInstanceSize
       export function  getInstanceFlags -> [r : Integer]
-	r <- instanceFlags
+        r <- instanceFlags
       end getInstanceFlags
       export function  getOps -> [r : COpVector]
-	r <- ops
+        r <- ops
       end getOps
       export function  getName -> [r : String]
-	r <- name
+        r <- name
       end getName
       export function  getFileName -> [r : String]
-	r <- fileName
+        r <- fileName
       end getFileName
       export function  getTemplate -> [r : String]
-	r <- template
+        r <- template
       end getTemplate
       export function  getType -> [r : Signature]
-	r <- mytype
+        r <- mytype
       end getType
       export function  getLiterals -> [r : ImmutableVectorOfInt]
-	r <- literals
+        r <- literals
       end getLiterals
     end aConcreteType
   end create
 end ConcreteType
-  
+
 export ConcreteType to "Builtins"

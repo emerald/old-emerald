@@ -1,5 +1,5 @@
 % InStr.m - modified from stock version to use CCALLS
-%		by Brian Edmonds <edmonds@cs.ubc.ca> 94Nov05
+%        	by Brian Edmonds <edmonds@cs.ubc.ca> 94Nov05
 
 export InStream to "Builtins"
 
@@ -35,35 +35,35 @@ const InStream <- immutable object InStream builtin 0x1010
   export operation create [ fd: Integer ] -> [ r: InStreamType ]
     r <- object aUnixInStream builtin 0x1410
       export operation unGetChar[ c: Character ]
-	primitive "NCCALL" "EMSTREAM" "EMS_UNGETC" [] <- [fd,c]
+        primitive "NCCALL" "EMSTREAM" "EMS_UNGETC" [] <- [fd,c]
       end unGetChar
 
       export operation getChar -> [ c: Character ]
-	primitive "NCCALL" "EMSTREAM" "EMS_GETC" [c] <- [fd]
+        primitive "NCCALL" "EMSTREAM" "EMS_GETC" [c] <- [fd]
       end getChar
 
       export operation getString -> [ s: String ]
-	primitive "NCCALL" "EMSTREAM" "EMS_GETS" [s] <- [fd]
+        primitive "NCCALL" "EMSTREAM" "EMS_GETS" [s] <- [fd]
       end getString
 
       export function eos -> [ r: Boolean ]
-	primitive "NCCALL" "EMSTREAM" "EMS_EOS" [r] <- [fd]
+        primitive "NCCALL" "EMSTREAM" "EMS_EOS" [r] <- [fd]
       end eos
 
-      export operation close 
-	primitive "NCCALL" "EMSTREAM" "EMS_CLOSE" [] <- [fd]
+      export operation close
+        primitive "NCCALL" "EMSTREAM" "EMS_CLOSE" [] <- [fd]
       end close
 
       export function isATty -> [ r: Boolean ]
-	primitive "NCCALL" "EMSTREAM" "EMS_ISATTY" [r] <- [fd]
+        primitive "NCCALL" "EMSTREAM" "EMS_ISATTY" [r] <- [fd]
       end isATty
 
       export operation fillVector[ v: VectorOfChar ] -> [ len: Integer ]
-	primitive "NCCALL" "EMSTREAM" "EMS_FILLV" [len] <- [fd,v]
+        primitive "NCCALL" "EMSTREAM" "EMS_FILLV" [len] <- [fd,v]
       end fillVector
 
       export operation rawRead[ v: VectorOfChar ] -> [ len: Integer ]
-	primitive "NCCALL" "EMSTREAM" "EMS_RAWREAD" [len] <- [fd,v]
+        primitive "NCCALL" "EMSTREAM" "EMS_RAWREAD" [len] <- [fd,v]
       end rawRead
 
     end aUnixInStream

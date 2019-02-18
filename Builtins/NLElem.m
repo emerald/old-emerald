@@ -5,12 +5,12 @@ const NodeListElement <- immutable object NodeListElement builtin 0x100e
     function getIncarnationTime -> [ Time ]
     function getLNN -> [Integer]
   end T
-    
+
   export function getSignature -> [ result : Signature ]
     result <- NodeListElementType
   end getSignature
 
-  export operation create 
+  export operation create
     [ theNode : Node, up : Boolean, incarnationTime : Time, LNN : Integer ]
     -> [ n : NodeListElementType ]
     n <- immutable object aNodeListElement builtin 0x140e
@@ -20,19 +20,19 @@ const NodeListElement <- immutable object NodeListElement builtin 0x100e
       const l_LNN : Integer <- LNN
 
       export function getTheNode -> [ r : Node ]
-	r <- l_theNode
+        r <- l_theNode
       end getTheNode
 
       export function getUp -> [ r : Boolean ]
-	r <- l_up
+        r <- l_up
       end getUp
 
       export function getIncarnationTime -> [ r : Time ]
-	r <- l_incarnationTime
+        r <- l_incarnationTime
       end getIncarnationTime
 
       export function getLNN -> [ r : Integer ]
-	r <- l_LNN
+        r <- l_LNN
       end getLNN
     end aNodeListElement
   end create

@@ -30,31 +30,31 @@ const OutStream <- immutable object OutStream builtin 0x1011
   export operation create [ fd: Integer ] -> [ r: OutStreamType ]
     r <- object aUnixOutStream builtin 0x1411
       export operation putChar[ r: Character ]
-	primitive "NCCALL" "EMSTREAM" "EMS_PUTC" [] <- [fd,r]
+        primitive "NCCALL" "EMSTREAM" "EMS_PUTC" [] <- [fd,r]
       end putChar
 
       export operation putInt [ number: Integer, width: Integer ]
-	primitive "NCCALL" "EMSTREAM" "EMS_PUTI" [] <- [fd,number,width]
+        primitive "NCCALL" "EMSTREAM" "EMS_PUTI" [] <- [fd,number,width]
       end putInt
 
       export operation writeInt[ r: Integer, size: Integer ]
-	primitive "NCCALL" "EMSTREAM" "EMS_WRITEI" [] <- [fd,r,size]
+        primitive "NCCALL" "EMSTREAM" "EMS_WRITEI" [] <- [fd,r,size]
       end writeInt
 
       export operation putReal[ r: Real ]
-	primitive "NCCALL" "EMSTREAM" "EMS_PUTF" 2 [] <- [fd,r]
+        primitive "NCCALL" "EMSTREAM" "EMS_PUTF" 2 [] <- [fd,r]
       end putReal
 
       export operation putString[ r: String ]
-	primitive "NCCALL" "EMSTREAM" "EMS_PUTS" [] <- [fd,r]
+        primitive "NCCALL" "EMSTREAM" "EMS_PUTS" [] <- [fd,r]
       end putString
 
       export operation flush
-	primitive "NCCALL" "EMSTREAM" "EMS_FLUSH" [] <- [fd]
+        primitive "NCCALL" "EMSTREAM" "EMS_FLUSH" [] <- [fd]
       end flush
 
       export operation close
-	primitive "NCCALL" "EMSTREAM" "EMS_CLOSE" [] <- [fd]
+        primitive "NCCALL" "EMSTREAM" "EMS_CLOSE" [] <- [fd]
       end close
     end aUnixOutStream
   end create

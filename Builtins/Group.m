@@ -10,13 +10,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 const Group <- immutable class Group builtin 0x102b
   % precondition - GRep exists in at least one node if the gid hasn't failed
-  var id: gid  
+  var id: gid
 
   initially
     GDebug.out1["Group", "initially"]
     const gm: GManager <- GUtilities.getGM[locate self]
     const newGRep: GRep <- gm.createGRep[nil]
-    
+
     id <- newGRep.getGID
   end initially
 
@@ -28,7 +28,7 @@ const Group <- immutable class Group builtin 0x102b
       GDebug.out2["Group", "addMember - o is nil"]
       return
     end if
- 
+
     const n: Node <- locate o
     if n == nil then
       GDebug.out2["Group", "addMember - o has failed"]
@@ -68,7 +68,7 @@ const Group <- immutable class Group builtin 0x102b
 
       if otherGRep == nil then
         GDebug.out2["Group", "addMember - gid has failed"]
-        return 
+        return
       end if
 
       % gid not active on n yet
@@ -78,7 +78,7 @@ const Group <- immutable class Group builtin 0x102b
           GDebug.out2["GRep", "addMember - remote GManager has failed"]
           return
         end unavailable
-      end 
+      end
     end if
 
     % make sure object is not immutable
@@ -86,7 +86,7 @@ const Group <- immutable class Group builtin 0x102b
       GDebug.out2["Group", "addMember - object is immutable"]
       r <- true
       return
-    end if 
+    end if
 
     begin
       r <- gr.addMember[o, true]
@@ -104,7 +104,7 @@ const Group <- immutable class Group builtin 0x102b
       GDebug.out2["Group", "removeMember - o is nil"]
       return
     end if
- 
+
     const n: Node <- locate o
     if n == nil then
       GDebug.out2["Group", "removeMember - o has failed"]
@@ -133,7 +133,7 @@ const Group <- immutable class Group builtin 0x102b
       GDebug.out2["Group", "removeMember - object is immutable"]
       r <- true
       return
-    end if 
+    end if
 
     begin
       r <- gr.removeMember[o, true]
@@ -191,7 +191,7 @@ const Group <- immutable class Group builtin 0x102b
         end unavailable
       end
     end for
-  end listNodes 
+  end listNodes
 
   export operation addGListener [l: GListener] -> [r: Boolean]
     GDebug.out1["Group", "addGListener"]
@@ -201,7 +201,7 @@ const Group <- immutable class Group builtin 0x102b
       GDebug.out2["Group", "addGListener - l is nil"]
       return
     end if
- 
+
     const n: Node <- locate l
     if n == nil then
       GDebug.out2["Group", "addGListener - l has failed"]
@@ -241,7 +241,7 @@ const Group <- immutable class Group builtin 0x102b
 
       if otherGRep == nil then
         GDebug.out2["Group", "addGListener - gid has failed"]
-        return 
+        return
       end if
 
       % gid not active on n yet
@@ -251,7 +251,7 @@ const Group <- immutable class Group builtin 0x102b
           GDebug.out2["GRep", "addGListener - remote GManager has failed"]
           return
         end unavailable
-      end 
+      end
     end if
 
     begin
@@ -270,7 +270,7 @@ const Group <- immutable class Group builtin 0x102b
       GDebug.out2["Group", "removeGListener - l is nil"]
       return
     end if
- 
+
     const n: Node <- locate l
     if n == nil then
       GDebug.out2["Group", "removeGListener - l has failed"]
@@ -299,7 +299,7 @@ const Group <- immutable class Group builtin 0x102b
       GDebug.out2["Group", "removeMember - object is immutable"]
       r <- true
       return
-    end if 
+    end if
 
     begin
       r <- gr.removeGListener[l, true]
@@ -338,7 +338,7 @@ const Group <- immutable class Group builtin 0x102b
     GDebug.out1["Group", "moveAll"]
     r <- true
 
-    const v: Vector.of[Any] <- self.listMembers    
+    const v: Vector.of[Any] <- self.listMembers
     if v !== nil then
       var i : Integer <- 0
       for ( i <- 0 : i <= v.upperBound : i <- i + 1 )
@@ -347,7 +347,7 @@ const Group <- immutable class Group builtin 0x102b
           failure
             r <- false
           end failure
-        end 
+        end
       end for
     end if
   end moveAll
@@ -356,7 +356,7 @@ const Group <- immutable class Group builtin 0x102b
     GDebug.out1["Group", "fixAll"]
     r <- true
 
-    const v: Vector.of[Any] <- self.listMembers    
+    const v: Vector.of[Any] <- self.listMembers
     if v !== nil then
       var i : Integer <- 0
       for ( i <- 0 : i <= v.upperBound : i <- i + 1 )
@@ -365,7 +365,7 @@ const Group <- immutable class Group builtin 0x102b
           failure
             r <- false
           end failure
-        end 
+        end
       end for
     end if
   end fixAll
@@ -374,7 +374,7 @@ const Group <- immutable class Group builtin 0x102b
     GDebug.out1["Group", "refixAll"]
     r <- true
 
-    const v: Vector.of[Any] <- self.listMembers    
+    const v: Vector.of[Any] <- self.listMembers
     if v !== nil then
       var i : Integer <- 0
       for ( i <- 0 : i <= v.upperBound : i <- i + 1 )
@@ -383,7 +383,7 @@ const Group <- immutable class Group builtin 0x102b
           failure
             r <- false
           end failure
-        end 
+        end
       end for
     end if
   end refixAll
@@ -392,7 +392,7 @@ const Group <- immutable class Group builtin 0x102b
     GDebug.out1["Group", "unfixAll"]
     r <- true
 
-    const v: Vector.of[Any] <- self.listMembers    
+    const v: Vector.of[Any] <- self.listMembers
     if v !== nil then
       var i : Integer <- 0
       for ( i <- 0 : i <= v.upperBound : i <- i + 1 )
@@ -401,7 +401,7 @@ const Group <- immutable class Group builtin 0x102b
           failure
             r <- false
           end failure
-        end 
+        end
       end for
     end if
   end unfixAll
@@ -439,11 +439,11 @@ const gid <- immutable class gid [value: Integer]
     GDebug.out1["GID", "getValue"]
     i <- value
   end getValue
-end gid  
+end gid
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% GManager - exists on nodes where there is group service activity 
+% GManager - exists on nodes where there is group service activity
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 const GManager <- class GManager builtin 0x102d
   % all GReps on this node
@@ -453,17 +453,17 @@ const GManager <- class GManager builtin 0x102d
   field GIDCounter: GCounter <- nil
 
   % used to maintain coordinator
-  var election: GElection <- nil  
+  var election: GElection <- nil
 
   % locks for synchronization on nodedown
   var locks: GLocks <- nil
 
   % hash tables for fast lookup of members and listeners
   field memberHash : GHashTable <- nil
-  field listenerHash : GHashTable <- nil  
+  field listenerHash : GHashTable <- nil
 
   %%%%%%%%%%%%%%%%%%
-  % initialization %     
+  % initialization %
   %%%%%%%%%%%%%%%%%%
   % -only initialize active GManagers
   % -should be called (at least) once for each GManager
@@ -489,7 +489,7 @@ const GManager <- class GManager builtin 0x102d
       end if
     end startReady
 
-    export operation doneReady  
+    export operation doneReady
       ready <- true
       loop
         exit when awaiting waitUntilReady = 0
@@ -512,7 +512,7 @@ const GManager <- class GManager builtin 0x102d
     locks <- GLocks.create
     repList <- GList.of[GRep, gid].create
     memberHash <- GHashTable.create[101]
-    listenerHash <- GHashTable.create[47]  
+    listenerHash <- GHashTable.create[47]
 
     % search for any preexisting GManagers
     const n: Node <- locate self
@@ -583,7 +583,7 @@ const GManager <- class GManager builtin 0x102d
         if oldCoordinator !== newCoordinator and gm == newCoordinator then
           % I am the new coordinator
           GDebug.out3["Node down - I am the new GManager coordinator"]
-    
+
           % initialize GIDCounter
           const v: Vector.of[GElectionNode] <- election.list
           var i: Integer
@@ -593,27 +593,27 @@ const GManager <- class GManager builtin 0x102d
             begin
               currentGID <- (view v.getElement[i].getUserData as GManager).findHighestGID
               if currentGID > highestGID then
-                highestGID <- currentGID 
+                highestGID <- currentGID
               end if
               unavailable
                 GDebug.out2["GManager", "nodeDown - attempted to call dead node"]
               end unavailable
             end
-          end for 
+          end for
           gm.setGIDCounter[GCounter.create[highestGID + 1]]
         else
           if gm !== newCoordinator then
             GDebug.out3["Node down - I am not the new GManager coordinator"]
-          else 
+          else
             GDebug.out3["Node down - I am still the GManager coordinator"]
           end if
         end if
         locks.writeUnlock[locate self]
-        
+
         % inform all GReps of failure of node
         const r: Vector.of[GRep] <- repList.list
         var j: Integer
-        for (j <- 0 : j <= r.upperBound : j <- j + 1 ) 
+        for (j <- 0 : j <= r.upperBound : j <- j + 1 )
           r.getElement[j].nodeDown[n]
         end for
       end process
@@ -624,12 +624,12 @@ const GManager <- class GManager builtin 0x102d
     GDebug.out1["GManager", "moveMemberStart"]
 
     const localGM: GManager <- GUtilities.getGM[locate self]
- 
+
     const moveMemberStartThread <- object moveMemberStartThread
       process
         % on move of Group member, GReps have to agree
       end process
-    end moveMemberStartThread  
+    end moveMemberStartThread
   end moveMemberStart
 
   export operation moveMemberDone [o: Any, n: Node]
@@ -640,12 +640,12 @@ const GManager <- class GManager builtin 0x102d
     GDebug.out1["GManager", "moveListenerStart"]
 
     const localGM: GManager <- GUtilities.getGM[locate self]
- 
+
     const moveListenerStartThread <- object moveListenerStartThread
       process
         % on move of listener, GReps have to agree
       end process
-    end moveListenerStartThread  
+    end moveListenerStartThread
   end moveListenerStart
 
   export operation moveListenerDone [o: Any, n: Node]
@@ -717,7 +717,7 @@ const GManager <- class GManager builtin 0x102d
     end if
     locks.readUnlock
   end newGID
-  
+
   export operation listNodes -> [v: Vector.of[GElectionNode]]
     v <- election.list
   end listNodes
@@ -725,7 +725,7 @@ end GManager
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% GRep - 
+% GRep -
 %  local state (defined, members, listeners, membersAndListeners, failed)
 %  other GReps for this GID, their node and their state
 %  locks for this gid if coordinator
@@ -743,7 +743,7 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
   % all listeners for this GID
   field listeners: GArray.of[GListener] <- GArray.of[GListener].create
   % no of listeners on this node
-  var localListeners: Integer <- 0  
+  var localListeners: Integer <- 0
 
   % used to maintain coordinator, and GRepNodes
   var election: GElection <- nil
@@ -818,7 +818,7 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
       % I am the new coordinator
       GDebug.out3["Node down - I am the new coordinator for gid " || g.asString]
       locks <- GLocks.create
-    else 
+    else
       if self !== newCoordinator then
         GDebug.out3["Node down - I am not the new coordinator for gid " || g.asString]
       else
@@ -854,14 +854,14 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
   export operation addMember [o: Any, root: Boolean] -> [b: Boolean]
     GDebug.out1["GRep", "addMember"]
     b <- false
-    
-    if root then 
+
+    if root then
       % make sure object not already in group
       if GUtilities.groupMember[o] then
         GDebug.out2["GRep", "addMember - object is already in a group"]
         return
       end if
-      
+
       % mark object as group member
       GUtilities.setGroupMember[o, true]
 
@@ -871,7 +871,7 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
       % inform all nodes of new member
       const v: Vector.of[GElectionNode] <- election.list
       var i: Integer <- 0
-      for ( i <- 0 : i <= v.upperBound : i <- i + 1 ) 
+      for ( i <- 0 : i <= v.upperBound : i <- i + 1 )
         const gr: GRep <- (view v.getElement[i].getUserData as GRepNode).getGRep
         if gr == self then
           members.add[o]
@@ -898,17 +898,17 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
   export operation removeMember [o: Any, root: Boolean] -> [b: Boolean]
     GDebug.out1["GRep", "removeMember"]
     b <- false
-    
-    if root then 
+
+    if root then
       % make sure object is already in a group
       if !GUtilities.groupMember[o] then
         GDebug.out2["GRep", "removeMember - object is not in a group"]
         return
       end if
-      
+
       % acquire write lock
       self.acquireLock[false]
-      
+
       % ensure object is in this group
       if members.find[o] == nil then
         GDebug.out2["GRep", "removeMember - object is not in this group"]
@@ -919,7 +919,7 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
         % inform all nodes of removed member
         const v: Vector.of[GElectionNode] <- election.list
         var i: Integer <- 0
-        for ( i <- 0 : i <= v.upperBound : i <- i + 1 ) 
+        for ( i <- 0 : i <= v.upperBound : i <- i + 1 )
           const gr: GRep <- (view v.getElement[i].getUserData as GRepNode).getGRep
           if gr == self then
             members.remove[o]
@@ -967,14 +967,14 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
   export operation addGListener [l: GListener, root: Boolean] -> [b: Boolean]
     GDebug.out1["GRep", "addGListener"]
     b <- false
-    
-    if root then 
+
+    if root then
       % make sure object not already a glistener
       if GUtilities.groupListener[l] then
         GDebug.out2["GRep", "addGListener - object is already a listener"]
         return
       end if
-      
+
       % mark object as group listener
       GUtilities.setGroupListener[l, true]
 
@@ -984,7 +984,7 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
       % inform all nodes of new listener
       const v: Vector.of[GElectionNode] <- election.list
       var i: Integer <- 0
-      for ( i <- 0 : i <= v.upperBound : i <- i + 1 ) 
+      for ( i <- 0 : i <= v.upperBound : i <- i + 1 )
         const gr: GRep <- (view v.getElement[i].getUserData as GRepNode).getGRep
         if gr == self then
           listeners.add[l]
@@ -1011,17 +1011,17 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
   export operation removeGListener [l: GListener, root: Boolean] -> [b: Boolean]
     GDebug.out1["GRep", "removeGListener"]
     b <- false
-    
-    if root then 
+
+    if root then
       % make sure object is already in a group
       if !GUtilities.groupListener[l] then
         GDebug.out2["GRep", "removeGListner - object is not a group listener"]
         return
       end if
-      
+
       % acquire write lock
       self.acquireLock[false]
-      
+
       % ensure object is a listener for this group
       if listeners.find[l] == nil then
         GDebug.out2["GRep", "removeGListener - object is not a listener for this group"]
@@ -1032,7 +1032,7 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
         % inform all nodes of removed member
         const v: Vector.of[GElectionNode] <- election.list
         var i: Integer <- 0
-        for ( i <- 0 : i <= v.upperBound : i <- i + 1 ) 
+        for ( i <- 0 : i <= v.upperBound : i <- i + 1 )
           const gr: GRep <- (view v.getElement[i].getUserData as GRepNode).getGRep
           if gr == self then
             listeners.remove[l]
@@ -1058,7 +1058,7 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
   end removeGListener
 
   export operation listGListeners -> [l: Vector.of[GListener]]
-    GDebug.out1["GRep", "listGListeners"]    
+    GDebug.out1["GRep", "listGListeners"]
     self.acquireLock[true]
     l <- listeners.list
     self.freeLock[true]
@@ -1087,7 +1087,7 @@ const GRep <- class GRep [g: gid, gr: GRep, gm: GManager]
   end acquireLock
 
   operation freeLock [read: Boolean]
-    begin 
+    begin
       if read then
         self.getCoordinator.getLocks.readUnlock
       else
@@ -1152,7 +1152,7 @@ const GRepNode <- class GRepNode [gr: GRep]
   const MEMBERS_AND_LISTENERS <- 3
 
   var state: Integer <- DEFINED
-   
+
   export operation getGRep -> [g: GRep]
     g <- gr
   end getGRep
@@ -1182,30 +1182,30 @@ end GRepNode
 const GUtilities <- immutable class GUtilities
   class export operation setGroupMember [o: Any, b: Boolean]
     if b then
-      primitive "NCCALL" "GROUP" "SETMEMBER" [] <- [o] 
+      primitive "NCCALL" "GROUP" "SETMEMBER" [] <- [o]
     else
-      primitive "NCCALL" "GROUP" "CLEARMEMBER" [] <- [o] 
+      primitive "NCCALL" "GROUP" "CLEARMEMBER" [] <- [o]
     end if
   end setGroupMember
 
   class export operation groupMember [o: Any] -> [b: Boolean]
-    primitive "NCCALL" "GROUP" "QUERYMEMBER" [b] <- [o] 
+    primitive "NCCALL" "GROUP" "QUERYMEMBER" [b] <- [o]
   end groupMember
 
   class export operation setGroupListener [o: Any, b: Boolean]
     if b then
-      primitive "NCCALL" "GROUP" "SETLISTENER" [] <- [o] 
+      primitive "NCCALL" "GROUP" "SETLISTENER" [] <- [o]
     else
-      primitive "NCCALL" "GROUP" "CLEARLISTENER" [] <- [o] 
+      primitive "NCCALL" "GROUP" "CLEARLISTENER" [] <- [o]
     end if
   end setGroupListener
 
   class export operation groupListener [o: Any] -> [b: Boolean]
-    primitive "NCCALL" "GROUP" "QUERYLISTENER" [b] <- [o] 
+    primitive "NCCALL" "GROUP" "QUERYLISTENER" [b] <- [o]
   end groupListener
 
-  class export operation markUnavailable [o: Any] 
-    primitive "NCCALL" "GROUP" "MARKUNAVAILABLE" [] <- [o] 
+  class export operation markUnavailable [o: Any]
+    primitive "NCCALL" "GROUP" "MARKUNAVAILABLE" [] <- [o]
   end markUnavailable
 
   class export operation getGM [n: Node] -> [gm: GManager]
@@ -1222,7 +1222,7 @@ end GUtilities
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Exports 
+% Exports
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 export Group to "Builtins"
 export GListener to "Builtins"

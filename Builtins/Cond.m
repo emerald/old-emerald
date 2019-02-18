@@ -18,9 +18,9 @@ const Condition <- immutable object Condition builtin 0x1005
       %
       attached var myObject : String
       var waitingQueue : Integer
-      
+
       initially
-	primitive "CONDINIT" [] <- []
+        primitive "CONDINIT" [] <- []
       end initially
     end aCondition
   end create

@@ -31,59 +31,77 @@ const Real <- immutable object Real builtin 0x100a
     function - -> [r : Real]
       % r <- negate self
   end RealType
+
   export function getSignature -> [result : Signature]
     result <- RealType
   end getSignature
+
   export function create -> [result : RealType]
     result <- immutable object aReal builtin 0x140a
+
       export function + [o : Real] -> [r : Real]
-	primitive self "FADD" [r] <- [o]
+        primitive self "FADD" [r] <- [o]
       end +
+
       export function - [o : Real] -> [r : Real]
-	primitive self "FSUB" [r] <- [o]
+        primitive self "FSUB" [r] <- [o]
       end -
+
       export function * [o : Real] -> [r : Real]
-	primitive self "FMUL" [r] <- [o]
+        primitive self "FMUL" [r] <- [o]
       end *
+
       export function / [o : Real] -> [r : Real]
-	primitive self "FDIV" [r] <- [o]
+        primitive self "FDIV" [r] <- [o]
       end /
+
       export function ^ [o : Real] -> [r : Real]
-	primitive self "FPOW" [r] <- [o]
+        primitive self "FPOW" [r] <- [o]
       end ^
+
       export function > [o : Real] -> [r : Boolean]
-	primitive self  "FCMP" "GT" [r] <- [o]
+        primitive self  "FCMP" "GT" [r] <- [o]
       end >
+
       export function >= [o : Real] -> [r : Boolean]
-	primitive self  "FCMP" "GE" [r] <- [o]
+        primitive self  "FCMP" "GE" [r] <- [o]
       end >=
+
       export function < [o : Real] -> [r : Boolean]
-	primitive self  "FCMP" "LT" [r] <- [o]
+        primitive self  "FCMP" "LT" [r] <- [o]
       end <
+
       export function <= [o : Real] -> [r : Boolean]
-	primitive self  "FCMP" "LE" [r] <- [o]
+        primitive self  "FCMP" "LE" [r] <- [o]
       end <=
+
       export function = [o : Real] -> [r : Boolean]
-	primitive self  "FCMP" "EQ" [r] <- [o]
+        primitive self  "FCMP" "EQ" [r] <- [o]
       end =
+
       export function != [o : Real] -> [r : Boolean]
-	primitive self  "FCMP" "NE" [r] <- [o]
+        primitive self  "FCMP" "NE" [r] <- [o]
       end !=
+
       export function asString -> [r : String]
-	primitive self "FSTR" [r] <- []
+        primitive self "FSTR" [r] <- []
       end asString
+
       export function asInteger -> [r : Integer]
-	primitive self "FINT" [r] <- []
+        primitive self "FINT" [r] <- []
       end asInteger
+
       export function ~ -> [r : Real]
-	primitive self "FNEG" [r] <- []
+        primitive self "FNEG" [r] <- []
       end ~
+
       export function - -> [r : Real]
-	primitive self "FNEG" [r] <- []
+        primitive self "FNEG" [r] <- []
       end -
     end aReal
   end create
-  export function literal [rep : String] -> [result : RealType]  
+
+  export function literal [rep : String] -> [result : RealType]
     primitive "STRF" [result] <- [rep]
   end literal
 end Real

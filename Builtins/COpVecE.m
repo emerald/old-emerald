@@ -27,27 +27,27 @@ const COpVectorE <- immutable object COpVectorE builtin 0x101a
       attached const name <- pname
       attached const template <- ptemplate
       attached const code <- pcode
-      
+
       export function  getid -> [r : Integer]
-	r <- id
+        r <- id
       end getid
       export function  getNArgs -> [r : Integer]
-	r <- NArgs
+        r <- NArgs
       end getNArgs
       export function  getNRess -> [r : Integer]
-	r <- NRess
+        r <- NRess
       end getNRess
       export function  getName -> [r : String]
-	r <- name
+        r <- name
       end getName
       export function  getTemplate -> [r : String]
-	r <- template
+        r <- template
       end getTemplate
       export function  getCode -> [r : String]
-	r <- code
+        r <- code
       end getCode
     end aCOpVectorE
   end create
 end COpVectorE
-  
+
 export COpVectorE to "Builtins"
