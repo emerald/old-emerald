@@ -1,5 +1,5 @@
 % InStr.m - modified from stock version to use CCALLS
-%        	by Brian Edmonds <edmonds@cs.ubc.ca> 94Nov05
+%         by Brian Edmonds <edmonds@cs.ubc.ca> 94Nov05
 
 export InStream to "Builtins"
 

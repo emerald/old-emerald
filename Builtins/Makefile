@@ -181,3 +181,7 @@ Literal.m:	IVec.m vec-ed
 clean:
 	rm -f *.bak .emacs_[0-9]* *.ckp 
 
+check_tab_freedom:
+	! grep -P "\t" *.m
+
+.PHONY: check_tab_freedom

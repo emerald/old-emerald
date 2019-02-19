@@ -146,7 +146,7 @@ end Gaggle
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	         A directory with eventual consistency                       %
+%                A directory with eventual consistency                       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 const VectorofTimeStamp <- Vector.of[TimeStamp]

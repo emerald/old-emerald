@@ -8,7 +8,7 @@ const type <- immutable object type builtin 0x1000
   export operation create -> [r : typeType]
     r <- immutable object aType builtin 0x1400
       export function getSignature -> [r : Signature]
-	r <- typetype
+        r <- typetype
       end getSignature
     end aType
   end create
