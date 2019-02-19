@@ -10,10 +10,12 @@ S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14
 `bash` MUST be used as the shell scripting language throughout this
 codebase.
 
-**Reasoning:** This choice is in accord with the [Google Shell Style
+**Reasoning:** The reasoning is two-fold:
+
+  1. This choice is in accord with the [Google Shell Style
 Guide](https://google.github.io/styleguide/shell.xml) ([as of Revision
 1.26](https://web.archive.org/web/20190216182133/https://google.github.io/styleguide/shell.xml)).
-`bash` also seems like the currently most popular shell scripting
+  2. `bash` seems like the currently most popular shell scripting
 language: according to the [TIOBE
 Index](https://www.tiobe.com/tiobe-index/) ([as of
 2019](https://web.archive.org/web/20190219075007/https://www.tiobe.com/tiobe-index/)),
