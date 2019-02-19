@@ -1,4 +1,4 @@
-# Shell Style Guide
+# The Emerald Shell Scripting Style Guide
 
 In the following, the words "MUST" and "SHOULD" are to be interpreted
 as described in [BCP 14](http://tools.ietf.org/html/bcp14) (Bradner,

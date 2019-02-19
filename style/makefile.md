@@ -1,4 +1,4 @@
-# Makefile Style Guide
+# The Emerald Makefile Style Guide
 
 ## Variables
 
