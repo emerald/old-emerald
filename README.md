@@ -21,5 +21,5 @@
 
 ## Style Guides
 
-  * [Shell Style Guide](style/shell.md)
+  * [Shell Scripts](style/shell.md)
   * [Makefiles](style/make.md)
