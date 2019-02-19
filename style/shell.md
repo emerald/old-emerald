@@ -25,7 +25,8 @@ command-line binary, and may therefore not reside under `/bin`. Using
 
 ## Strict Mode
 
-All `bash` scripts begin by going into a "strict mode":
+All `bash` scripts begin by going into a ["strict
+mode"](http://redsymbol.net/articles/unofficial-bash-strict-mode/):
 
 ```
 set -euo pipefail
