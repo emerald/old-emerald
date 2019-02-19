@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/emerald/emerald.svg?branch=master)](https://travis-ci.org/emerald/emerald)
+[![Build Status](https://travis-ci.org/emerald/old-emerald.svg?branch=master)](https://travis-ci.org/emerald/old-emerald)
 
 ## Requirements
 
