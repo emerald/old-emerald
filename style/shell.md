@@ -1,13 +1,18 @@
 # Shell Style Guide
 
-`bash` is used as the shell scripting language throughout this
+In the following, the words "MUST" and "SHOULD" are to be interpreted
+as described in [RFC 2119](http://tools.ietf.org/html/rfc2119)
+(Bradner, S., "Key words for use in RFCs to Indicate Requirement
+Levels", BCP 14, RFC 2119, March 1997).
+
+`bash` MUST be used as the shell scripting language throughout this
 codebase. This choice is in accord with the [Google Shell Style
 Guide](https://google.github.io/styleguide/shell.xml), and `bash` does
 currently seem like the most frequently used shell scripting language.
 
 ## Shebang
 
-All `bash` executables begin with the following shebang:
+All `bash` executables MUST begin with the following shebang:
 
 ```
 #!/usr/bin/env bash
@@ -25,8 +30,10 @@ command-line binary, and may therefore not reside under `/bin`. Using
 
 ## Strict Mode
 
-All `bash` scripts begin by going into a ["strict
-mode"](http://redsymbol.net/articles/unofficial-bash-strict-mode/):
+After the shebang, all `bash` scripts MUST either begin by going into
+the following ["strict
+mode"](http://redsymbol.net/articles/unofficial-bash-strict-mode/), or
+comment on why the script is executed in a less strict mode:
 
 ```
 set -euo pipefail
