@@ -5,10 +5,12 @@ as described in [BCP 14](http://tools.ietf.org/html/bcp14) (Bradner,
 S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14
 (RFC 2119), March 1997).
 
+## Use `bash`
+
 `bash` MUST be used as the shell scripting language throughout this
 codebase.
 
-This choice is in accord with the [Google Shell Style
+**Reasoning:** This choice is in accord with the [Google Shell Style
 Guide](https://google.github.io/styleguide/shell.xml) ([as of Revision
 1.26](https://web.archive.org/web/20190216182133/https://google.github.io/styleguide/shell.xml)).
 `bash` also seems like the currently most popular shell scripting
@@ -28,7 +30,7 @@ All `bash` executables MUST begin with the following shebang:
 
 This is used in place of the otherwise common `#!/bin/bash`.
 
-The reason is that `/bin`, by convention, is intended for _essential_
+**Reasoning:** `/bin`, by convention, is intended for _essential_
 command-line binaries for the system administrator, while `/usr/bin`
 is intended for _non-essential_ command-line binaries for the casual
 user. On some systems, `bash` may not be regarded as an essential
@@ -54,3 +56,7 @@ This does the following:
   2. The script fails when an undefined variable is used (`-u`).
   3. A pipeline of commands fails, if any intermediate command fails
      (`-o pipefail`); the non-zero exit code gets propagated.
+
+**Reasoning:** This makes shell scripts more robust and easier to
+debug. In particular, it reduces cascading errors, as long as we
+regard failing commands and use of non-declared variables as errors.
