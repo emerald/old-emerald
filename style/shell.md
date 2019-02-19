@@ -34,9 +34,9 @@ This is used in place of the otherwise common `#!/bin/bash`.
 command-line binaries for the system administrator, while `/usr/bin`
 is intended for _non-essential_ command-line binaries for the casual
 user. On some systems, `bash` may not be regarded as an essential
-command-line binary, and may therefore not reside under `/bin`. Using
-`env`, we find `bash`, wherever it may be, according to the user's
-`PATH` environment variable, and execute that.
+command-line binary, and may therefore not reside under `/bin`. By
+using `env`, we find `bash`, wherever it may be, according to the
+user's `PATH` environment variable, and execute that.
 
 ## Strict Mode
 
