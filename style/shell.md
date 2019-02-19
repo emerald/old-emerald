@@ -1,9 +1,9 @@
 # Shell Style Guide
 
 In the following, the words "MUST" and "SHOULD" are to be interpreted
-as described in [RFC 2119](http://tools.ietf.org/html/rfc2119)
-(Bradner, S., "Key words for use in RFCs to Indicate Requirement
-Levels", BCP 14, RFC 2119, March 1997).
+as described in [BCP 14](http://tools.ietf.org/html/bcp14) (Bradner,
+S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14
+(RFC 2119), March 1997).
 
 `bash` MUST be used as the shell scripting language throughout this
 codebase. This choice is in accord with the [Google Shell Style
