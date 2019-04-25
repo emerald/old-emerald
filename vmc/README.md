@@ -24,12 +24,12 @@ declarations:
 
 ```
 machine ::= odefs ostates oints oinstrs
-odefs ::=
-        | code
+odefs   ::=
+          | code
 ostates ::=
           | `^State:` state*
-oints ::=
-        | `^Interrupts:` int*
+oints   ::=
+          | `^Interrupts:` int*
 oinstrs ::=
           | `^Instructions:` instr*
 ```
