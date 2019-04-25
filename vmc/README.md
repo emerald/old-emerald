@@ -19,7 +19,7 @@ condition.
 ## Syntax
 
 A VM description consists of an optional set of definitions (C code),
-followed by some optional state, interrupt, and instruction
+followed by some optional state-, interrupt-, and instruction
 declarations:
 
 ```
