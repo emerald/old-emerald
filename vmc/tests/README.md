@@ -19,7 +19,8 @@ file [`data/empty.desc`](data/empty.desc), `vmc` generates
 [`data/empty.desc.h`](data/empty.desc.h), and
 [`data/empty.desc_i.h`](data/empty.desc_i.h).
 
-The `vmc` are therefore structured as follows:
+The [(tests) `data`](data) directory is therefore structured as
+follows:
 
 1. The code generated for the empty file
    [`data/empty.desc`](data/empty.desc) is stored directly in Git.
