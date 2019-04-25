@@ -1,6 +1,6 @@
 language: c
 env:
-  - EXTRA_CFLAGS=-Werror
+  - EXTRA_CFLAGS=-m32 -Werror
 addons:
   apt:
     packages:
