@@ -1,14 +1,28 @@
-language: c
-env:
-  - EXTRA_CFLAGS=-m32 -Werror
-addons:
-  apt:
-    packages:
-    - libc6-i386
-    - libc6-dev-i386
-    - linux-libc-dev:i386
-    - libfl-dev:i386
-    - gcc-multilib
-    - realpath
+matrix:
+  include:
+  - os: linux
+    addons:
+      apt:
+        packages:
+        - libc6-i386
+        - libc6-dev-i386
+        - linux-libc-dev:i386
+        - libfl-dev:i386
+        - gcc-multilib
+        - realpath
+    env:
+      - EXTRA_CFLAGS=-m32 -Werror
+  - os: linux
+    addons:
+      apt:
+        packages:
+        - libc6
+        - libc6-dev
+        - linux-libc-dev
+        - libfl-dev
+        - gcc-multilib
+        - realpath
+    env:
+      - EXTRA_CFLAGS=-Werror
 install: make -C vmc
 script: ./vmc/tests/run.sh
