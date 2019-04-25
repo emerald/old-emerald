@@ -38,5 +38,5 @@ follows:
       $ bash gen-data.sh data/empty_defs.patch
       ~~~
 
-The patch-based design reduces code duplication and enables a
+This patch-based design reduces code duplication, and enables a
 principled exploration of the behaviour of `vmc` for various inputs.
