@@ -9,6 +9,19 @@ This source code comes from the directory [`ubc-latest-src/vmc` in the
 `emerald/src-versions` repository, commit ID
 `4faee4f29dac9fea92ac10bbeb0b9281f83fdf3a`](https://github.com/emerald/src-versions/tree/4faee4f29dac9fea92ac10bbeb0b9281f83fdf3a/ubc-latest-src).
 
+The source code got a mild clean-up, and now compiles with `-Wall`,
+`-Wextra`, `-pedantic`, and `-std=c11`. We do not use the `-Werror`
+flag (yet), because flex generates code which yields warnings for some
+modern versions of GCC.
+
+It also compiles both in 32- and 64-bit mode. By default, no flag is
+given to GCC. If you are on a 64-bit system, and would like to build a
+32-bit binary, the procedure is currently as follows:
+
+```
+$ EXTRA_CFLAGS=-m32 make
+```
+
 ## Exit code
 
 Unfortunately, `vmc` does not exit with a non-zero exit code on a
