@@ -8,7 +8,7 @@ OBJ = vmclex.o vmcpar.o semantic.o trace.o \
 CC = gcc -g
 
 vmc:	$(OBJ) Makefile
-	$(CC) $(CFLAGS) -o vmc $(OBJ) -ll
+	$(CC) $(CFLAGS) -o vmc $(OBJ)
 
 vmclex.c: vmclex.l Makefile
 	lex -o vmclex.c vmclex.l
