@@ -1,5 +1,3 @@
-/* comment me!
- */
 #define E_NEEDS_STRING
 #define E_NEEDS_CTYPE
 #define E_NEEDS_NTOH
