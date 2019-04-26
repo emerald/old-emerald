@@ -1,0 +1,24 @@
+# i686-specific definitions of commonly-used macros
+
+# architecture definition
+ARCH = `arch`
+
+CC = gcc
+
+CCALLS_OBJ=emstream.o string.o misk.o rand.o
+
+# definitions to enable common extensions in headers and libraries
+XCPFLAGS =
+
+XLIB =
+
+# C preprocessor
+CPP = cc -E
+
+# dependency generator
+DEPEND = gcc -MM
+
+# 
+CFLAGSOPT = -g -O -m32
+OPTCOPT   = $(CFLAGSOPT)
+OPTVMOPT  = $(CFLAGSOPT)
