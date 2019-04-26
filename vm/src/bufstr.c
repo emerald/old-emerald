@@ -9,6 +9,8 @@
 #include "storage.h"
 #include "trace.h"
 
+#include <string.h> // memcpy
+
 enum { INITIALWRITEBUFFERSIZE = 1024 };
 
 static struct StreamConstructor rbs_constructor;
