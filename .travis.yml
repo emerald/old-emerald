@@ -5,8 +5,9 @@ addons:
       - gcc-multilib
       - realpath
 env:
-  - EMERALDROOT=$TRAVIS_BUILD_DIR
-  - PATH=$EMERALDROOT/bin:$PATH
+  global:
+    - EMERALDROOT=$TRAVIS_BUILD_DIR
+    - PATH=$EMERALDROOT/bin:$PATH
 matrix:
   include:
   - os: linux
