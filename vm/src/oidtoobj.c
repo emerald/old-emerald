@@ -21,6 +21,8 @@
 #include "read.h"
 #include "assert.h"
 
+#include <string.h> // strlen
+
 /*
  * The initial size of the object table.  If it is too small, it gets
  * increased, but due to malloc's behaviour it costs a lot of data space.
