@@ -1,4 +1,12 @@
 language: c
+addons:
+  apt:
+    packages:
+      - gcc-multilib
+      - realpath
+env:
+  - EMERALDROOT=$TRAVIS_BUILD_DIR
+  - PATH=$EMERALDROOT/bin:$PATH
 matrix:
   include:
   - os: linux
@@ -9,12 +17,8 @@ matrix:
         - libc6-dev-i386
         - linux-libc-dev:i386
         - libfl-dev:i386
-        - gcc-multilib
-        - realpath
     env:
-      - EMERALDROOT=$TRAVIS_BUILD_DIR
       - EMERALDARCH=i386
-      - PATH=$EMERALDROOT/bin:$PATH
       - EXTRA_CFLAGS=-m32 -Werror
   - os: linux
     addons:
@@ -24,12 +28,8 @@ matrix:
         - libc6-dev
         - linux-libc-dev
         - libfl-dev
-        - gcc-multilib
-        - realpath
     env:
-      - EMERALDROOT=$TRAVIS_BUILD_DIR
       - EMERALDARCH=i686
-      - PATH=$EMERALDROOT/bin:$PATH
       - EXTRA_CFLAGS=-Werror
 install:
   - make -C vmc
