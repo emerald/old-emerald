@@ -11,6 +11,9 @@ matrix:
         - gcc-multilib
         - realpath
     env:
+      - EMERALDROOT=$TRAVIS_BUILD_DIR
+      - EMERALDARCH=i386
+      - PATH=$EMERALDROOT/bin:$PATH
       - EXTRA_CFLAGS=-m32 -Werror
   - os: linux
     addons:
@@ -23,6 +26,11 @@ matrix:
         - gcc-multilib
         - realpath
     env:
+      - EMERALDROOT=$TRAVIS_BUILD_DIR
+      - EMERALDARCH=i686
+      - PATH=$EMERALDROOT/bin:$PATH
       - EXTRA_CFLAGS=-Werror
-install: make -C vmc
+install:
+  - make -C vmc
+  - emmake -C ccalls
 script: ./vmc/tests/run.sh
