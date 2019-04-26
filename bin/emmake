@@ -4,13 +4,12 @@ set -euo pipefail
 
 # emmake
 #
-# invoke make as usual, but ensure that if we're building in a
-# directory under $EMERALDROOT, any Emerald common definitions
-# are processed first, followed by any architecture specific
-# definitions (allowing them to override the common definitions.)
-# The -v option (which must be first, else it is passed through)
-# will cause emmake to be verbose about exactly what make line is
-# executed.
+# Invoke make as usual, but ensure that if we're building in a
+# directory under $EMERALDROOT, any common Emerald definitions are
+# processed first, followed by any architecture-specific definitions
+# (allowing them to override the common definitions).  The -v option
+# (which must be first, else it is passed through) will cause emmake
+# to be verbose about exactly what make line is executed.
 
 #
 # domake - make, and echo if appropriate
