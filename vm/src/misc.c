@@ -1142,7 +1142,7 @@ static void findRootsInStack(State *state, void (*pointers_f)(int, Object *),
 		     findLineNumber(lstate.pc, theOp->d.code, theTemplate),
 		     lstate.cp->d.name->d.items, lstate.cp->d.name->d.data, 
 		     theOp->d.name->d.items, theOp->d.name->d.data));
-	      if (!isAllNil(base + sizeFromTemplate(theTemplate),
+	      if (!isAllNil((unsigned int *)(base + sizeFromTemplate(theTemplate)),
 			    lstate.sp - base - sizeFromTemplate(theTemplate))) {
 		TRACE(memory, 1, ("Backtrace of process"));
 		showProcess(state, 1);
