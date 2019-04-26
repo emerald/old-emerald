@@ -1,9 +1,4 @@
 language: c
-addons:
-  apt:
-    packages:
-      - gcc-multilib
-      - realpath
 env:
   global:
     - EMERALDROOT=$TRAVIS_BUILD_DIR
@@ -18,6 +13,8 @@ matrix:
         - libc6-dev-i386
         - linux-libc-dev:i386
         - libfl-dev:i386
+        - gcc-multilib
+        - realpath
     env:
       - EMERALDARCH=i386
       - EXTRA_CFLAGS=-m32 -Werror
@@ -29,6 +26,8 @@ matrix:
         - libc6-dev
         - linux-libc-dev
         - libfl-dev
+        - gcc-multilib
+        - realpath
     env:
       - EMERALDARCH=i686
       - EXTRA_CFLAGS=-Werror
