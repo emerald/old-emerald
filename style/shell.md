@@ -62,3 +62,43 @@ This does the following:
 **Reasoning:** This makes shell scripts more robust and easier to
 debug. In particular, it reduces cascading errors, as long as we
 regard failing commands and use of non-declared variables as errors.
+
+## Use `printf` rather than `echo`
+
+It [appears](https://unix.stackexchange.com/a/65819) that `printf` has
+a more standard behaviour across various shells (and versions of
+`bash`!) than `echo`. Furthermore, and perhaps more importantly,
+`bash`-style `echo` supports arguments, making it hard to `echo` a
+string like `-n`. Hence, if you do not control the input passed to
+`echo`, better resort to `printf` instead.
+
+The following function hides the default `echo` to implement the
+behaviour you _probably_ expect for `echo`:
+
+```
+echo() (
+  IFS=" "
+  printf '%s\n' "$*"
+)
+```
+
+Setting IFS to space has the effect that `"$*"` [is expanded
+to](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html)
+`"$1 $2 $3..."`.
+
+If you would like to avoid starting a subshell (note parentheses
+around the body of the `echo` function above), you can instead define
+`echo` as follows:
+
+```
+echo() {
+  if [ "$#" -gt 0 ]; then
+     printf %s "$1"
+     shift
+  fi
+  if [ "$#" -gt 0 ]; then
+     printf ' %s' "$@"
+  fi
+  printf '\n'
+}
+```
