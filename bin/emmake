@@ -16,7 +16,7 @@ set -euo pipefail
 #
 domake () {
   if [ $verbose = 1 ] ; then
-    echo "make $*"
+    printf '%s\n' "make $*"
   fi
   exec make $*
 }
