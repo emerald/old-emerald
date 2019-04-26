@@ -151,7 +151,7 @@ static inline void forward(Object o, Object new)
 
 extern int sizeOf (Object o), sizeOfX(Object o, Object new, ConcreteType ct);
 
-inline int in_old (Object p)
+static inline int in_old (Object p)
 {
   return (word *)p >= old_start && (word *)p < old_end;
 }
@@ -168,12 +168,12 @@ inline int in_old (Object p)
  *
  * Check out the setting of new_lb and new_ub in swap and in synchBounds.
  */
-inline int in_new (Object p)
+static inline int in_new (Object p)
 {
   return ((word *)p >= new_start) && ((word *)p < new_end);
 }
 
-inline int in_from (Object p)
+static inline int in_from (Object p)
 {
   return ((word *)p >= new_lb) && ((word *)p < new_ub);
 }
