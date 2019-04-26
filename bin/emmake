@@ -11,12 +11,23 @@ set -euo pipefail
 # (which must be first, else it is passed through) will cause emmake
 # to be verbose about exactly what make line is executed.
 
+echo() {
+  if [ "$#" -gt 0 ]; then
+     printf %s "$1"
+     shift
+  fi
+  if [ "$#" -gt 0 ]; then
+     printf ' %s' "$@"
+  fi
+  printf '\n'
+}
+
 #
 # domake - make, and echo if appropriate
 #
 domake () {
   if [ $verbose = 1 ] ; then
-    printf '%s\n' "make $*"
+    echo "make" "$@"
   fi
   exec make $*
 }
