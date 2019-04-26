@@ -33,4 +33,5 @@ matrix:
 install:
   - make -C vmc
   - emmake -C ccalls
+  - emmake -C vm/src
 script: ./vmc/tests/run.sh
