@@ -75,7 +75,7 @@ void pushBottomAR(State *state)
   state->sp = sp;
   state->fp = sp;
 }
-  
+
 void freeze(Object obj, Reason why)
 {
   int r = IIScLookup(allfrozen, (int)obj);
@@ -98,7 +98,7 @@ void addToFixQueue(Object obj, State *state)
   }
   SQueueInsert(fixq, state);
 }
-    
+
 void finishedFixing(Object obj)
 {
   SQueue fixq = (SQueue) IIScLookup(fixqueue, (int)obj);
@@ -115,7 +115,7 @@ void finishedFixing(Object obj)
     IIScDelete(fixqueue, (int)obj);
   }
 }
-    
+
 char *ReasonString(int r)
 {
   static char buf[5][60];
@@ -123,7 +123,7 @@ char *ReasonString(int r)
   char *rval;
 
   rval = buf[i]; i = (i+1) % 5;
-  sprintf(rval, "%s%s%s", 
+  sprintf(rval, "%s%s%s",
     r & (int) RInitially ? "Initially " : "",
     r & (int) RRemote ? "Remote " : "",
     r & (int) RDead ? "Dead " : "");
@@ -139,9 +139,9 @@ void thaw(Object obj, Reason why)
   if (!RESDNT(obj->flags)) r = r | RRemote;
 
   r = r & ~(int)why;
-  TRACE(call, 2, ("Thawing Object %#x a %.*s", obj, 
-		     CODEPTR(obj->flags)->d.name->d.items,
-		     CODEPTR(obj->flags)->d.name->d.data));
+  TRACE(call, 2, ("Thawing Object %#x a %.*s", obj,
+     CODEPTR(obj->flags)->d.name->d.items,
+     CODEPTR(obj->flags)->d.name->d.data));
   if (r) {
     /* The object is still broken, but for some other reason */
     TRACE(call, 2, ("Object %#x still broken for %s", ReasonString(r)));
@@ -164,13 +164,13 @@ int duringInitialization(Object obj)
   int why = IIScLookup(allfrozen, (int)obj);
   return !IIScIsNIL(why) && ((why & (int)RInitially) == (int)RInitially);
 }
-  
+
 int isBroken(Object obj)
 {
   int why = IIScLookup(allfrozen, (int)obj);
   return !IIScIsNIL(why) && ((why & (int)RDead) == (int)RDead);
 }
-  
+
 int selfDuringInitialization(Object obj, State *state)
 {
   int why = IIScLookup(allfrozen, (int)obj);
@@ -189,9 +189,9 @@ void tryToInit(Object obj)
 
   IIScInsert(fixqueue, (int)obj, (int)SQueueCreate());
   TRACE(initiallies, 1,
-	("actively invoking initially/recovery of %#x (%.*s)",
-	 obj, CODEPTR(obj->flags)->d.name->d.items,
-	 CODEPTR(obj->flags)->d.name->d.data));
+  ("actively invoking initially/recovery of %#x (%.*s)",
+   obj, CODEPTR(obj->flags)->d.name->d.items,
+   CODEPTR(obj->flags)->d.name->d.data));
   run(obj, reasonToIndex(why), 0);
 }
 
@@ -205,11 +205,11 @@ int invokefrozen(Object obj, ConcreteType ct, int opindex, State *state)
   if (IIScIsNIL(why)) why = 0;
   if (!RESDNT(obj->flags)) why = why | RRemote;
 
-  if (TRACING(call, 2) || 
+  if (TRACING(call, 2) ||
       (isReason(why, RInitially) && TRACING(initiallies, 2))) {
     TRACE(call, 0,
-	  ("invoking frozen (%s) object %#x (%.*s)",
-	   ReasonString(why), obj, ct->d.name->d.items, ct->d.name->d.data));
+    ("invoking frozen (%s) object %#x (%.*s)",
+     ReasonString(why), obj, ct->d.name->d.items, ct->d.name->d.data));
   }
   if (isReason(why, RDead)) {
     /* It cannot come back */
@@ -230,13 +230,13 @@ int invokefrozen(Object obj, ConcreteType ct, int opindex, State *state)
      * and then run the initially (or just wait for it to finish).
      */
     pushAR(state, obj, ct, opindex);
-    
+
     fixq = (ISet) IIScLookup(fixqueue, (int)obj);
     if (IIScIsNIL(fixq)) {
       IIScInsert(fixqueue, (int)obj, (int)SQueueCreate());
       TRACE(initiallies, 1,
-	    ("call invoking initially/recovery of %#x (%.*s)",
-	     obj, ct->d.name->d.items, ct->d.name->d.data));
+      ("call invoking initially/recovery of %#x (%.*s)",
+       obj, ct->d.name->d.items, ct->d.name->d.data));
       pushAR(state, obj, ct, reasonToIndex(why));
       return 0;
     } else {
@@ -313,9 +313,9 @@ State *processDone(State *state, int fail)
       ressplace = (int *)previousState->sp - state->psnres * 2;
       for (i = 0; i < state->psnres * 2; i++) ressplace[i] = ress[i];
       if (fail) {
-	if (!findHandler(previousState, fail - 1, (Object)JNIL)) {
-	  previousState = processDone(previousState, fail);
-	}
+        if (!findHandler(previousState, fail - 1, (Object)JNIL)) {
+          previousState = processDone(previousState, fail);
+        }
       }
 #ifdef DISTRIBUTED
     } else {
@@ -330,17 +330,17 @@ State *processDone(State *state, int fail)
       h.targetct = OIDOf(state->cp);
 
       if (fail) {
-	TRACE(rinvoke, 2, ("Signalling %s to remote invocation",
-			   fail == 1 ? "failure" :
-			   fail == 2 ? "unavailable" :
-			   "unknown"));
+        TRACE(rinvoke, 2, ("Signalling %s to remote invocation",
+           fail == 1 ? "failure" :
+           fail == 2 ? "unavailable" :
+           "unknown"));
       }
       TRACE(rinvoke, 3, ("Returning %d vars to remote activation %s on %s",
-			 state->psnres, OIDString(h.ss),
-			 NodeString(h.sslocation)));
+        state->psnres, OIDString(h.ss),
+        NodeString(h.sslocation)));
       str = StartMsg(&h);
       sendNVars(str, state->psnres, (int *)(state->sp - state->psnres * 2 * 4),
-		state->ep, state->et);
+        state->ep, state->et);
       sendMsgTo(h.sslocation, str, h.ss);
       previousState = 0;
 #endif
@@ -375,7 +375,7 @@ State *newStackChunk(State *oldstate)
   /* build the stack */
   for (i = 0; i < 2 * (nargs + nress); i++) { PUSH(int, args[i]); }
   state->sp = sp;
-  
+
   pushBottomAR(state);
 
 #if !defined(OLD_STACK_OVERFLOW_CODE)
@@ -442,7 +442,7 @@ void returnToForeignObject(State *state, int value)
   Node srv;
   Stream str;
   RemoteOpHeader h;
-  
+
   regRoot(state);
   anticipateGC(64 * 1024);
   unregRoot();
@@ -455,15 +455,15 @@ void returnToForeignObject(State *state, int value)
   h.ss = OIDOf((Object)state);
   h.sslocation = myid;
 
-  TRACE(rinvoke, 3, ("Forwarding activation on %#x %s a %.*s", obj, 
-		     OIDString(h.target),
-		     state->cp->d.name->d.items,
-		     state->cp->d.name->d.data));
+  TRACE(rinvoke, 3, ("Forwarding activation on %#x %s a %.*s", obj,
+     OIDString(h.target),
+     state->cp->d.name->d.items,
+     state->cp->d.name->d.data));
   TRACE(rinvoke, 4, ("It is on node %s", NodeString(srv)));
 
   str = StartMsg(&h);
   WriteInt(value, str);
-  
+
   SQueueYank(ready, state);
   if (addActivations(state, str, 1)) {
     processMovedOut(state);
@@ -489,11 +489,11 @@ struct State *stateFetch(OID oid, Node loc)
     if (inDistGC()) SETDISTGC(state->firstThing);
     OIDInsert(oid, (Object)state);
     TRACE(distgc, 5, ("StateFetch making a %s state %#x with oid %s",
-		      RESDNT(state->firstThing) ? "resident" : "nonresident",
-		      (unsigned int)state, OIDString(oid)));
+      RESDNT(state->firstThing) ? "resident" : "nonresident",
+      (unsigned int)state, OIDString(oid)));
     TRACE(process, 5, ("StateFetch making a %s state %#x with oid %s",
-		      RESDNT(state->firstThing) ? "resident" : "nonresident",
-		      (unsigned int)state, OIDString(oid)));
+      RESDNT(state->firstThing) ? "resident" : "nonresident",
+      (unsigned int)state, OIDString(oid)));
     isnew = 1;
   }
   if (!RESDNT(state->firstThing) && (isnew || !isNoNode(loc)))

@@ -48,8 +48,8 @@ static struct StreamConstructor wbs_constructor = {
   create_wbs,
   flush_wbs,
   destroy_wbs,
-  NULL }; 
-  
+  NULL };
+
 static int
 create_rbs( StreamBuffer buf, void **d )
 {
