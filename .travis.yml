@@ -31,10 +31,6 @@ matrix:
     env:
       - EMERALDARCH=i686
       - EXTRA_CFLAGS=-Werror
-before_install:
-  - git clone git@github.com:emerald/bin-versions.git
-  - git clone git@github.com:emerald/examples.git
-  - cd examples && PATH="$TRAVIS_BUILD_DIR/examples/bin:$PATH" ./scripts/runall.sh
 install:
   - make -C vmc
   - emmake -C ccalls
