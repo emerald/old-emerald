@@ -82,7 +82,7 @@ do
   fi
 
   printf "%s\n" "#define ${mname} $mndx" >> $ncctabh
-  printf "%s\n" "CCallDescriptor ${mname}_table[] = { " >> $ncctabc
+  printf "%s\n" "CCallDescriptor ${mname}_table[] = {" >> $ncctabc
 
   ccss=$(grep '^CCALL' $absfile | sed \
       -e 's/CCALL *( *//' \
