@@ -266,10 +266,7 @@ vm.o: vm.c types.h
 
 emx:	$(OBJ)
 	@echo linking...
-	@-rm -f emx.dead
-	@-mv -f emx emx.dead
 	$(CC) $(CFLAGS) $(OBJ) -o emx $(LIB) -lm
-	@-rm -f emx.dead
 
 emx.s:	$(ASSRC)
 
