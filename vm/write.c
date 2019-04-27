@@ -5,6 +5,7 @@
 #include "types.h"
 #include "array.h"
 #include "builtins.h"
+#include "debug.h"
 #include "filestr.h"
 #include "globals.h"
 #include "iisc.h"

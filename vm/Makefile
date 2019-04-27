@@ -32,6 +32,7 @@ INC = \
 	concurr.h \
 	config.h \
 	creation.h \
+	debug.h \
 	dist.h \
 	extract.h \
 	filestr.h \
